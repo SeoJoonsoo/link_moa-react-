@@ -28,6 +28,9 @@ export const GlobalStyle = createGlobalStyle`
     padding: 10px; /* TODO : 임의로 영역 확인을 위한 스타일(UI작업시 삭제) */
   }
   ul, ol, li {
+    list-style: none;
+    padding: 0;
+    margin: 0;
     font-family: ${({ theme }) => theme.fontR};
   }
   a {
