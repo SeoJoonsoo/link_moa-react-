@@ -1,52 +1,14 @@
 import { createGlobalStyle } from 'styled-components';
-import * as NANUM_SQURE_ROUND from '@/assets/font/NanumSquareRound';
+import { fonts } from './theme';
 
 export const GlobalStyle = createGlobalStyle`
-  @font-face {
-    font-family: 'RixYeoljeongdo_Regular';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2102-01@1.0/RixYeoljeongdo_Regular.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-  }
-  @font-face {
-    font-family: 'NanumSquareRoundL';
-    src: url(${NANUM_SQURE_ROUND.L.woff2}) format('woff2'),
-          url(${NANUM_SQURE_ROUND.L.woff}) format('woff'),
-          url(${NANUM_SQURE_ROUND.L.ttf}) format('truetype');
-    font-weight: normal;
-    font-style: normal;
-  }
-  @font-face {
-    font-family: 'NanumSquareRoundR';
-    src: url(${NANUM_SQURE_ROUND.R.woff2}) format('woff2'),
-          url(${NANUM_SQURE_ROUND.R.woff}) format('woff'),
-          url(${NANUM_SQURE_ROUND.R.ttf}) format('truetype');
-    font-weight: normal;
-    font-style: normal;
-  }
-  @font-face {
-    font-family: 'NanumSquareRoundB';
-    src: url(${NANUM_SQURE_ROUND.B.woff2}) format('woff2'),
-          url(${NANUM_SQURE_ROUND.B.woff}) format('woff'),
-          url(${NANUM_SQURE_ROUND.B.ttf}) format('truetype');
-    font-weight: normal;
-    font-style: normal;
-  }
-  @font-face {
-    font-family: 'NanumSquareRoundEB';
-    src: url(${NANUM_SQURE_ROUND.EB.woff2}) format('woff2'),
-          url(${NANUM_SQURE_ROUND.EB.woff}) format('woff'),
-          url(${NANUM_SQURE_ROUND.EB.ttf}) format('truetype');
-    font-weight: normal;
-    font-style: normal;
-  }
-
+  ${fonts}
   :root {
     font-size: 15px;
     background-color: ${({ theme }) => theme.basicBg};
   }
   body {
-    font-family: 'NanumSquareRoundR';
+    font-family: ${({ theme }) => theme.fontR};
     overflow-wrap: break-word;
     margin: 0;
     padding: 0;
@@ -65,15 +27,17 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     padding: 10px; /* TODO : 임의로 영역 확인을 위한 스타일(UI작업시 삭제) */
   }
-
+  ul, ol, li {
+    font-family: ${({ theme }) => theme.fontR};
+  }
   a {
-    font-family: 'NanumSquareRoundR';
+    font-family: ${({ theme }) => theme.fontR};
     color: ${({ theme }) => theme.black333};
     text-decoration: none;
   }
 
   button {
-    font-family: 'NanumSquareRoundR';
+    font-family: ${({ theme }) => theme.fontR};
     border: none;
   }
 
