@@ -25,7 +25,6 @@ export const GlobalStyle = createGlobalStyle`
   section,
   div {
     box-sizing: border-box;
-    padding: 10px; /* TODO : 임의로 영역 확인을 위한 스타일(UI작업시 삭제) */
   }
   ul, ol, li {
     list-style: none;
@@ -50,19 +49,16 @@ export const GlobalStyle = createGlobalStyle`
     margin: 0 auto;
     padding: 0;
     max-width: 1280px;
-    height: 100vh;
+    min-height: 100vh;
     text-align: center;
     border: solid 1px #ddd; /* TODO : 임의로 영역 확인을 위한 스타일(UI작업시 삭제) */
     main {
-      flex-grow: 1;
-      flex-shrink: 1;
       border: solid 1px ${({ theme }) => theme.point}; /* TODO : 임의로 영역 확인을 위한 스타일(UI작업시 삭제) */
     }
     section {
       border: solid 1px ${({ theme }) => theme.point2}; /* TODO : 임의로 영역 확인을 위한 스타일(UI작업시 삭제) */
     }
     div {
-      background-color: #ffffff; /* TODO : 임의로 영역 확인을 위한 스타일(UI작업시 삭제) */
       border: solid 1px ${({ theme }) => theme.basicGray}; /* TODO : 임의로 영역 확인을 위한 스타일(UI작업시 삭제) */
     }
   }
