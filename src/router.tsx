@@ -1,6 +1,5 @@
 import { createBrowserRouter, createRoutesFromElements, Route } from 'react-router-dom';
-import App from './App';
-import Main from './layouts/Main';
+import AppLayout from './AppLayout';
 import HomeLayout from './layouts/HomeLayout';
 import Keep from './pages/Keep';
 import Read from './pages/Read';
@@ -11,8 +10,8 @@ import SignUp from './pages/SignUp';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route element={<App />}>
-      {/* header, footer */}
+    <Route element={<AppLayout />}>
+      {/* AppLayout : header, footer */}
       <Route element={<HomeLayout />}>
         <Route path="/" element={<Keep />} />
         <Route path="/read" element={<Read />} />

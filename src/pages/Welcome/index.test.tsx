@@ -3,7 +3,6 @@ import '@testing-library/jest-dom';
 import userEvent from '@testing-library/user-event';
 import Welcome from '.';
 import { MemoryRouter, Route, Routes } from 'react-router';
-import App from '@/App';
 import SignIn from '../SignIn';
 import SignUp from '../SignUp';
 
