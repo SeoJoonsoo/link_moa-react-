@@ -9,7 +9,7 @@ export default function HomeLayout() {
   };
   return (
     <>
-      <S.KeepSection>
+      <S.KeepSection id="keep-section">
         <TextForm
           className="point-button"
           placeholder="링크를 저장하고 언제든 꺼내보세요"
@@ -17,18 +17,18 @@ export default function HomeLayout() {
           onSubmit={onSubmit}
         />
       </S.KeepSection>
-      <section>
-        <h2>KEEP GOING &#62;&#62;</h2>
-      </section>
-      <section>
-        <h2>ALL 섹션</h2>
+      <S.Section id="keep-going-section">
+        <h2 className="title">KEEP GOING &#62;&#62;</h2>
+      </S.Section>
+      <S.Section id="list-section">
+        <h2 className="title">LIST</h2>
         <Link to="/">새 글</Link>
         <Link to="/read">읽은 글</Link>
         <Link to="/all">모든 글</Link>
         <div>
           <Outlet />
         </div>
-      </section>
+      </S.Section>
     </>
   );
 }

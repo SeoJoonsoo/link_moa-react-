@@ -3,7 +3,6 @@ import { styled } from 'styled-components';
 export const Footer = styled.footer`
   h1 {
     padding: 24px 12px 12px;
-    margin: 0;
     font-size: 1.5rem;
   }
   #sitemap {

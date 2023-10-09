@@ -27,6 +27,11 @@ export const GlobalStyle = createGlobalStyle`
   input {
     box-sizing: border-box;
   }
+  h1, h2, h3, h4, h5, h6 {
+    padding: 0;
+    margin: 0;
+    font-weight: normal;
+  }
   ul, ol, li {
     list-style: none;
     padding: 0;
@@ -64,6 +69,5 @@ export const GlobalStyle = createGlobalStyle`
       border: solid 1px ${({ theme }) => theme.basicGray}; /* TODO : 임의로 영역 확인을 위한 스타일(UI작업시 삭제) */
     }
   }
-
 
 `;

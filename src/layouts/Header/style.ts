@@ -5,7 +5,6 @@ export const Header = styled.header`
   overflow: hidden;
   h1 {
     font-size: 0;
-    margin: 0;
     padding: 12px;
   }
 `;
