@@ -13,10 +13,10 @@ export const Section = styled.section`
     font-size: 18px;
     font-family: ${({ theme }) => theme.pointFont};
   }
-  &#keep-going-section .title {
+  &#keep-going-section > .title {
     color: ${({ theme }) => theme.point2};
   }
-  &#list-section .title {
+  &#list-section > .title {
     color: ${({ theme }) => theme.textLight};
   }
 `;
