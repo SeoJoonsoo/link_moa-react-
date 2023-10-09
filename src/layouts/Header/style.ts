@@ -20,13 +20,13 @@ export const LogoutButton = styled.button`
     content: '';
     display: block;
     width: 0px;
-    height: 100%;
+    height: 0;
     position: absolute;
     top: 0;
-    left: -3px;
-    border-top: 58px solid transparent;
-    border-bottom: 0px solid transparent;
-    border-left: 0px solid transparent;
-    border-right: 3px solid ${({ theme }) => theme.basicGray};
+    left: -4px;
+    border-top: 0px solid transparent;
+    border-bottom: 60px solid ${({ theme }) => theme.basicGray};
+    border-right: 10px solid ${({ theme }) => theme.basicGray};
+    border-left: 4px solid transparent;
   }
 `;
