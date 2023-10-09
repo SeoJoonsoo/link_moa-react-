@@ -26,7 +26,8 @@ export const LoginSection = styled.section`
   flex-grow: 0;
   flex-shrink: 0;
   width: 100%;
-  padding: 36px 0;
+  padding-top: 36px;
+  padding-height: 36px;
   .description {
     color: ${({ theme }) => theme.textInfo};
     padding-bottom: 16px;

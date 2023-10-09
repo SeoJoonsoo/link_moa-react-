@@ -1,11 +1,13 @@
 import { styled } from 'styled-components';
 
 export const KeepSection = styled.section`
-  padding: 24px 0;
+  padding-top: 24px;
+  padding-bottom: 24px;
 `;
 
 export const Section = styled.section`
-  padding: 12px 0 24px;
+  padding-top: 12px;
+  padding-bottom: 24px;
   & > .title {
     text-align: left;
     font-size: 18px;

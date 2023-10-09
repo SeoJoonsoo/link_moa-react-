@@ -27,7 +27,7 @@ export const GlobalStyle = createGlobalStyle`
   input {
     box-sizing: border-box;
   }
-  h1, h2, h3, h4, h5, h6 {
+  h1, h2, h3, h4, h5, h6, p {
     padding: 0;
     margin: 0;
     font-weight: normal;
@@ -49,6 +49,17 @@ export const GlobalStyle = createGlobalStyle`
     border: none;
   }
 
+  main {
+    border: solid 1px ${({ theme }) => theme.point}; /* TODO : 임의로 영역 확인을 위한 스타일(UI작업시 삭제) */
+  }
+  section {
+    padding: 12px;
+    border: solid 1px ${({ theme }) => theme.point2}; /* TODO : 임의로 영역 확인을 위한 스타일(UI작업시 삭제) */
+  }
+  div {
+    border: solid 1px ${({ theme }) => theme.basicGray}; /* TODO : 임의로 영역 확인을 위한 스타일(UI작업시 삭제) */
+  }
+
   #root {
     display: flex;
     flex-direction: column;
@@ -59,15 +70,6 @@ export const GlobalStyle = createGlobalStyle`
     min-height: 100vh;
     text-align: center;
     border: solid 1px #ddd; /* TODO : 임의로 영역 확인을 위한 스타일(UI작업시 삭제) */
-    main {
-      border: solid 1px ${({ theme }) => theme.point}; /* TODO : 임의로 영역 확인을 위한 스타일(UI작업시 삭제) */
-    }
-    section {
-      border: solid 1px ${({ theme }) => theme.point2}; /* TODO : 임의로 영역 확인을 위한 스타일(UI작업시 삭제) */
-    }
-    div {
-      border: solid 1px ${({ theme }) => theme.basicGray}; /* TODO : 임의로 영역 확인을 위한 스타일(UI작업시 삭제) */
-    }
   }
 
 `;
