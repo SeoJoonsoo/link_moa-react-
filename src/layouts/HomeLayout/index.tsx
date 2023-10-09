@@ -1,7 +1,7 @@
 import { Outlet } from 'react-router';
 import { Link } from 'react-router-dom';
 import * as S from './style';
-import TextForm from '@/components/Form/TextForm/TextForm';
+import TextForm from '@/components/Form/TextForm';
 
 export default function HomeLayout() {
   const onSubmit = () => {
