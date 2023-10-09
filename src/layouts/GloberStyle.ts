@@ -6,6 +6,11 @@ export const GlobalStyle = createGlobalStyle`
   :root {
     font-size: 15px;
     background-color: ${({ theme }) => theme.basicBg};
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    &::-webkit-scrollbar {
+      display: none;
+    }
   }
   body {
     font-family: ${({ theme }) => theme.fontR};
@@ -23,6 +28,7 @@ export const GlobalStyle = createGlobalStyle`
   footer,
   main,
   section,
+  article,
   div,
   input {
     box-sizing: border-box;
