@@ -23,7 +23,8 @@ export const GlobalStyle = createGlobalStyle`
   footer,
   main,
   section,
-  div {
+  div,
+  input {
     box-sizing: border-box;
   }
   ul, ol, li {
@@ -48,6 +49,7 @@ export const GlobalStyle = createGlobalStyle`
     flex-direction: column;
     margin: 0 auto;
     padding: 0;
+    min-width: 360px;
     max-width: 1280px;
     min-height: 100vh;
     text-align: center;
@@ -62,5 +64,6 @@ export const GlobalStyle = createGlobalStyle`
       border: solid 1px ${({ theme }) => theme.basicGray}; /* TODO : 임의로 영역 확인을 위한 스타일(UI작업시 삭제) */
     }
   }
+
 
 `;
