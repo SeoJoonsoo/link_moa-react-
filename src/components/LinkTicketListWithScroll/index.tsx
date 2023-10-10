@@ -9,7 +9,7 @@ export default function LinkTicketListWithScroll({ links }: Props) {
   return (
     <S.List className="link-ticket-list-width-scroll">
       {links.map((link) => {
-        return <LinkTicket value={link} />;
+        return <LinkTicket key={link.id} value={link} />;
       })}
     </S.List>
   );

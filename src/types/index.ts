@@ -1,4 +1,5 @@
 export type LinkInfo = {
+  id: number;
   title: string;
   url: string;
   writer: string;

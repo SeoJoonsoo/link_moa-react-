@@ -36,7 +36,7 @@ export default function LinkTicket({ value }: Props) {
           }}
         >
           {tags.map((tag) => {
-            return <li>#{tag}</li>;
+            return <li key={tag}>#{tag}</li>;
           })}
         </S.Tags>
       </div>

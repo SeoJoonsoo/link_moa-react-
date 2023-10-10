@@ -28,7 +28,7 @@ export default function LinkTicketList({ links, alert }: Props) {
           </div>
         ) : (
           links.map((link) => {
-            return <LinkTicket value={link} />;
+            return <LinkTicket key={link.id} value={link} />;
           })
         )}
         {}

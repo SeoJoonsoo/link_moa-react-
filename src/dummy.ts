@@ -6,6 +6,7 @@ import { LinkInfo } from '@/types';
 // 읽던 글
 export const dummyForKeepGoing: LinkInfo[] = [
   {
+    id: 1,
     title: '우아한 수다 타임에 작은 기여하기',
     url: 'https://www.naver.com/',
     writer: 'Stories by 송요창 on Medium',
@@ -16,6 +17,7 @@ export const dummyForKeepGoing: LinkInfo[] = [
     status: false,
   },
   {
+    id: 2,
     title: '[발표] 개발자의 학과 습',
     url: 'https://www.google.co.kr/',
     writer: 'Korean FE article',
@@ -26,6 +28,7 @@ export const dummyForKeepGoing: LinkInfo[] = [
     status: false,
   },
   {
+    id: 3,
     title: '타이틀이다 길면 줄이기! 우선 길게 써야지 테스트해야하니까',
     url: 'https://ryusoo-h.github.io/myBoard/code-drawer/?post=post2',
     writer: '이름이 길수도 있죠 영어일수도있고 길수도있고',
@@ -36,6 +39,7 @@ export const dummyForKeepGoing: LinkInfo[] = [
     status: false,
   },
   {
+    id: 14,
     title: '우아한 수다 타임에 작은 기여하기',
     url: 'https://www.naver.com/',
     writer: 'Stories by 송요창 on Medium',
@@ -46,6 +50,7 @@ export const dummyForKeepGoing: LinkInfo[] = [
     status: false,
   },
   {
+    id: 15,
     title: '타이틀이다 길면 줄이기! 우선 길게 써야지 테스트해야하니까',
     url: 'https://ryusoo-h.github.io/myBoard/code-drawer/?post=post2',
     writer: '이름이 길수도 있죠 영어일수도있고 길수도있고',
@@ -60,6 +65,7 @@ export const dummyForKeepGoing: LinkInfo[] = [
 // 새 글
 export const dummyForKeep: LinkInfo[] = [
   {
+    id: 1,
     title: '우아한 수다 타임에 작은 기여하기',
     url: 'https://www.naver.com/',
     writer: 'Stories by 송요창 on Medium',
@@ -70,6 +76,7 @@ export const dummyForKeep: LinkInfo[] = [
     status: false,
   },
   {
+    id: 2,
     title: '[발표] 개발자의 학과 습',
     url: 'https://www.google.co.kr/',
     writer: 'Korean FE article',
@@ -80,6 +87,7 @@ export const dummyForKeep: LinkInfo[] = [
     status: false,
   },
   {
+    id: 3,
     title: '타이틀이다 길면 줄이기! 우선 길게 써야지 테스트해야하니까',
     url: 'https://ryusoo-h.github.io/myBoard/code-drawer/?post=post2',
     writer: '이름이 길수도 있죠 영어일수도있고 길수도있고',
@@ -90,6 +98,7 @@ export const dummyForKeep: LinkInfo[] = [
     status: false,
   },
   {
+    id: 4,
     title: '우아한 수다 타임에 작은 기여하기',
     url: 'https://www.naver.com/',
     writer: 'Stories by 송요창 on Medium',
@@ -100,6 +109,7 @@ export const dummyForKeep: LinkInfo[] = [
     status: false,
   },
   {
+    id: 5,
     title: '[발표] 개발자의 학과 습',
     url: 'https://www.google.co.kr/',
     writer: 'Korean FE article',
@@ -110,6 +120,7 @@ export const dummyForKeep: LinkInfo[] = [
     status: false,
   },
   {
+    id: 6,
     title: '타이틀이다 길면 줄이기! 우선 길게 써야지 테스트해야하니까',
     url: 'https://ryusoo-h.github.io/myBoard/code-drawer/?post=post2',
     writer: '이름이 길수도 있죠 영어일수도있고 길수도있고',
@@ -120,6 +131,7 @@ export const dummyForKeep: LinkInfo[] = [
     status: false,
   },
   {
+    id: 7,
     title: '우아한 수다 타임에 작은 기여하기',
     url: 'https://www.naver.com/',
     writer: 'Stories by 송요창 on Medium',
@@ -130,6 +142,7 @@ export const dummyForKeep: LinkInfo[] = [
     status: false,
   },
   {
+    id: 8,
     title: '[발표] 개발자의 학과 습',
     url: 'https://www.google.co.kr/',
     writer: 'Korean FE article',
@@ -140,6 +153,7 @@ export const dummyForKeep: LinkInfo[] = [
     status: false,
   },
   {
+    id: 9,
     title: '타이틀이다 길면 줄이기! 우선 길게 써야지 테스트해야하니까',
     url: 'https://ryusoo-h.github.io/myBoard/code-drawer/?post=post2',
     writer: '이름이 길수도 있죠 영어일수도있고 길수도있고',
@@ -150,6 +164,7 @@ export const dummyForKeep: LinkInfo[] = [
     status: false,
   },
   {
+    id: 10,
     title: '우아한 수다 타임에 작은 기여하기',
     url: 'https://www.naver.com/',
     writer: 'Stories by 송요창 on Medium',
@@ -160,6 +175,7 @@ export const dummyForKeep: LinkInfo[] = [
     status: false,
   },
   {
+    id: 11,
     title: '타이틀이다 길면 줄이기! 우선 길게 써야지 테스트해야하니까',
     url: 'https://ryusoo-h.github.io/myBoard/code-drawer/?post=post2',
     writer: '이름이 길수도 있죠 영어일수도있고 길수도있고',
@@ -174,6 +190,7 @@ export const dummyForKeep: LinkInfo[] = [
 // 읽은 글
 export const dummyForRead: LinkInfo[] = [
   {
+    id: 11,
     title: '우아한 수다 타임에 작은 기여하기',
     url: 'https://www.naver.com/',
     writer: 'Stories by 송요창 on Medium',
@@ -184,6 +201,7 @@ export const dummyForRead: LinkInfo[] = [
     status: true,
   },
   {
+    id: 12,
     title: '[발표] 개발자의 학과 습',
     url: 'https://www.google.co.kr/',
     writer: 'Korean FE article',
@@ -194,6 +212,7 @@ export const dummyForRead: LinkInfo[] = [
     status: true,
   },
   {
+    id: 13,
     title: '타이틀이다 길면 줄이기! 우선 길게 써야지 테스트해야하니까',
     url: 'https://ryusoo-h.github.io/myBoard/code-drawer/?post=post2',
     writer: '이름이 길수도 있죠 영어일수도있고 길수도있고',
@@ -204,6 +223,7 @@ export const dummyForRead: LinkInfo[] = [
     status: true,
   },
   {
+    id: 14,
     title: '우아한 수다 타임에 작은 기여하기',
     url: 'https://www.naver.com/',
     writer: 'Stories by 송요창 on Medium',
@@ -214,6 +234,7 @@ export const dummyForRead: LinkInfo[] = [
     status: true,
   },
   {
+    id: 15,
     title: '타이틀이다 길면 줄이기! 우선 길게 써야지 테스트해야하니까',
     url: 'https://ryusoo-h.github.io/myBoard/code-drawer/?post=post2',
     writer: '이름이 길수도 있죠 영어일수도있고 길수도있고',
@@ -228,6 +249,7 @@ export const dummyForRead: LinkInfo[] = [
 // 모든 글
 export const dummyForAll: LinkInfo[] = [
   {
+    id: 1,
     title: '우아한 수다 타임에 작은 기여하기',
     url: 'https://www.naver.com/',
     writer: 'Stories by 송요창 on Medium',
@@ -238,6 +260,7 @@ export const dummyForAll: LinkInfo[] = [
     status: false,
   },
   {
+    id: 2,
     title: '[발표] 개발자의 학과 습',
     url: 'https://www.google.co.kr/',
     writer: 'Korean FE article',
@@ -248,6 +271,7 @@ export const dummyForAll: LinkInfo[] = [
     status: false,
   },
   {
+    id: 3,
     title: '타이틀이다 길면 줄이기! 우선 길게 써야지 테스트해야하니까',
     url: 'https://ryusoo-h.github.io/myBoard/code-drawer/?post=post2',
     writer: '이름이 길수도 있죠 영어일수도있고 길수도있고',
@@ -258,6 +282,7 @@ export const dummyForAll: LinkInfo[] = [
     status: true,
   },
   {
+    id: 4,
     title: '우아한 수다 타임에 작은 기여하기',
     url: 'https://www.naver.com/',
     writer: 'Stories by 송요창 on Medium',
@@ -268,6 +293,7 @@ export const dummyForAll: LinkInfo[] = [
     status: false,
   },
   {
+    id: 5,
     title: '[발표] 개발자의 학과 습',
     url: 'https://www.google.co.kr/',
     writer: 'Korean FE article',
@@ -278,6 +304,7 @@ export const dummyForAll: LinkInfo[] = [
     status: false,
   },
   {
+    id: 6,
     title: '타이틀이다 길면 줄이기! 우선 길게 써야지 테스트해야하니까',
     url: 'https://ryusoo-h.github.io/myBoard/code-drawer/?post=post2',
     writer: '이름이 길수도 있죠 영어일수도있고 길수도있고',
@@ -288,6 +315,7 @@ export const dummyForAll: LinkInfo[] = [
     status: true,
   },
   {
+    id: 7,
     title: '[발표] 개발자의 학과 습',
     url: 'https://www.google.co.kr/',
     writer: 'Korean FE article',
@@ -298,6 +326,7 @@ export const dummyForAll: LinkInfo[] = [
     status: true,
   },
   {
+    id: 8,
     title: '우아한 수다 타임에 작은 기여하기',
     url: 'https://www.naver.com/',
     writer: 'Stories by 송요창 on Medium',
@@ -308,6 +337,7 @@ export const dummyForAll: LinkInfo[] = [
     status: true,
   },
   {
+    id: 9,
     title: '우아한 수다 타임에 작은 기여하기',
     url: 'https://www.naver.com/',
     writer: 'Stories by 송요창 on Medium',
@@ -318,6 +348,7 @@ export const dummyForAll: LinkInfo[] = [
     status: false,
   },
   {
+    id: 10,
     title: '[발표] 개발자의 학과 습',
     url: 'https://www.google.co.kr/',
     writer: 'Korean FE article',
@@ -328,6 +359,7 @@ export const dummyForAll: LinkInfo[] = [
     status: false,
   },
   {
+    id: 11,
     title: '타이틀이다 길면 줄이기! 우선 길게 써야지 테스트해야하니까',
     url: 'https://ryusoo-h.github.io/myBoard/code-drawer/?post=post2',
     writer: '이름이 길수도 있죠 영어일수도있고 길수도있고',
@@ -338,6 +370,7 @@ export const dummyForAll: LinkInfo[] = [
     status: true,
   },
   {
+    id: 12,
     title: '우아한 수다 타임에 작은 기여하기',
     url: 'https://www.naver.com/',
     writer: 'Stories by 송요창 on Medium',
@@ -348,6 +381,7 @@ export const dummyForAll: LinkInfo[] = [
     status: false,
   },
   {
+    id: 13,
     title: '[발표] 개발자의 학과 습',
     url: 'https://www.google.co.kr/',
     writer: 'Korean FE article',
@@ -358,6 +392,7 @@ export const dummyForAll: LinkInfo[] = [
     status: false,
   },
   {
+    id: 14,
     title: '타이틀이다 길면 줄이기! 우선 길게 써야지 테스트해야하니까',
     url: 'https://ryusoo-h.github.io/myBoard/code-drawer/?post=post2',
     writer: '이름이 길수도 있죠 영어일수도있고 길수도있고',
@@ -368,6 +403,7 @@ export const dummyForAll: LinkInfo[] = [
     status: true,
   },
   {
+    id: 15,
     title: '[발표] 개발자의 학과 습',
     url: 'https://www.google.co.kr/',
     writer: 'Korean FE article',
@@ -378,6 +414,7 @@ export const dummyForAll: LinkInfo[] = [
     status: true,
   },
   {
+    id: 19,
     title: '우아한 수다 타임에 작은 기여하기',
     url: 'https://www.naver.com/',
     writer: 'Stories by 송요창 on Medium',
@@ -388,6 +425,7 @@ export const dummyForAll: LinkInfo[] = [
     status: true,
   },
   {
+    id: 20,
     title: '우아한 수다 타임에 작은 기여하기',
     url: 'https://www.naver.com/',
     writer: 'Stories by 송요창 on Medium',
@@ -398,6 +436,7 @@ export const dummyForAll: LinkInfo[] = [
     status: false,
   },
   {
+    id: 21,
     title: '[발표] 개발자의 학과 습',
     url: 'https://www.google.co.kr/',
     writer: 'Korean FE article',
@@ -408,6 +447,7 @@ export const dummyForAll: LinkInfo[] = [
     status: false,
   },
   {
+    id: 22,
     title: '타이틀이다 길면 줄이기! 우선 길게 써야지 테스트해야하니까',
     url: 'https://ryusoo-h.github.io/myBoard/code-drawer/?post=post2',
     writer: '이름이 길수도 있죠 영어일수도있고 길수도있고',
@@ -418,6 +458,7 @@ export const dummyForAll: LinkInfo[] = [
     status: true,
   },
   {
+    id: 23,
     title: '우아한 수다 타임에 작은 기여하기',
     url: 'https://www.naver.com/',
     writer: 'Stories by 송요창 on Medium',
@@ -428,6 +469,7 @@ export const dummyForAll: LinkInfo[] = [
     status: false,
   },
   {
+    id: 24,
     title: '[발표] 개발자의 학과 습',
     url: 'https://www.google.co.kr/',
     writer: 'Korean FE article',
@@ -438,6 +480,7 @@ export const dummyForAll: LinkInfo[] = [
     status: false,
   },
   {
+    id: 25,
     title: '타이틀이다 길면 줄이기! 우선 길게 써야지 테스트해야하니까',
     url: 'https://ryusoo-h.github.io/myBoard/code-drawer/?post=post2',
     writer: '이름이 길수도 있죠 영어일수도있고 길수도있고',
@@ -448,6 +491,7 @@ export const dummyForAll: LinkInfo[] = [
     status: true,
   },
   {
+    id: 26,
     title: '[발표] 개발자의 학과 습',
     url: 'https://www.google.co.kr/',
     writer: 'Korean FE article',
@@ -458,6 +502,7 @@ export const dummyForAll: LinkInfo[] = [
     status: true,
   },
   {
+    id: 27,
     title: '우아한 수다 타임에 작은 기여하기',
     url: 'https://www.naver.com/',
     writer: 'Stories by 송요창 on Medium',
@@ -468,6 +513,7 @@ export const dummyForAll: LinkInfo[] = [
     status: true,
   },
   {
+    id: 28,
     title: '우아한 수다 타임에 작은 기여하기',
     url: 'https://www.naver.com/',
     writer: 'Stories by 송요창 on Medium',
@@ -478,6 +524,7 @@ export const dummyForAll: LinkInfo[] = [
     status: false,
   },
   {
+    id: 29,
     title: '[발표] 개발자의 학과 습',
     url: 'https://www.google.co.kr/',
     writer: 'Korean FE article',
@@ -488,6 +535,7 @@ export const dummyForAll: LinkInfo[] = [
     status: false,
   },
   {
+    id: 30,
     title: '타이틀이다 길면 줄이기! 우선 길게 써야지 테스트해야하니까',
     url: 'https://ryusoo-h.github.io/myBoard/code-drawer/?post=post2',
     writer: '이름이 길수도 있죠 영어일수도있고 길수도있고',
@@ -498,6 +546,7 @@ export const dummyForAll: LinkInfo[] = [
     status: true,
   },
   {
+    id: 31,
     title: '우아한 수다 타임에 작은 기여하기',
     url: 'https://www.naver.com/',
     writer: 'Stories by 송요창 on Medium',
@@ -508,6 +557,7 @@ export const dummyForAll: LinkInfo[] = [
     status: false,
   },
   {
+    id: 32,
     title: '[발표] 개발자의 학과 습',
     url: 'https://www.google.co.kr/',
     writer: 'Korean FE article',
@@ -518,6 +568,7 @@ export const dummyForAll: LinkInfo[] = [
     status: false,
   },
   {
+    id: 33,
     title: '타이틀이다 길면 줄이기! 우선 길게 써야지 테스트해야하니까',
     url: 'https://ryusoo-h.github.io/myBoard/code-drawer/?post=post2',
     writer: '이름이 길수도 있죠 영어일수도있고 길수도있고',
@@ -528,6 +579,7 @@ export const dummyForAll: LinkInfo[] = [
     status: true,
   },
   {
+    id: 34,
     title: '[발표] 개발자의 학과 습',
     url: 'https://www.google.co.kr/',
     writer: 'Korean FE article',
@@ -538,6 +590,7 @@ export const dummyForAll: LinkInfo[] = [
     status: true,
   },
   {
+    id: 35,
     title: '우아한 수다 타임에 작은 기여하기',
     url: 'https://www.naver.com/',
     writer: 'Stories by 송요창 on Medium',
@@ -548,6 +601,7 @@ export const dummyForAll: LinkInfo[] = [
     status: true,
   },
   {
+    id: 39,
     title: '우아한 수다 타임에 작은 기여하기',
     url: 'https://www.naver.com/',
     writer: 'Stories by 송요창 on Medium',
@@ -558,6 +612,7 @@ export const dummyForAll: LinkInfo[] = [
     status: false,
   },
   {
+    id: 40,
     title: '[발표] 개발자의 학과 습',
     url: 'https://www.google.co.kr/',
     writer: 'Korean FE article',
@@ -568,6 +623,7 @@ export const dummyForAll: LinkInfo[] = [
     status: false,
   },
   {
+    id: 41,
     title: '타이틀이다 길면 줄이기! 우선 길게 써야지 테스트해야하니까',
     url: 'https://ryusoo-h.github.io/myBoard/code-drawer/?post=post2',
     writer: '이름이 길수도 있죠 영어일수도있고 길수도있고',
@@ -578,6 +634,7 @@ export const dummyForAll: LinkInfo[] = [
     status: true,
   },
   {
+    id: 42,
     title: '우아한 수다 타임에 작은 기여하기',
     url: 'https://www.naver.com/',
     writer: 'Stories by 송요창 on Medium',
@@ -588,6 +645,7 @@ export const dummyForAll: LinkInfo[] = [
     status: false,
   },
   {
+    id: 43,
     title: '[발표] 개발자의 학과 습',
     url: 'https://www.google.co.kr/',
     writer: 'Korean FE article',
@@ -598,6 +656,7 @@ export const dummyForAll: LinkInfo[] = [
     status: false,
   },
   {
+    id: 44,
     title: '타이틀이다 길면 줄이기! 우선 길게 써야지 테스트해야하니까',
     url: 'https://ryusoo-h.github.io/myBoard/code-drawer/?post=post2',
     writer: '이름이 길수도 있죠 영어일수도있고 길수도있고',
@@ -608,6 +667,7 @@ export const dummyForAll: LinkInfo[] = [
     status: true,
   },
   {
+    id: 45,
     title: '[발표] 개발자의 학과 습',
     url: 'https://www.google.co.kr/',
     writer: 'Korean FE article',
@@ -618,6 +678,7 @@ export const dummyForAll: LinkInfo[] = [
     status: true,
   },
   {
+    id: 465,
     title: '우아한 수다 타임에 작은 기여하기',
     url: 'https://www.naver.com/',
     writer: 'Stories by 송요창 on Medium',
