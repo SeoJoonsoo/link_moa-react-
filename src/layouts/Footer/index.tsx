@@ -1,12 +1,13 @@
 import { Link } from 'react-router-dom';
+import * as S from './style';
 
 export default function Footer() {
   return (
-    <footer>
-      <h1>푸터</h1>
-      <ul>
+    <S.Footer>
+      <h1>Sitemap</h1>
+      <ul id="sitemap">
         <li>
-          개발 편의를 위한 사이트맵
+          로그인 시 접속 가능
           <ul>
             <li>
               <Link to="/">Home</Link>
@@ -17,18 +18,17 @@ export default function Footer() {
             <li>
               <Link to="/all">모든 글</Link>
             </li>
+          </ul>
+        </li>
+        <li>
+          로그아웃 시 접속 가능
+          <ul>
             <li>
               <Link to="/welcome">웰컴</Link>
-            </li>
-            <li>
-              <Link to="/sign-in">로그인</Link>
-            </li>
-            <li>
-              <Link to="/sign-up">회원가입</Link>
             </li>
           </ul>
         </li>
       </ul>
-    </footer>
+    </S.Footer>
   );
 }

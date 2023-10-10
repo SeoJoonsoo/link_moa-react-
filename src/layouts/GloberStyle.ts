@@ -1,11 +1,20 @@
 import { createGlobalStyle } from 'styled-components';
+import { fonts } from './theme';
 
 export const GlobalStyle = createGlobalStyle`
+  ${fonts}
   :root {
     font-size: 15px;
     background-color: ${({ theme }) => theme.basicBg};
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    &::-webkit-scrollbar {
+      display: none;
+    }
   }
   body {
+    font-family: ${({ theme }) => theme.fontR};
     overflow-wrap: break-word;
     margin: 0;
     padding: 0;
@@ -20,18 +29,35 @@ export const GlobalStyle = createGlobalStyle`
   footer,
   main,
   section,
-  div {
+  article,
+  div,
+  input {
     box-sizing: border-box;
-    padding: 10px; /* TODO : 임의로 영역 확인을 위한 스타일(UI작업시 삭제) */
   }
-
+  h1, h2, h3, h4, h5, h6, p {
+    padding: 0;
+    margin: 0;
+    font-weight: normal;
+  }
+  ul, ol, li {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-family: ${({ theme }) => theme.fontR};
+  }
   a {
+    font-family: ${({ theme }) => theme.fontR};
     color: ${({ theme }) => theme.black333};
     text-decoration: none;
   }
 
   button {
+    font-family: ${({ theme }) => theme.fontR};
     border: none;
+  }
+
+  section {
+    padding: 12px;
   }
 
   #root {
@@ -39,22 +65,10 @@ export const GlobalStyle = createGlobalStyle`
     flex-direction: column;
     margin: 0 auto;
     padding: 0;
-    max-width: 1280px;
-    height: 100vh;
+    min-width: 360px;
+    max-width: 640px;
+    min-height: 100vh;
     text-align: center;
-    border: solid 1px #ddd; /* TODO : 임의로 영역 확인을 위한 스타일(UI작업시 삭제) */
-    main {
-      flex-grow: 1;
-      flex-shrink: 1;
-      border: solid 1px ${({ theme }) => theme.point}; /* TODO : 임의로 영역 확인을 위한 스타일(UI작업시 삭제) */
-    }
-    section {
-      border: solid 1px ${({ theme }) => theme.point2}; /* TODO : 임의로 영역 확인을 위한 스타일(UI작업시 삭제) */
-    }
-    div {
-      background-color: #ffffff; /* TODO : 임의로 영역 확인을 위한 스타일(UI작업시 삭제) */
-      border: solid 1px ${({ theme }) => theme.basicGray}; /* TODO : 임의로 영역 확인을 위한 스타일(UI작업시 삭제) */
-    }
   }
 
 `;

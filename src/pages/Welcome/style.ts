@@ -1,19 +1,56 @@
-import { Link } from 'react-router-dom';
+import { HeaderHeight } from '@/layouts/Header/style';
 import { styled } from 'styled-components';
 
-export const ButtonWrapper = styled.section`
+export const Wrapper = styled.div`
+  padding: 48px 0;
+  height: calc(100vh - ${HeaderHeight});
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  align-items: center;
 `;
-export const SignInButton = styled(Link)`
-  background-color: ${({ theme }) => theme.white};
-  padding: 12px;
-  border-radius: 10px;
-  font-size: 18px;
+
+export const SlideSection = styled.section`
+  width: 100%;
+  flex-grow: 1;
+  flex-shrink: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .slide-wrapper {
+    height: 300px;
+    max-width: 400px;
+    width: 100%;
+    background-color: #fff; // TODO : 임시로 사이즈 확인을 위함
+  }
 `;
-export const SignUpButton = styled(Link)`
-  color: ${({ theme }) => theme.textInfo};
-  background-color: unset;
-  border: none;
+export const LoginSection = styled.section`
+  flex-grow: 0;
+  flex-shrink: 0;
+  width: 100%;
+  padding-top: 36px;
+  padding-height: 36px;
+  .description {
+    color: ${({ theme }) => theme.textInfo};
+    padding-bottom: 16px;
+  }
+  .easy-login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    &__button {
+      font-size: 0;
+      padding: 8px;
+      border-radius: 10px;
+      background: #fff;
+      box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.08);
+      &#naver {
+        background: #34a853;
+      }
+      img {
+        width: 30px;
+        height: 30px;
+      }
+    }
+  }
 `;
