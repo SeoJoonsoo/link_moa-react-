@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { LinkInfo } from '@/types';
 import Keep from '../../components/Keep';
-import { dummyForKeepGoing } from './dummy';
+import { dummyForKeepGoing } from '../../dummy';
 import SectionWithTitle from '../SectionWithTitle';
 import { basicTheme } from '../theme';
 import LinkTicketListWithScroll from '../../components/LinkTicketListWithScroll';
