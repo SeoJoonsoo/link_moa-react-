@@ -6,6 +6,7 @@ export const GlobalStyle = createGlobalStyle`
   :root {
     font-size: 15px;
     background-color: ${({ theme }) => theme.basicBg};
+    scroll-behavior: smooth;
     scrollbar-width: none;
     -ms-overflow-style: none;
     &::-webkit-scrollbar {
@@ -55,15 +56,8 @@ export const GlobalStyle = createGlobalStyle`
     border: none;
   }
 
-  main {
-    border: solid 1px ${({ theme }) => theme.point}; /* TODO : 임의로 영역 확인을 위한 스타일(UI작업시 삭제) */
-  }
   section {
     padding: 12px;
-    border: solid 1px ${({ theme }) => theme.point2}; /* TODO : 임의로 영역 확인을 위한 스타일(UI작업시 삭제) */
-  }
-  div {
-    border: solid 1px ${({ theme }) => theme.basicGray}; /* TODO : 임의로 영역 확인을 위한 스타일(UI작업시 삭제) */
   }
 
   #root {
@@ -72,10 +66,9 @@ export const GlobalStyle = createGlobalStyle`
     margin: 0 auto;
     padding: 0;
     min-width: 360px;
-    max-width: 1280px;
+    max-width: 640px;
     min-height: 100vh;
     text-align: center;
-    border: solid 1px #ddd; /* TODO : 임의로 영역 확인을 위한 스타일(UI작업시 삭제) */
   }
 
 `;

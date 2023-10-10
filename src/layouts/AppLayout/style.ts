@@ -1,5 +1,7 @@
 import { styled } from 'styled-components';
+import { HeaderHeight } from '../Header/style';
 
 export const Main = styled.main`
-  min-height: calc(100vh - 58px);
+  margin-top: ${HeaderHeight};
+  min-height: calc(100vh - ${HeaderHeight});
 `;

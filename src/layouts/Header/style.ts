@@ -1,8 +1,21 @@
 import { styled } from 'styled-components';
 
+export const HeaderHeight = '58px';
+
 export const Header = styled.header`
-  position: relative;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
   overflow: hidden;
+  z-index: 9999;
+  height: ${HeaderHeight};
+  background-color: ${({ theme }) => theme.basicBg};
+  transition: box-shadow 0.2s ease-in-out;
+  &.scrolled {
+    box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.12);
+  }
   h1 {
     font-size: 0;
     padding: 12px;

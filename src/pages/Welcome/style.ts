@@ -1,8 +1,9 @@
+import { HeaderHeight } from '@/layouts/Header/style';
 import { styled } from 'styled-components';
 
 export const Wrapper = styled.div`
   padding: 48px 0;
-  height: calc(100vh - 58px);
+  height: calc(100vh - ${HeaderHeight});
   display: flex;
   flex-direction: column;
   align-items: center;
