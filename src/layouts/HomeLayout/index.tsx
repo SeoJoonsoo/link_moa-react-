@@ -22,7 +22,7 @@ export default function HomeLayout() {
     if (!isLogin.isLogin) {
       navigate('/welcome');
     }
-  }, [isLogin]);
+  }, [isLogin.isLogin]);
 
   return (
     <>
