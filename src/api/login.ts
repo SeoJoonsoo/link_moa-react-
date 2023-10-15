@@ -1,6 +1,6 @@
 import axios from 'axios';
+import { createAsyncThunk } from '@reduxjs/toolkit';
 
-// 로그인 실패 시 data 안에 memberInfo 없음 '.' 유저를 찾을 수 없어서 못준다고함
 type Response = {
   isLogin: boolean;
   message: string;
@@ -13,7 +13,7 @@ type Response = {
   };
 };
 
-export default async function naverLogin(): Promise<Response> {
+const login = createAsyncThunk('member/loginMemberInfo', async () => {
   const data: Response = await axios
     .get(import.meta.env.VITE_API_ROOT + '/member/loginMemberInfo', {
       withCredentials: true,
@@ -52,4 +52,6 @@ export default async function naverLogin(): Promise<Response> {
       };
     });
   return data;
-}
+});
+
+export default login;

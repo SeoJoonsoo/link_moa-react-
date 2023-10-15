@@ -1,9 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from './store';
-// import axios from 'axios';
-import { createAsyncThunk } from '@reduxjs/toolkit';
-import naverLogin from '@/api/naverLogin';
+import login from '@/api/login';
+import logout from '@/api/logout';
 
 type MemberInfo = {
   status: string;
@@ -17,11 +16,6 @@ const initialState: MemberInfo = {
   email: null,
   nickname: null,
 };
-
-export const getMemberInfo = createAsyncThunk('member/login', async () => {
-  console.log('getMemberInfo 동작');
-  return naverLogin();
-});
 
 const memberSlice = createSlice({
   name: 'member',
@@ -39,15 +33,26 @@ const memberSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(getMemberInfo.pending, (state) => {
+    builder.addCase(login.pending, (state) => {
       state.status = 'loading';
     });
-    builder.addCase(getMemberInfo.fulfilled, (state, action) => {
+    builder.addCase(login.fulfilled, (state, action) => {
       state.email = action.payload.data.memberInfo.email;
       state.nickname = action.payload.data.memberInfo.nickname;
       state.status = 'success';
     });
-    builder.addCase(getMemberInfo.rejected, (state) => {
+    builder.addCase(login.rejected, (state) => {
+      state.status = 'failed';
+    });
+    builder.addCase(logout.pending, (state) => {
+      state.status = 'loading';
+    });
+    builder.addCase(logout.fulfilled, (state) => {
+      state.email = null;
+      state.nickname = null;
+      state.status = 'success';
+    });
+    builder.addCase(logout.rejected, (state) => {
       state.status = 'failed';
     });
   },

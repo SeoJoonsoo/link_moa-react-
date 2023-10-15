@@ -1,3 +1,4 @@
+import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 type Response = {
@@ -6,7 +7,7 @@ type Response = {
   message: string;
 };
 
-export default async function logOut() {
+const logout = createAsyncThunk('/member/logout', async () => {
   const data: Response = await axios
     .get(`${import.meta.env.VITE_API_ROOT}/member/logout`)
     .then((response) => {
@@ -22,5 +23,8 @@ export default async function logOut() {
     .catch((e) => {
       console.log('로그아웃 요청 실패 :', e);
     });
+
   return data;
-}
+});
+
+export default logout;

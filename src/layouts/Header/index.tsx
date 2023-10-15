@@ -2,33 +2,23 @@ import { Link } from 'react-router-dom';
 import Logo from '@/assets/images/Header/logo.svg';
 import Logout from '@/assets/images/Header/ic-logout.svg';
 import * as S from './style';
-import logOut from '@/api/logout';
-import { useAppSelector, useAppDispatch } from '@/redux/hooks';
-import { updateisLogin } from '@/redux/isLogin';
-import { deleteMemberInfo } from '@/redux/member';
+import logout from '@/api/logout';
+import { useAppDispatch } from '@/redux/hooks';
 
-export default function Header({ ...props }) {
+type Props = {
+  isLogin: boolean;
+  className: string;
+};
+
+export default function Header({ isLogin, className }: Props) {
   const dispatch = useAppDispatch();
-  const isLogin = useAppSelector((state) => state.isLogin);
 
   const onClickLogout = () => {
-    logOut()
-      .then((response) => {
-        dispatch(
-          updateisLogin({
-            isLogin: response.isLogin,
-            status: response.status,
-          }),
-        );
-        dispatch(deleteMemberInfo());
-      })
-      .catch((e) => {
-        console.log('로그아웃 오류: ', e);
-      });
+    dispatch(logout());
   };
 
   return (
-    <S.Header {...props}>
+    <S.Header className={className}>
       <h1 className="site name">
         <Link
           to="/"
@@ -40,7 +30,7 @@ export default function Header({ ...props }) {
           <img width={150} height={34} src={Logo} alt="logo" />
         </Link>
       </h1>
-      {isLogin.isLogin && (
+      {isLogin && (
         <S.LogoutButton
           onClick={() => {
             onClickLogout();

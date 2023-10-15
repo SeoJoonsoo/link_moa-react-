@@ -8,17 +8,17 @@ const persistConfig = {
   key: 'root',
   version: 1,
   storage,
+  whitelist: ['isLogin'],
 };
 
-const persistedReducer = persistReducer(persistConfig, isLoginReducer);
+const isLogin = persistReducer(persistConfig, isLoginReducer);
 
 const store = configureStore({
   reducer: {
-    isLogin: persistedReducer,
+    isLogin,
     member: memberReducer,
   },
   // devTools: import.meta.env.DEV, // process.env.NODE_ENV !== 'production',
-  devTools: true,
 });
 
 export type RootState = ReturnType<typeof store.getState>;

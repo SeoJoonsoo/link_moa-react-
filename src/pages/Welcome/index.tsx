@@ -2,10 +2,8 @@ import * as S from './style';
 import GOOGLE_LOGO from '@/assets/images/Welcome/easy-login/ic-google.svg';
 import NAVER_LOGO from '@/assets/images/Welcome/easy-login/ic-naver.svg';
 import { Helmet } from 'react-helmet-async';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import googleAuthInit from '@/api/googleLogin';
-import { useEffect } from 'react';
-import { useAppSelector } from '@/redux/hooks';
 
 declare global {
   interface Window {
@@ -16,14 +14,6 @@ declare global {
 }
 
 export default function Welcome() {
-  const isLogin = useAppSelector((state) => state.isLogin);
-  const navigate = useNavigate();
-  useEffect(() => {
-    if (isLogin.isLogin) {
-      navigate('/');
-    }
-  }, []);
-
   // 네이버 아이디 로그인 요청
   const CLIENT_ID = import.meta.env.VITE_NAVER_CLIENT_ID; //process.env.REACT_APP_NAVER_CLIENT_ID;
   const STATE_STRING = import.meta.env.VITE_NAVER_STATE; // 위조방지값

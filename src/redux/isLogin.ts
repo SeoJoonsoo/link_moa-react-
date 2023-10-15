@@ -1,7 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from './store';
-import { getMemberInfo } from './member';
+import login from '@/api/login';
+import logout from '@/api/logout';
 
 type IsLogin = {
   status: string;
@@ -22,14 +23,24 @@ const isLoginSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(getMemberInfo.pending, (state) => {
+    builder.addCase(login.pending, (state) => {
       state.status = 'loading';
     });
-    builder.addCase(getMemberInfo.fulfilled, (state, action) => {
+    builder.addCase(login.fulfilled, (state, action) => {
       state.status = 'success';
       state.isLogin = action.payload.isLogin;
     });
-    builder.addCase(getMemberInfo.rejected, (state) => {
+    builder.addCase(login.rejected, (state) => {
+      state.status = 'failed';
+    });
+    builder.addCase(logout.pending, (state) => {
+      state.status = 'loading';
+    });
+    builder.addCase(logout.fulfilled, (state, action) => {
+      state.status = 'success';
+      state.isLogin = action.payload.isLogin;
+    });
+    builder.addCase(logout.rejected, (state) => {
       state.status = 'failed';
     });
   },

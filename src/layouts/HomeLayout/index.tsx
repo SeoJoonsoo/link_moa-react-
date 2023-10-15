@@ -6,23 +6,15 @@ import SectionWithTitle from '../SectionWithTitle';
 import { basicTheme } from '../theme';
 import LinkTicketListWithScroll from '../../components/LinkTicketListWithScroll';
 import * as S from './style';
-import { NavLink, Outlet, useNavigate } from 'react-router-dom';
-import { useAppSelector } from '@/redux/hooks';
+import { NavLink, Outlet } from 'react-router-dom';
 
 export default function HomeLayout() {
-  const navigate = useNavigate();
-  const isLogin = useAppSelector((state) => state.isLogin);
   const [keepGoingLinks, setKeepGoingLinks] = useState<LinkInfo[]>([]);
 
   useEffect(() => {
     setKeepGoingLinks(dummyForKeepGoing); // TODO : 실제 데이터 받아와야함
     // setKeepGoingLinks([]); // keepGoing 데이터 없을때
   }, []);
-  useEffect(() => {
-    if (!isLogin.isLogin) {
-      navigate('/welcome');
-    }
-  }, [isLogin.isLogin]);
 
   return (
     <>
