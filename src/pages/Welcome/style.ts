@@ -41,11 +41,11 @@ export const LoginSection = styled.section`
     &__button {
       font-size: 0;
       padding: 8px;
-      border-radius: 10px;
+      border-radius: 7px;
       background: #fff;
-      box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.08);
+      box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.12);
       &#naver {
-        background: #34a853;
+        background: #03c75a;
       }
       img {
         width: 30px;

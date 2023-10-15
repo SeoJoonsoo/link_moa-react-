@@ -2,16 +2,31 @@ import { Link } from 'react-router-dom';
 import Logo from '@/assets/images/Header/logo.svg';
 import Logout from '@/assets/images/Header/ic-logout.svg';
 import * as S from './style';
-import { useEffect, useState } from 'react';
+import logOut from '@/api/logout';
+import { useAppSelector, useAppDispatch } from '@/redux/hooks';
+import { updateisLogin } from '@/redux/isLogin';
+import { deleteMemberInfo } from '@/redux/member';
 
 export default function Header({ ...props }) {
-  const [isLogin, setIsLogin] = useState(false);
+  const dispatch = useAppDispatch();
+  const isLogin = useAppSelector((state) => state.isLogin);
 
-  useEffect(() => {
-    // TODO: 로그인 시 true. (지금은 임의로 true)
-    // 로그인 redux로 전역변수관리하기
-    setIsLogin(true);
-  }, []);
+  const onClickLogout = () => {
+    logOut()
+      .then((response) => {
+        dispatch(
+          updateisLogin({
+            isLogin: response.isLogin,
+            status: response.status,
+          }),
+        );
+        dispatch(deleteMemberInfo());
+      })
+      .catch((e) => {
+        console.log('로그아웃 오류: ', e);
+      });
+  };
+
   return (
     <S.Header {...props}>
       <h1 className="site name">
@@ -25,8 +40,12 @@ export default function Header({ ...props }) {
           <img width={150} height={34} src={Logo} alt="logo" />
         </Link>
       </h1>
-      {isLogin && (
-        <S.LogoutButton>
+      {isLogin.isLogin && (
+        <S.LogoutButton
+          onClick={() => {
+            onClickLogout();
+          }}
+        >
           <img width={30} height={30} src={Logout} alt="" />
         </S.LogoutButton>
       )}
