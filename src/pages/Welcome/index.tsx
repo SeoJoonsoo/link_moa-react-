@@ -6,7 +6,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import googleAuthInit from '@/api/googleLogin';
 import { useEffect } from 'react';
 import { useAppSelector } from '@/redux/hooks';
-// import naverLoginSDK from '@/api/naverLoginSDK';
 
 declare global {
   interface Window {

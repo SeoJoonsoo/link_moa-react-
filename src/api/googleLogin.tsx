@@ -1,4 +1,5 @@
 import axios from 'axios';
+import 'https://apis.google.com/js/platform.js?onload=init';
 
 export default function googleAuthInit() {
   let gauth: any, googleAuth: any;
