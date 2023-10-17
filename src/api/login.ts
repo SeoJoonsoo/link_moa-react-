@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-type Response = {
+type Data = {
   isLogin: boolean;
   message: string;
   status: 'success' | 'fail' | 'error';
@@ -13,17 +13,17 @@ type Response = {
   };
 };
 
-const login = createAsyncThunk('member/loginMemberInfo', async () => {
-  const data: Response = await axios
+async function loginMemberInfo() {
+  const data: Data = await axios
     .get(import.meta.env.VITE_API_ROOT + '/member/loginMemberInfo', {
       withCredentials: true,
     })
-    .then(function (response) {
+    .then(function (response: { data: Data }) {
       if (response.data.status === 'success') {
-        console.log('로그인 성공: ', response);
+        // console.log('member 조회 성공: ', response);
         return response.data;
       } else {
-        console.log('로그인 실패: ', response);
+        // console.log('member 조회 실패: ', response);
         return {
           isLogin: response.data.isLogin,
           message: response.data.message,
@@ -38,10 +38,10 @@ const login = createAsyncThunk('member/loginMemberInfo', async () => {
       }
     })
     .catch(function (error) {
-      console.log('로그인 에러: ', error);
+      // console.log('loginMemberInfo 오류: ', error);
       return {
         isLogin: false,
-        message: 'naverLogin API error',
+        message: error,
         status: 'error',
         data: {
           memberInfo: {
@@ -52,6 +52,16 @@ const login = createAsyncThunk('member/loginMemberInfo', async () => {
       };
     });
   return data;
+}
+
+// 로그인시 사용
+const login = createAsyncThunk('member/loginMemberInfo', async () => {
+  return await loginMemberInfo();
+});
+
+// member정보 재조회시 사용
+export const getMemberInfo = createAsyncThunk('member/getMemberInfo', async () => {
+  return await loginMemberInfo();
 });
 
 export default login;

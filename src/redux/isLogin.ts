@@ -23,25 +23,19 @@ const isLoginSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(login.pending, (state) => {
-      state.status = 'loading';
-    });
     builder.addCase(login.fulfilled, (state, action) => {
       state.status = 'success';
       state.isLogin = action.payload.isLogin;
     });
     builder.addCase(login.rejected, (state) => {
-      state.status = 'failed';
-    });
-    builder.addCase(logout.pending, (state) => {
-      state.status = 'loading';
+      state.status = 'error';
     });
     builder.addCase(logout.fulfilled, (state, action) => {
       state.status = 'success';
       state.isLogin = action.payload.isLogin;
     });
     builder.addCase(logout.rejected, (state) => {
-      state.status = 'failed';
+      state.status = 'error';
     });
   },
 });

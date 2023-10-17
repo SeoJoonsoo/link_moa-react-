@@ -1,6 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import memberReducer from './member';
 import isLoginReducer from './isLogin';
+import alertModalReducer from './alertModal';
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
@@ -17,6 +18,7 @@ const store = configureStore({
   reducer: {
     isLogin,
     member: memberReducer,
+    alertModal: alertModalReducer,
   },
   // devTools: import.meta.env.DEV, // process.env.NODE_ENV !== 'production',
 });
