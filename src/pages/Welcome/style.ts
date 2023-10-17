@@ -27,6 +27,7 @@ export const LoginSection = styled.section`
   flex-grow: 0;
   flex-shrink: 0;
   width: 100%;
+  height: 20vh;
   padding-top: 36px;
   padding-height: 36px;
   .description {
@@ -46,6 +47,27 @@ export const LoginSection = styled.section`
       box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.12);
       &#naver {
         background: #03c75a;
+      }
+      &#naver-with-text {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        background: #03c75a;
+        color: #fff;
+        font-family: ${({ theme }) => theme.fontR};
+        padding: 12px 16px;
+        img {
+          padding-right: 6px;
+        }
+        span {
+          flex-grow: 1;
+          flex-shrink: 1;
+          display: inline-block;
+          font-size: 20px;
+          text-align: center;
+          padding: 0 16px 0 28px;
+          border-left: solid 1px #ffffff8f;
+        }
       }
       img {
         width: 30px;

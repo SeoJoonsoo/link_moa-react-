@@ -1,9 +1,9 @@
 import * as S from './style';
-import GOOGLE_LOGO from '@/assets/images/Welcome/easy-login/ic-google.svg';
+// import GOOGLE_LOGO from '@/assets/images/Welcome/easy-login/ic-google.svg';
 import NAVER_LOGO from '@/assets/images/Welcome/easy-login/ic-naver.svg';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
-import googleAuthInit from '@/api/googleLogin';
+// import googleAuthInit from '@/api/googleLogin';
 
 declare global {
   interface Window {
@@ -21,7 +21,7 @@ export default function Welcome() {
   const EASY_LOGIN_NAVER = `https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=${CLIENT_ID}&state=${STATE_STRING}&redirect_uri=${CALLBACK_URL}`;
 
   // 구글 로그인 초기화
-  let { onClickGoogleLoginButton, isGoogleLogined } = googleAuthInit();
+  // let { onClickGoogleLoginButton, isGoogleLogined } = googleAuthInit();
 
   return (
     <>
@@ -35,8 +35,9 @@ export default function Welcome() {
         <S.LoginSection id="login-section">
           <p className="description">간편 로그인으로 빠르게 시작해보세요</p>
           <div className="easy-login">
-            {/* 구글 로그인(커스텀버튼) */}
-            <button
+            {/* TODO : 구글 로그인 백에서 구현될때까지 숨김
+              구글 로그인(커스텀버튼) */}
+            {/* <button
               id="google"
               className="easy-login__button"
               onClick={() => {
@@ -44,14 +45,18 @@ export default function Welcome() {
               }}
             >
               <img src={GOOGLE_LOGO} alt="" />
-            </button>
+            </button> */}
             {/* 네이버 로그인(커스텀버튼) */}
-            <Link to={EASY_LOGIN_NAVER} id="naver" className="easy-login__button">
+            {/* <Link to={EASY_LOGIN_NAVER} id="naver" className="easy-login__button">
               <img src={NAVER_LOGO} alt="" />
+            </Link> */}
+            <Link to={EASY_LOGIN_NAVER} id="naver-with-text" className="easy-login__button">
+              <img src={NAVER_LOGO} alt="" />
+              <span>네이버 로그인</span>
             </Link>
           </div>
           {/* TODO : 👇구글 로그인 여부 확인용. 개발 완료후 삭제 */}
-          <br />
+          {/* <br />
           <br />
           <button
             id="testIsLogined"
@@ -60,7 +65,7 @@ export default function Welcome() {
             }}
           >
             test : check isLogined google
-          </button>
+          </button> */}
         </S.LoginSection>
       </S.Wrapper>
     </>
