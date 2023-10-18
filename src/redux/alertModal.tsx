@@ -3,12 +3,16 @@ import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
 type AlertModal = {
   isOpen: boolean;
+  closeTime: number;
   status: 'success' | 'fail' | 'error';
   alert: React.ReactNode;
 };
 
+const initialCloseTime = 3000;
+
 const initialState: AlertModal = {
   isOpen: false,
+  closeTime: initialCloseTime,
   status: 'success',
   alert: <></>,
 };
@@ -19,11 +23,13 @@ const modalSlice = createSlice({
   reducers: {
     openModal(state, action: PayloadAction<AlertModal>) {
       state.isOpen = true;
+      state.closeTime = action.payload.closeTime || initialCloseTime;
       state.status = action.payload.status;
       state.alert = action.payload.alert;
     },
     closeModal(state) {
       state.isOpen = false;
+      state.closeTime = initialCloseTime;
       state.status = 'success';
       state.alert = <></>;
     },
@@ -47,6 +53,7 @@ const modalSlice = createSlice({
         );
     });
     builder.addCase(login.rejected, (state) => {
+      state.isOpen = true;
       state.status = 'error';
       state.alert = (
         <>
