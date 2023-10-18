@@ -14,6 +14,7 @@ export const BlackSpace = styled.section`
   background: rgba(0, 0, 0, 0.3);
 `;
 export const WhiteSpace = styled.section`
+  padding: 0;
   min-width: 312px;
   min-height: 172px;
   background: ${({ theme }) => theme.basicBg};
