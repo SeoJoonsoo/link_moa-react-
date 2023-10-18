@@ -20,7 +20,7 @@ type Props = {
   className?: 'point-button';
   placeholder: string;
   buttonText: string;
-  onSubmit: () => void;
+  onSubmit: (value: string) => void;
 };
 
 export default function TextForm({ className, placeholder, buttonText, onSubmit }: Props) {
@@ -34,7 +34,7 @@ export default function TextForm({ className, placeholder, buttonText, onSubmit 
       className={className + (value !== '' ? 'isValue' : '')}
       onSubmit={(e) => {
         e.preventDefault();
-        onSubmit();
+        onSubmit(value);
       }}
     >
       <div className="input-wrapper">
