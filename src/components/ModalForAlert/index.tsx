@@ -6,11 +6,15 @@ import { useEffect } from 'react';
 import { closeModal } from '@/redux/alertModal';
 import Modal from '../Modal';
 
+// https://github.com/SeoJoonsoo/link_moa-react-/issues/2
+// 위 문서의 ModalForAlert 참고
+
 type Props = {
   status: 'success' | 'fail' | 'error';
   closeTime: number;
   children: React.ReactNode;
 };
+
 export default function ModalForAlert({ status = 'success', closeTime, children }: Props) {
   const alertModal = useAppSelector((state) => state.alertModal);
   const dispatch = useAppDispatch();
