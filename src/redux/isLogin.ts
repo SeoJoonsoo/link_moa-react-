@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from './store';
-import login from '@/api/login';
+import login, { getMemberInfo } from '@/api/login';
 import logout from '@/api/logout';
 
 type IsLogin = {
@@ -29,6 +29,16 @@ const isLoginSlice = createSlice({
     });
     builder.addCase(login.rejected, (state) => {
       state.status = 'error';
+    });
+    builder.addCase(getMemberInfo.fulfilled, (state, action) => {
+      if (action.payload.status !== 'success') {
+        state.status = action.payload.status;
+        state.isLogin = false;
+      }
+    });
+    builder.addCase(getMemberInfo.rejected, (state) => {
+      state.status = 'error';
+      state.isLogin = false;
     });
     builder.addCase(logout.fulfilled, (state, action) => {
       state.status = 'success';

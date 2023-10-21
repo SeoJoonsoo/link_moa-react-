@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from './store';
-import login from '@/api/login';
+import login, { getMemberInfo } from '@/api/login';
 import logout from '@/api/logout';
 
 type MemberInfo = {
@@ -40,6 +40,16 @@ const memberSlice = createSlice({
     });
     builder.addCase(login.rejected, (state) => {
       state.status = 'error';
+    });
+    builder.addCase(getMemberInfo.fulfilled, (state, action) => {
+      state.email = action.payload.data.memberInfo.email;
+      state.nickname = action.payload.data.memberInfo.nickname;
+      state.status = action.payload.status;
+    });
+    builder.addCase(getMemberInfo.rejected, (state) => {
+      state.status = 'error';
+      state.email = null;
+      state.nickname = null;
     });
     builder.addCase(logout.fulfilled, (state) => {
       state.email = null;
