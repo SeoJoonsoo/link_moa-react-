@@ -1,55 +1,132 @@
 import * as S from './style';
-import TextForm from '@/components/Form/TextForm';
+import TextInput from '@/components/Form/TextInput';
 import { openModalForAlert } from '@/redux/alertModal';
 import getLinkTitle from '@/api/getLinkTitle';
 import { useAppDispatch, useAppSelector } from '@/redux/hooks';
+import ModalForLink from '../ModalForLink';
+import { useState } from 'react';
+import { LinkInfo } from '@/types';
+import { closeModal, openModal } from '@/redux/modal';
+import Button from '../Button';
+
+const initialLinkInfo: LinkInfo = {
+  id: null,
+  title: '',
+  url: '',
+  writer: 'TODO : 작성자 정보 가져오기',
+  writeDate: '0000.00.00', // TODO : 작성 날짜정보 가져오기
+  tags: [],
+  createdAt: '',
+  updatedAt: null,
+  status: 'keep', // TODO : 상태 저장 구현 기다림
+};
 
 export default function Keep() {
+  const [isOpenModalForLink, setIsOpenModalForLink] = useState(false);
   const alertModal = useAppSelector((state) => state.alertModal);
+  const [linkInfo, setLinkInfo] = useState<LinkInfo>(initialLinkInfo);
   const dispatch = useAppDispatch();
-  const onSubmit = (value: string) => {
-    let url;
-    try {
-      // 링크 유효성 검사
-      url = new URL(value);
-      console.log(url);
-      // 링크 정보 가져오기
+  const setLinkInfoClear = () => {
+    setLinkInfo(initialLinkInfo);
+  };
+
+  const onClickToKeepButton = (value: string) => {
+    const checkURLValidation = (url: string) => {
+      try {
+        // 링크 유효성 검사
+        /^(http(s)?:\/\/.)[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)$/g.test(url)
+          ? new URL(url)
+          : new URL('잘못된 url');
+        return true;
+      } catch (e) {
+        return false;
+      }
+    };
+
+    if (checkURLValidation(value)) {
+      // TODO : 링크 정보 조회 -> 조회값이 있으면
+      // 저장된 정보를 링크 수정 모달에 출력
+      // 아니면 새 링크 저장 모달 출력
+
+      // 링크 정보 받아와서 링크 추가 모달 띄움
       getLinkTitle(value)
         .then((response) => {
-          if (response.status === 'success') {
-            // TODO : 링크 추가/수정 모달로 연결해야함!
-            // 지금은 테스트를 위해 alertModal 띄움
-            // 아 openModal이아니라 openModalForAlert네..
-            dispatch(
-              openModal({
-                ...alertModal,
-                isOpen: true,
-                status: 'success',
-                alert: <>제목 : {response.data.link.title}</>,
-              }),
-            );
+          if (response.status === 'success' && response.data.link.title) {
+            setLinkInfo({ ...linkInfo, title: response.data.link.title, url: value });
+            setIsOpenModalForLink(true);
           } else {
-            // TODO : 버튼이 있는 모달 만들어야함!
             dispatch(
               openModal({
-                ...alertModal,
                 isOpen: true,
-                status: response.status,
                 alert: (
                   <>
-                    url 정보를 가져올 수 없습니다.
-                    <br />
-                    직접 입력해서 저장해주세요.
-                    <button>취소</button> <button>확인</button>
+                    <div className="content-wrapper">
+                      url 정보를 가져올 수 없습니다.
+                      <br />
+                      직접 입력해서 저장해주세요.
+                    </div>
+                    <div className="button-wrapper">
+                      <Button
+                        className="cancel"
+                        text="취소"
+                        onClick={() => {
+                          dispatch(closeModal());
+                          setLinkInfo(initialLinkInfo);
+                          setIsOpenModalForLink(false);
+                        }}
+                      />
+                      <Button
+                        text="확인"
+                        onClick={() => {
+                          dispatch(closeModal());
+                          setLinkInfo({ ...linkInfo, url: value });
+                          setIsOpenModalForLink(true);
+                        }}
+                      />
+                    </div>
                   </>
                 ),
               }),
             );
           }
         })
-        .catch();
-    } catch (e) {
-      console.log('typeError 발생');
+        .catch((e) => {
+          console.log('url 정보 가져올 수 없음: ', e);
+          dispatch(
+            openModal({
+              isOpen: true,
+              alert: (
+                <>
+                  <div className="content-wrapper">
+                    url 정보를 가져올 수 없습니다.
+                    <br />
+                    직접 입력해서 저장해주세요.
+                  </div>
+                  <div className="button-wrapper">
+                    <Button
+                      className="cancel"
+                      text="취소"
+                      onClick={() => {
+                        dispatch(closeModal());
+                        setIsOpenModalForLink(false);
+                        setLinkInfo(initialLinkInfo);
+                      }}
+                    />
+                    <Button
+                      text="확인"
+                      onClick={() => {
+                        dispatch(closeModal());
+                        setLinkInfo({ ...linkInfo, url: value });
+                        setIsOpenModalForLink(true);
+                      }}
+                    />
+                  </div>
+                </>
+              ),
+            }),
+          );
+        });
+    } else {
       dispatch(
         openModalForAlert({
           ...alertModal,
@@ -65,18 +142,25 @@ export default function Keep() {
         }),
       );
     }
-
-    //  /Link/getLinkTitle?url=
-    //{"status":"success","message":"ok","data":{"link":{"title":"NAVER"}}}
   };
   return (
-    <S.KeepSection id="keep-section">
-      <TextForm
-        className="point-button"
-        placeholder="url을 저장하고 언제든 꺼내보세요"
-        buttonText="KEEP"
-        onSubmit={onSubmit}
-      />
-    </S.KeepSection>
+    <>
+      <S.KeepSection id="keep-section">
+        <TextInput
+          className="point-button"
+          placeholderText="url을 저장하고 언제든 꺼내보세요"
+          buttonText="KEEP"
+          onClick={onClickToKeepButton}
+        />
+      </S.KeepSection>
+      {isOpenModalForLink && (
+        <ModalForLink
+          linkInfo={linkInfo}
+          setLinkInfo={setLinkInfo}
+          setIsOpen={setIsOpenModalForLink}
+          setLinkInfoClear={setLinkInfoClear}
+        />
+      )}
+    </>
   );
 }

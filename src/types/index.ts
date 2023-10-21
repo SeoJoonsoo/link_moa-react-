@@ -1,5 +1,5 @@
 export type LinkInfo = {
-  id: number;
+  id: number | null;
   title: string;
   url: string;
   writer: string;
@@ -7,5 +7,5 @@ export type LinkInfo = {
   tags: string[];
   createdAt: string;
   updatedAt: string | null;
-  status: boolean;
+  status: 'keep' | 'keep-going' | 'read';
 };

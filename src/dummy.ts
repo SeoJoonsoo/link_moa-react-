@@ -14,7 +14,7 @@ export const dummyForKeepGoing: LinkInfo[] = [
     tags: ['우수타'],
     createdAt: '0000.00.00',
     updatedAt: '0000.00.00',
-    status: false,
+    status: 'keep-going',
   },
   {
     id: 2,
@@ -25,7 +25,7 @@ export const dummyForKeepGoing: LinkInfo[] = [
     tags: ['학습', '개발'],
     createdAt: '0000.00.00',
     updatedAt: '0000.00.00',
-    status: false,
+    status: 'keep-going',
   },
   {
     id: 3,
@@ -36,7 +36,7 @@ export const dummyForKeepGoing: LinkInfo[] = [
     tags: ['테스트', 'UI_뚝딱뚝딱', '태그', '개수', '늘리기'],
     createdAt: '0000.00.00',
     updatedAt: '0000.00.00',
-    status: false,
+    status: 'keep-going',
   },
   {
     id: 14,
@@ -47,7 +47,7 @@ export const dummyForKeepGoing: LinkInfo[] = [
     tags: ['우수타'],
     createdAt: '0000.00.00',
     updatedAt: '0000.00.00',
-    status: false,
+    status: 'keep-going',
   },
   {
     id: 15,
@@ -58,7 +58,7 @@ export const dummyForKeepGoing: LinkInfo[] = [
     tags: ['테스트', 'UI_뚝딱뚝딱', '안녕_이제_졸린듯', '시리얼_냠냠', '태그', '개수', '늘리기', '22222'],
     createdAt: '0000.00.00',
     updatedAt: '0000.00.00',
-    status: false,
+    status: 'keep-going',
   },
 ];
 
@@ -73,7 +73,7 @@ export const dummyForKeep: LinkInfo[] = [
     tags: ['우수타'],
     createdAt: '0000.00.00',
     updatedAt: null,
-    status: false,
+    status: 'keep',
   },
   {
     id: 2,
@@ -84,7 +84,7 @@ export const dummyForKeep: LinkInfo[] = [
     tags: ['학습', '개발'],
     createdAt: '0000.00.00',
     updatedAt: null,
-    status: false,
+    status: 'keep',
   },
   {
     id: 3,
@@ -95,7 +95,7 @@ export const dummyForKeep: LinkInfo[] = [
     tags: ['테스트', 'UI_뚝딱뚝딱', '태그', '개수', '늘리기'],
     createdAt: '0000.00.00',
     updatedAt: null,
-    status: false,
+    status: 'keep',
   },
   {
     id: 4,
@@ -106,7 +106,7 @@ export const dummyForKeep: LinkInfo[] = [
     tags: ['우수타'],
     createdAt: '0000.00.00',
     updatedAt: null,
-    status: false,
+    status: 'keep',
   },
   {
     id: 5,
@@ -117,7 +117,7 @@ export const dummyForKeep: LinkInfo[] = [
     tags: ['학습', '개발'],
     createdAt: '0000.00.00',
     updatedAt: null,
-    status: false,
+    status: 'keep',
   },
   {
     id: 6,
@@ -128,7 +128,7 @@ export const dummyForKeep: LinkInfo[] = [
     tags: ['테스트', 'UI_뚝딱뚝딱', '태그', '개수', '늘리기'],
     createdAt: '0000.00.00',
     updatedAt: null,
-    status: false,
+    status: 'keep',
   },
   {
     id: 7,
@@ -139,7 +139,7 @@ export const dummyForKeep: LinkInfo[] = [
     tags: ['우수타'],
     createdAt: '0000.00.00',
     updatedAt: null,
-    status: false,
+    status: 'keep',
   },
   {
     id: 8,
@@ -150,7 +150,7 @@ export const dummyForKeep: LinkInfo[] = [
     tags: ['학습', '개발'],
     createdAt: '0000.00.00',
     updatedAt: null,
-    status: false,
+    status: 'keep',
   },
   {
     id: 9,
@@ -161,7 +161,7 @@ export const dummyForKeep: LinkInfo[] = [
     tags: ['테스트', 'UI_뚝딱뚝딱', '태그', '개수', '늘리기'],
     createdAt: '0000.00.00',
     updatedAt: null,
-    status: false,
+    status: 'keep',
   },
   {
     id: 10,
@@ -172,7 +172,7 @@ export const dummyForKeep: LinkInfo[] = [
     tags: ['우수타'],
     createdAt: '0000.00.00',
     updatedAt: null,
-    status: false,
+    status: 'keep',
   },
   {
     id: 11,
@@ -183,7 +183,7 @@ export const dummyForKeep: LinkInfo[] = [
     tags: ['테스트', 'UI_뚝딱뚝딱', '안녕_이제_졸린듯', '시리얼_냠냠', '태그', '개수', '늘리기', '22222'],
     createdAt: '0000.00.00',
     updatedAt: null,
-    status: false,
+    status: 'keep',
   },
 ];
 
@@ -198,7 +198,7 @@ export const dummyForRead: LinkInfo[] = [
     tags: ['우수타'],
     createdAt: '0000.00.00',
     updatedAt: '0000.00.00',
-    status: true,
+    status: 'read',
   },
   {
     id: 12,
@@ -209,7 +209,7 @@ export const dummyForRead: LinkInfo[] = [
     tags: ['학습', '개발'],
     createdAt: '0000.00.00',
     updatedAt: '0000.00.00',
-    status: true,
+    status: 'read',
   },
   {
     id: 13,
@@ -220,7 +220,7 @@ export const dummyForRead: LinkInfo[] = [
     tags: ['테스트', 'UI_뚝딱뚝딱', '태그', '개수', '늘리기'],
     createdAt: '0000.00.00',
     updatedAt: '0000.00.00',
-    status: true,
+    status: 'read',
   },
   {
     id: 14,
@@ -231,7 +231,7 @@ export const dummyForRead: LinkInfo[] = [
     tags: ['우수타'],
     createdAt: '0000.00.00',
     updatedAt: '0000.00.00',
-    status: true,
+    status: 'read',
   },
   {
     id: 15,
@@ -242,7 +242,7 @@ export const dummyForRead: LinkInfo[] = [
     tags: ['테스트', 'UI_뚝딱뚝딱', '안녕_이제_졸린듯', '시리얼_냠냠', '태그', '개수', '늘리기', '22222'],
     createdAt: '0000.00.00',
     updatedAt: '0000.00.00',
-    status: true,
+    status: 'read',
   },
 ];
 
@@ -257,7 +257,7 @@ export const dummyForAll: LinkInfo[] = [
     tags: ['우수타'],
     createdAt: '0000.00.00',
     updatedAt: null,
-    status: false,
+    status: 'read',
   },
   {
     id: 2,
@@ -268,7 +268,7 @@ export const dummyForAll: LinkInfo[] = [
     tags: ['학습', '개발'],
     createdAt: '0000.00.00',
     updatedAt: null,
-    status: false,
+    status: 'keep',
   },
   {
     id: 3,
@@ -279,7 +279,7 @@ export const dummyForAll: LinkInfo[] = [
     tags: ['테스트', 'UI_뚝딱뚝딱', '안녕_이제_졸린듯', '시리얼_냠냠', '태그', '개수', '늘리기', '22222'],
     createdAt: '0000.00.00',
     updatedAt: '0000.00.00',
-    status: true,
+    status: 'read',
   },
   {
     id: 4,
@@ -290,7 +290,7 @@ export const dummyForAll: LinkInfo[] = [
     tags: ['우수타'],
     createdAt: '0000.00.00',
     updatedAt: null,
-    status: false,
+    status: 'keep',
   },
   {
     id: 5,
@@ -301,7 +301,7 @@ export const dummyForAll: LinkInfo[] = [
     tags: ['학습', '개발'],
     createdAt: '0000.00.00',
     updatedAt: '0000.00.00',
-    status: false,
+    status: 'keep-going',
   },
   {
     id: 6,
@@ -312,7 +312,7 @@ export const dummyForAll: LinkInfo[] = [
     tags: ['테스트', 'UI_뚝딱뚝딱', '안녕_이제_졸린듯', '시리얼_냠냠', '태그', '개수', '늘리기', '22222'],
     createdAt: '0000.00.00',
     updatedAt: '0000.00.00',
-    status: true,
+    status: 'read',
   },
   {
     id: 7,
@@ -323,7 +323,7 @@ export const dummyForAll: LinkInfo[] = [
     tags: ['테스트', 'UI_뚝딱뚝딱', '태그', '개수', '늘리기'],
     createdAt: '0000.00.00',
     updatedAt: '0000.00.00',
-    status: true,
+    status: 'read',
   },
   {
     id: 8,
@@ -334,7 +334,7 @@ export const dummyForAll: LinkInfo[] = [
     tags: ['우수타'],
     createdAt: '0000.00.00',
     updatedAt: '0000.00.00',
-    status: true,
+    status: 'read',
   },
   {
     id: 9,
@@ -345,7 +345,7 @@ export const dummyForAll: LinkInfo[] = [
     tags: ['우수타'],
     createdAt: '0000.00.00',
     updatedAt: null,
-    status: false,
+    status: 'keep',
   },
   {
     id: 10,
@@ -356,7 +356,7 @@ export const dummyForAll: LinkInfo[] = [
     tags: ['학습', '개발'],
     createdAt: '0000.00.00',
     updatedAt: null,
-    status: false,
+    status: 'keep',
   },
   {
     id: 11,
@@ -367,7 +367,7 @@ export const dummyForAll: LinkInfo[] = [
     tags: ['테스트', 'UI_뚝딱뚝딱', '안녕_이제_졸린듯', '시리얼_냠냠', '태그', '개수', '늘리기', '22222'],
     createdAt: '0000.00.00',
     updatedAt: '0000.00.00',
-    status: true,
+    status: 'read',
   },
   {
     id: 12,
@@ -378,7 +378,7 @@ export const dummyForAll: LinkInfo[] = [
     tags: ['우수타'],
     createdAt: '0000.00.00',
     updatedAt: null,
-    status: false,
+    status: 'keep-going',
   },
   {
     id: 13,
@@ -389,7 +389,7 @@ export const dummyForAll: LinkInfo[] = [
     tags: ['학습', '개발'],
     createdAt: '0000.00.00',
     updatedAt: '0000.00.00',
-    status: false,
+    status: 'keep-going',
   },
   {
     id: 14,
@@ -400,7 +400,7 @@ export const dummyForAll: LinkInfo[] = [
     tags: ['테스트', 'UI_뚝딱뚝딱', '안녕_이제_졸린듯', '시리얼_냠냠', '태그', '개수', '늘리기', '22222'],
     createdAt: '0000.00.00',
     updatedAt: '0000.00.00',
-    status: true,
+    status: 'read',
   },
   {
     id: 15,
@@ -411,7 +411,7 @@ export const dummyForAll: LinkInfo[] = [
     tags: ['테스트', 'UI_뚝딱뚝딱', '태그', '개수', '늘리기'],
     createdAt: '0000.00.00',
     updatedAt: '0000.00.00',
-    status: true,
+    status: 'read',
   },
   {
     id: 19,
@@ -422,7 +422,7 @@ export const dummyForAll: LinkInfo[] = [
     tags: ['우수타'],
     createdAt: '0000.00.00',
     updatedAt: '0000.00.00',
-    status: true,
+    status: 'read',
   },
   {
     id: 20,
@@ -433,7 +433,7 @@ export const dummyForAll: LinkInfo[] = [
     tags: ['우수타'],
     createdAt: '0000.00.00',
     updatedAt: null,
-    status: false,
+    status: 'keep-going',
   },
   {
     id: 21,
@@ -444,7 +444,7 @@ export const dummyForAll: LinkInfo[] = [
     tags: ['학습', '개발'],
     createdAt: '0000.00.00',
     updatedAt: null,
-    status: false,
+    status: 'keep',
   },
   {
     id: 22,
@@ -455,7 +455,7 @@ export const dummyForAll: LinkInfo[] = [
     tags: ['테스트', 'UI_뚝딱뚝딱', '안녕_이제_졸린듯', '시리얼_냠냠', '태그', '개수', '늘리기', '22222'],
     createdAt: '0000.00.00',
     updatedAt: '0000.00.00',
-    status: true,
+    status: 'read',
   },
   {
     id: 23,
@@ -466,7 +466,7 @@ export const dummyForAll: LinkInfo[] = [
     tags: ['우수타'],
     createdAt: '0000.00.00',
     updatedAt: null,
-    status: false,
+    status: 'keep',
   },
   {
     id: 24,
@@ -477,7 +477,7 @@ export const dummyForAll: LinkInfo[] = [
     tags: ['학습', '개발'],
     createdAt: '0000.00.00',
     updatedAt: '0000.00.00',
-    status: false,
+    status: 'keep',
   },
   {
     id: 25,
@@ -488,7 +488,7 @@ export const dummyForAll: LinkInfo[] = [
     tags: ['테스트', 'UI_뚝딱뚝딱', '안녕_이제_졸린듯', '시리얼_냠냠', '태그', '개수', '늘리기', '22222'],
     createdAt: '0000.00.00',
     updatedAt: '0000.00.00',
-    status: true,
+    status: 'read',
   },
   {
     id: 26,
@@ -499,7 +499,7 @@ export const dummyForAll: LinkInfo[] = [
     tags: ['테스트', 'UI_뚝딱뚝딱', '태그', '개수', '늘리기'],
     createdAt: '0000.00.00',
     updatedAt: '0000.00.00',
-    status: true,
+    status: 'read',
   },
   {
     id: 27,
@@ -510,7 +510,7 @@ export const dummyForAll: LinkInfo[] = [
     tags: ['우수타'],
     createdAt: '0000.00.00',
     updatedAt: '0000.00.00',
-    status: true,
+    status: 'read',
   },
   {
     id: 28,
@@ -521,7 +521,7 @@ export const dummyForAll: LinkInfo[] = [
     tags: ['우수타'],
     createdAt: '0000.00.00',
     updatedAt: null,
-    status: false,
+    status: 'keep',
   },
   {
     id: 29,
@@ -532,7 +532,7 @@ export const dummyForAll: LinkInfo[] = [
     tags: ['학습', '개발'],
     createdAt: '0000.00.00',
     updatedAt: null,
-    status: false,
+    status: 'keep-going',
   },
   {
     id: 30,
@@ -543,7 +543,7 @@ export const dummyForAll: LinkInfo[] = [
     tags: ['테스트', 'UI_뚝딱뚝딱', '안녕_이제_졸린듯', '시리얼_냠냠', '태그', '개수', '늘리기', '22222'],
     createdAt: '0000.00.00',
     updatedAt: '0000.00.00',
-    status: true,
+    status: 'read',
   },
   {
     id: 31,
@@ -554,7 +554,7 @@ export const dummyForAll: LinkInfo[] = [
     tags: ['우수타'],
     createdAt: '0000.00.00',
     updatedAt: null,
-    status: false,
+    status: 'keep-going',
   },
   {
     id: 32,
@@ -565,7 +565,7 @@ export const dummyForAll: LinkInfo[] = [
     tags: ['학습', '개발'],
     createdAt: '0000.00.00',
     updatedAt: '0000.00.00',
-    status: false,
+    status: 'keep',
   },
   {
     id: 33,
@@ -576,7 +576,7 @@ export const dummyForAll: LinkInfo[] = [
     tags: ['테스트', 'UI_뚝딱뚝딱', '안녕_이제_졸린듯', '시리얼_냠냠', '태그', '개수', '늘리기', '22222'],
     createdAt: '0000.00.00',
     updatedAt: '0000.00.00',
-    status: true,
+    status: 'read',
   },
   {
     id: 34,
@@ -587,7 +587,7 @@ export const dummyForAll: LinkInfo[] = [
     tags: ['테스트', 'UI_뚝딱뚝딱', '태그', '개수', '늘리기'],
     createdAt: '0000.00.00',
     updatedAt: '0000.00.00',
-    status: true,
+    status: 'read',
   },
   {
     id: 35,
@@ -598,7 +598,7 @@ export const dummyForAll: LinkInfo[] = [
     tags: ['우수타'],
     createdAt: '0000.00.00',
     updatedAt: '0000.00.00',
-    status: true,
+    status: 'read',
   },
   {
     id: 39,
@@ -609,7 +609,7 @@ export const dummyForAll: LinkInfo[] = [
     tags: ['우수타'],
     createdAt: '0000.00.00',
     updatedAt: null,
-    status: false,
+    status: 'keep',
   },
   {
     id: 40,
@@ -620,7 +620,7 @@ export const dummyForAll: LinkInfo[] = [
     tags: ['학습', '개발'],
     createdAt: '0000.00.00',
     updatedAt: null,
-    status: false,
+    status: 'keep',
   },
   {
     id: 41,
@@ -631,7 +631,7 @@ export const dummyForAll: LinkInfo[] = [
     tags: ['테스트', 'UI_뚝딱뚝딱', '안녕_이제_졸린듯', '시리얼_냠냠', '태그', '개수', '늘리기', '22222'],
     createdAt: '0000.00.00',
     updatedAt: '0000.00.00',
-    status: true,
+    status: 'read',
   },
   {
     id: 42,
@@ -642,7 +642,7 @@ export const dummyForAll: LinkInfo[] = [
     tags: ['우수타'],
     createdAt: '0000.00.00',
     updatedAt: null,
-    status: false,
+    status: 'keep',
   },
   {
     id: 43,
@@ -653,7 +653,7 @@ export const dummyForAll: LinkInfo[] = [
     tags: ['학습', '개발'],
     createdAt: '0000.00.00',
     updatedAt: '0000.00.00',
-    status: false,
+    status: 'keep-going',
   },
   {
     id: 44,
@@ -664,7 +664,7 @@ export const dummyForAll: LinkInfo[] = [
     tags: ['테스트', 'UI_뚝딱뚝딱', '안녕_이제_졸린듯', '시리얼_냠냠', '태그', '개수', '늘리기', '22222'],
     createdAt: '0000.00.00',
     updatedAt: '0000.00.00',
-    status: true,
+    status: 'read',
   },
   {
     id: 45,
@@ -675,7 +675,7 @@ export const dummyForAll: LinkInfo[] = [
     tags: ['테스트', 'UI_뚝딱뚝딱', '태그', '개수', '늘리기'],
     createdAt: '0000.00.00',
     updatedAt: '0000.00.00',
-    status: true,
+    status: 'read',
   },
   {
     id: 465,
@@ -686,6 +686,6 @@ export const dummyForAll: LinkInfo[] = [
     tags: ['우수타'],
     createdAt: '0000.00.00',
     updatedAt: '0000.00.00',
-    status: true,
+    status: 'read',
   },
 ];
