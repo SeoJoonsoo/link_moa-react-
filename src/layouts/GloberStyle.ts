@@ -66,7 +66,7 @@ export const GlobalStyle = createGlobalStyle`
     margin: 0 auto;
     padding: 0;
     min-width: 360px;
-    max-width: 640px;
+    max-width: 540px;
     min-height: 100vh;
     text-align: center;
   }
