@@ -1,6 +1,6 @@
 import * as S from './style';
 import TextForm from '@/components/Form/TextForm';
-import { openModal } from '@/redux/alertModal';
+import { openModalForAlert } from '@/redux/alertModal';
 import getLinkTitle from '@/api/getLinkTitle';
 import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 
@@ -51,7 +51,7 @@ export default function Keep() {
     } catch (e) {
       console.log('typeError 발생');
       dispatch(
-        openModal({
+        openModalForAlert({
           ...alertModal,
           isOpen: true,
           status: 'fail',
