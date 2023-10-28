@@ -18,10 +18,10 @@ type Props = {
   linkInfo: LinkInfo;
   setLinkInfo: (linkInfo: LinkInfo) => void;
   setIsOpen: (isOpen: boolean) => void;
-  setLinkInfoClear: () => void;
+  clearLinkInfo: () => void;
 };
 
-export default function ModalForLink({ linkInfo, setLinkInfo, setIsOpen, setLinkInfoClear }: Props) {
+export default function ModalForLink({ linkInfo, setLinkInfo, setIsOpen, clearLinkInfo }: Props) {
   const [isFocusToTitleTextarea, setIsFocusToTitleTextarea] = useState(false);
   const alertModal = useAppSelector((state) => state.alertModal);
   const dispatch = useAppDispatch();
@@ -55,7 +55,7 @@ export default function ModalForLink({ linkInfo, setLinkInfo, setIsOpen, setLink
                 onClick={() => {
                   dispatch(closeModal());
                   setIsOpen(false);
-                  setLinkInfoClear();
+                  clearLinkInfo();
                 }}
               />
             </div>
@@ -86,7 +86,7 @@ export default function ModalForLink({ linkInfo, setLinkInfo, setIsOpen, setLink
             }),
           );
           setIsOpen(false);
-          setLinkInfoClear();
+          clearLinkInfo();
         } else {
           dispatch(
             openModalForAlert({
