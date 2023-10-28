@@ -16,7 +16,7 @@ type Data = {
 
 async function loginMemberInfo() {
   const data: Data = await axios
-    .get(VITE_API_ROOT + '/member/loginMemberInfo', {
+    .get(VITE_API_ROOT + '/member/info', {
       withCredentials: true,
     })
     .then(function (response: { data: Data }) {
