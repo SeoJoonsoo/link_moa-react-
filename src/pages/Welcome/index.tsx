@@ -1,6 +1,7 @@
 import * as S from './style';
 // import GOOGLE_LOGO from '@/assets/images/Welcome/easy-login/ic-google.svg';
 import NAVER_LOGO from '@/assets/images/Welcome/easy-login/ic-naver.svg';
+import { VITE_API_ROOT, VITE_NAVER_CLIENT_ID, VITE_NAVER_STATE } from '@/constants';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 // import googleAuthInit from '@/api/googleLogin';
@@ -15,9 +16,9 @@ declare global {
 
 export default function Welcome() {
   // 네이버 아이디 로그인 요청
-  const CLIENT_ID = import.meta.env.VITE_NAVER_CLIENT_ID; //process.env.REACT_APP_NAVER_CLIENT_ID;
-  const STATE_STRING = import.meta.env.VITE_NAVER_STATE; // 위조방지값
-  const CALLBACK_URL = import.meta.env.VITE_API_ROOT + '/member/ssoNaverLoginCallback';
+  const CLIENT_ID = VITE_NAVER_CLIENT_ID; //process.env.REACT_APP_NAVER_CLIENT_ID;
+  const STATE_STRING = VITE_NAVER_STATE; // 위조방지값
+  const CALLBACK_URL = VITE_API_ROOT + '/member/ssoNaverLoginCallback';
   const EASY_LOGIN_NAVER = `https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=${CLIENT_ID}&state=${STATE_STRING}&redirect_uri=${CALLBACK_URL}`;
 
   // 구글 로그인 초기화

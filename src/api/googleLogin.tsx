@@ -1,3 +1,4 @@
+import { VITE_API_ROOT, VITE_GOOGLE_CLIENT_ID } from '@/constants';
 import axios from 'axios';
 import 'https://apis.google.com/js/platform.js?onload=init';
 
@@ -6,7 +7,7 @@ export default function googleAuthInit() {
   window.gapi.load('auth2', function () {
     /* Ready. Make a call to gapi.auth2.init or some other API */
     gauth = window.gapi.auth2.init({
-      client_id: `${import.meta.env.VITE_GOOGLE_CLIENT_ID}`,
+      client_id: `${VITE_GOOGLE_CLIENT_ID}`,
     });
 
     gauth.then(
@@ -61,7 +62,7 @@ export default function googleAuthInit() {
 
       const urlEncodedData = jsonToUrlEncoded(data);
       axios
-        .post(import.meta.env.VITE_API_ROOT + '/member/createMember', urlEncodedData, {
+        .post(VITE_API_ROOT + '/member/createMember', urlEncodedData, {
           headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         })
         .then(function (response) {

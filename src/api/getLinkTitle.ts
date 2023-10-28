@@ -1,3 +1,4 @@
+import { VITE_API_ROOT } from '@/constants';
 import axios from 'axios';
 
 type Data = {
@@ -12,7 +13,7 @@ type Data = {
 
 export default async function getLinkTitle(url: string) {
   let data: Data = await axios
-    .get(`${import.meta.env.VITE_API_ROOT}/Link/getLinkTitle?url=${url}`)
+    .get(`${VITE_API_ROOT}/Link/getLinkTitle?url=${url}`)
     .then((response: { data: Data }) => {
       if (response.data.status === 'success') {
         return response.data;
