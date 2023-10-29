@@ -5,16 +5,19 @@ import * as S from './style';
 type Props = {
   className?: string;
   text: string;
-  onClick: () => void;
+  onClick?: () => void;
+  type?: 'button' | 'submit';
 };
 
-export default function Button({ className, text, onClick }: Props) {
+export default function Button({ className, text, onClick, type = 'button' }: Props) {
   return (
     <S.Button
       className={className}
-      type="button"
+      type={type}
       onClick={() => {
-        onClick();
+        if (onClick) {
+          onClick();
+        }
       }}
     >
       {text}

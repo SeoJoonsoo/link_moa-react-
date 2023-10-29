@@ -1,7 +1,15 @@
 import { basicTheme } from '@/layouts/theme';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import * as S from './style';
-import { LinkInfo } from '@/types';
+import { LinkInfo, Status } from '@/types';
+
+type CheckStep = {
+  status: Status;
+  className: string;
+  step: number;
+  label: string;
+  isChecked: boolean;
+};
 
 type Props = {
   linkInfo: LinkInfo;
@@ -9,62 +17,72 @@ type Props = {
 };
 
 export default function StatusFieldset({ linkInfo, setLinkInfo }: Props) {
+  const checkSteps = useRef<CheckStep[]>([
+    {
+      status: 'keep',
+      className: 'keep',
+      step: 1,
+      label: '저장',
+      isChecked: true,
+    },
+    {
+      status: 'keep-going',
+      className: `keep-going ${linkInfo.status !== 'keep' ? 'line' : ''}`,
+      step: 2,
+      label: '읽는 중',
+      isChecked: linkInfo.status !== 'keep',
+    },
+    {
+      status: 'read',
+      className: `read ${linkInfo.status === 'read' ? 'line' : ''}`,
+      step: 3,
+      label: '완독',
+      isChecked: linkInfo.status === 'read',
+    },
+  ]);
   return (
     <S.StatusFieldset className="status">
       <legend>상태</legend>
       <span>상태</span>
       <div className="wrapper">
-        <div>
-          <div>
-            <input type="radio" name="status" id="keep" checked={linkInfo.status === 'keep'} readOnly />
-            <label
-              htmlFor="keep"
-              className="keep"
-              onClick={() => {
-                setLinkInfo({ ...linkInfo, status: 'keep' });
-              }}
-            >
-              <IconCheck status="keep" isChecked={true} />
-              <span>step1</span>
-              <span>저장</span>
-            </label>
-          </div>
-          <div>
-            <input type="radio" name="status" id="keep-going" checked={linkInfo.status === 'keep-going'} readOnly />
-            <label
-              htmlFor="keep-going"
-              className={`keep-going ${linkInfo.status !== 'keep' ? 'line' : ''}`}
-              onClick={() => {
-                setLinkInfo({ ...linkInfo, status: 'keep-going' });
-              }}
-            >
-              <IconCheck status="keep-going" isChecked={linkInfo.status !== 'keep'} />
-              <span>step2</span>
-              <span>읽는 중</span>
-            </label>
-          </div>
-          <div>
-            <input type="radio" name="status" id="read" checked={linkInfo.status === 'read'} readOnly />
-            <label
-              htmlFor="read"
-              className={`read ${linkInfo.status === 'read' ? 'line' : ''}`}
-              onClick={() => {
-                setLinkInfo({ ...linkInfo, status: 'read' });
-              }}
-            >
-              <IconCheck status="read" isChecked={linkInfo.status === 'read'} />
-              <span>step3</span>
-              <span>완독</span>
-            </label>
-          </div>
-        </div>
+        <ul>
+          {checkSteps.current.map((checkStep) => (
+            <CheckInput linkInfo={linkInfo} setLinkInfo={setLinkInfo} checkStep={checkStep} />
+          ))}
+        </ul>
       </div>
     </S.StatusFieldset>
   );
 }
 
+type CheckInputProps = {
+  linkInfo: LinkInfo;
+  setLinkInfo: (linkInfo: LinkInfo) => void;
+  checkStep: CheckStep;
+};
+
+function CheckInput({ linkInfo, setLinkInfo, checkStep }: CheckInputProps) {
+  const { status, className, step, label, isChecked } = checkStep;
+  return (
+    <li>
+      <input type="radio" name="status" id={status} checked={linkInfo.status === status} readOnly />
+      <label
+        htmlFor={status}
+        className={className}
+        onClick={() => {
+          setLinkInfo({ ...linkInfo, status: status });
+        }}
+      >
+        <IconCheck status={status} isChecked={isChecked} />
+        <span>step{step}</span>
+        <span>{label}</span>
+      </label>
+    </li>
+  );
+}
+
 type IconCheckProps = {
-  status: 'keep' | 'keep-going' | 'read';
+  status: Status;
   isChecked: boolean;
 };
 function IconCheck({ status, isChecked }: IconCheckProps) {

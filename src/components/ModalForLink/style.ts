@@ -59,7 +59,7 @@ export const TagsFieldset = styled.fieldset`
 const checkBoxLine = css`
   content: '';
   display: block;
-  width: 63px;
+  width: 69px;
   height: 1px;
   background-color: ${({ theme }) => theme.basicGray};
   position: absolute;
@@ -73,21 +73,28 @@ export const StatusFieldset = styled.fieldset`
   .wrapper {
     flex-grow: 1;
     flex-shrink: 1;
-    & > div {
+    & > ul {
       margin: 0 auto;
       display: flex;
       justify-content: space-between;
       width: 250px;
-      padding: 12px;
-      & > div {
+      padding: 8px;
+      & > li {
         display: inline-block;
         input {
-          display: none;
+          opacity: 0;
+          &:focus + label {
+            border: solid 2px #000;
+          }
         }
         label {
           display: flex;
           flex-direction: column;
           align-items: center;
+          box-sizing: border-box;
+          border-radius: 4px;
+          border: solid 2px transparent;
+          padding: 4px;
           span {
             padding: 4px 0;
             font-family: ${({ theme }) => theme.fontEB};

@@ -65,17 +65,25 @@ export default function ModalForLink({ linkInfo, setLinkInfo, setIsOpen, clearLi
     );
   };
   const onSubmit = () => {
+    const openModalWhenCreatingFail = (status: 'success' | 'fail' | 'error') => {
+      dispatch(
+        openModalForAlert({
+          ...alertModal,
+          isOpen: true,
+          status: status,
+          alert: '저장 중 오류가 발생했습니다',
+        }),
+      );
+    };
     // valid
     if (linkInfo.title === '') {
       setIsFocusToTitleTextarea(true);
       return;
     }
-    // TODO : 제출 후
-    // TODO : 응답돌아올때까지 로딩 화면 띄움
+    // TODO : 제출 후 응답돌아올때까지 로딩 화면 출력하기
     createMemberLink(linkInfo.url, linkInfo.title, linkInfo.tags)
       .then((response) => {
-        // 응답돌아왔을때 성공이면 창닫으면서 '저장되었습니다' 알림 모달 호출
-        // console.log('제출결과: ', response.status);
+        console.log('제출결과: ', response);
         if (response.status === 'success') {
           dispatch(
             openModalForAlert({
@@ -88,26 +96,12 @@ export default function ModalForLink({ linkInfo, setLinkInfo, setIsOpen, clearLi
           setIsOpen(false);
           clearLinkInfo();
         } else {
-          dispatch(
-            openModalForAlert({
-              ...alertModal,
-              isOpen: true,
-              status: response.status,
-              alert: '저장 중 오류가 발생했습니다',
-            }),
-          );
+          openModalWhenCreatingFail(response.status);
         }
       })
       .catch((e) => {
-        console.log('저장 실패 :', e);
-        dispatch(
-          openModalForAlert({
-            ...alertModal,
-            isOpen: true,
-            status: 'error',
-            alert: '저장 중 오류가 발생했습니다',
-          }),
-        );
+        console.log('링크 저장 실패 :', e);
+        openModalWhenCreatingFail('error');
       });
   };
   return (
@@ -117,7 +111,7 @@ export default function ModalForLink({ linkInfo, setLinkInfo, setIsOpen, clearLi
           <form
             onSubmit={(e) => {
               e.preventDefault();
-              // TODO : form 제출
+              onSubmit();
             }}
           >
             <LinkTicketForm
@@ -126,11 +120,12 @@ export default function ModalForLink({ linkInfo, setLinkInfo, setIsOpen, clearLi
               isFocusToTitleTextarea={isFocusToTitleTextarea}
               setIsFocusToTitleTextarea={setIsFocusToTitleTextarea}
             />
+            {/* TODO : 태그, 상태 탭 이동 이슈 */}
             <TagsFieldset linkInfo={linkInfo} setLinkInfo={setLinkInfo} />
             <StatusFieldset linkInfo={linkInfo} setLinkInfo={setLinkInfo} />
             <div className="button-wrapper">
               <Button className="cancel" text="취소" onClick={onCancel} />
-              <Button text="저장" onClick={onSubmit} />
+              <Button text="저장" type="submit" />
             </div>
           </form>
         </S.Contents>

@@ -8,14 +8,20 @@ export const LinkInfo = styled.div`
     display: flex;
     border-bottom: solid 1px ${({ theme }) => theme.basicGray};
     & > span {
-      padding-right: 3.3%;
+      padding: 0.53rem 3.3% 0.53rem 0;
     }
     textarea {
+      box-sizing: border-box;
       height: auto;
+      padding: 0.53rem 0.8rem;
+      background-color: ${({ theme }) => theme.basicBg};
+      outline: solid 0px transparent;
       &.warning {
-        outline-color: ${({ theme }) => theme.pointFocus};
-        border: solid 2px ${({ theme }) => theme.basicGray};
+        background-color: #ffe9e9;
         border-radius: 4px;
+        &:focus {
+          outline: solid 2px ${({ theme }) => theme.pointFocus};
+        }
       }
     }
   }

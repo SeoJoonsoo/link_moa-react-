@@ -55,7 +55,11 @@ export default function LinkTicketForm({ value, setValue, isFocusToTitleTextarea
         <S.Tags className="tags">
           {tags.length > 0 || <S.NoTags id="no-tags">#태그_없음</S.NoTags>}
           {tags.map((tag) => {
-            return <li key={tag}>#{tag}</li>;
+            return (
+              <li key={tag} aria-selected="false">
+                #{tag}
+              </li>
+            );
           })}
         </S.Tags>
       </div>

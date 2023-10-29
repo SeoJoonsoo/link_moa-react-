@@ -1,3 +1,5 @@
+export type Status = 'keep' | 'keep-going' | 'read';
+
 export type LinkInfo = {
   id: number | null;
   title: string;
@@ -7,5 +9,5 @@ export type LinkInfo = {
   tags: string[];
   createdAt: string;
   updatedAt: string | null;
-  status: 'keep' | 'keep-going' | 'read';
+  status: Status;
 };
