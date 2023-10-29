@@ -1,10 +1,11 @@
 import login from '@/api/member/login';
+import { RepsonseStatus } from '@/types';
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
 type AlertModal = {
   isOpen: boolean;
   closeTime: number;
-  status: 'success' | 'fail' | 'error';
+  status: RepsonseStatus;
   alert: React.ReactNode;
 };
 

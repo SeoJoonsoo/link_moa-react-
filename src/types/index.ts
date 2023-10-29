@@ -1,4 +1,11 @@
-export type Status = 'keep' | 'keep-going' | 'read';
+export type RepsonseStatus = 'success' | 'fail' | 'error';
+
+export type Response = {
+  status: 'success' | 'fail' | 'error';
+  message: string;
+};
+
+export type LinkStatus = 'keep' | 'keep-going' | 'read';
 
 export type LinkInfo = {
   id: number | null;
@@ -9,5 +16,6 @@ export type LinkInfo = {
   tags: string[];
   createdAt: string;
   updatedAt: string | null;
-  status: Status;
+  status: LinkStatus;
+};
 };

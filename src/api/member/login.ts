@@ -1,11 +1,10 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { VITE_API_ROOT } from '@/constants';
+import { Response } from '@/types';
 
-type Data = {
+type Data = Response & {
   isLogin: boolean;
-  message: string;
-  status: 'success' | 'fail' | 'error';
   data: {
     memberInfo: {
       email: null | string;

@@ -1,9 +1,8 @@
 import { VITE_API_ROOT } from '@/constants';
+import { Response } from '@/types';
 import axios from 'axios';
 
-type Data = {
-  status: 'success' | 'fail' | 'error';
-  message: string;
+type Data = Response & {
   data: {
     link: {
       title: string | null;

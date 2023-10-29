@@ -1,10 +1,10 @@
 import { basicTheme } from '@/layouts/theme';
 import { useState, useEffect, useRef } from 'react';
 import * as S from './style';
-import { LinkInfo, Status } from '@/types';
+import { LinkInfo, LinkStatus } from '@/types';
 
 type CheckStep = {
-  status: Status;
+  status: LinkStatus;
   className: string;
   step: number;
   label: string;
@@ -82,7 +82,7 @@ function CheckInput({ linkInfo, setLinkInfo, checkStep }: CheckInputProps) {
 }
 
 type IconCheckProps = {
-  status: Status;
+  status: LinkStatus;
   isChecked: boolean;
 };
 function IconCheck({ status, isChecked }: IconCheckProps) {

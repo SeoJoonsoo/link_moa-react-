@@ -5,12 +5,13 @@ import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import { useEffect } from 'react';
 import { closeModalForAlert } from '@/redux/alertModal';
 import Modal from '../Modal';
+import { RepsonseStatus } from '@/types';
 
 // https://github.com/SeoJoonsoo/link_moa-react-/issues/2
 // 위 문서의 ModalForAlert 참고
 
 type Props = {
-  status: 'success' | 'fail' | 'error';
+  status: RepsonseStatus;
   closeTime: number;
   children: React.ReactNode;
 };
