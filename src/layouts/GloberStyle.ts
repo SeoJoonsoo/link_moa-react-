@@ -56,6 +56,16 @@ export const GlobalStyle = createGlobalStyle`
     border: none;
   }
 
+  textarea {
+    background-color: unset;
+    outline-color: ${({ theme }) => theme.basicGray};
+    resize: none;
+    width: 100%;
+    font-size: 15px;
+    font-family: ${({ theme }) => theme.fontR};
+    border: none;
+  }
+
   section {
     padding: 12px;
   }
@@ -66,9 +76,25 @@ export const GlobalStyle = createGlobalStyle`
     margin: 0 auto;
     padding: 0;
     min-width: 360px;
-    max-width: 640px;
+    max-width: 540px;
     min-height: 100vh;
     text-align: center;
   }
 
+  .scroll-prettier {
+      overflow-y: auto;
+    &::-webkit-scrollbar {
+      width: 8px;
+    }
+    &::-webkit-scrollbar-thumb {
+        /*스크롤바*/
+        border: solid 2px ${({ theme }) => theme.white};
+        border-radius: 4px;
+        background-color: ${({ theme }) => theme.basicGray};
+    }
+    &::-webkit-scrollbar-track {
+      /* 스크롤바 트랙*/
+      background-color: ${({ theme }) => theme.white};
+    }
+  }
 `;

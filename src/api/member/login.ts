@@ -1,10 +1,10 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { VITE_API_ROOT } from '@/constants';
+import { Response } from '@/types';
 
-type Data = {
+type Data = Response & {
   isLogin: boolean;
-  message: string;
-  status: 'success' | 'fail' | 'error';
   data: {
     memberInfo: {
       email: null | string;
@@ -15,7 +15,7 @@ type Data = {
 
 async function loginMemberInfo() {
   const data: Data = await axios
-    .get(import.meta.env.VITE_API_ROOT + '/member/loginMemberInfo', {
+    .get(VITE_API_ROOT + '/member/info', {
       withCredentials: true,
     })
     .then(function (response: { data: Data }) {

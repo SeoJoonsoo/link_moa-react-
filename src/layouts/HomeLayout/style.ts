@@ -4,6 +4,7 @@ const tablistLinkHeight = '36px';
 const tabMaxZIndex = 10;
 
 export const PageSection = styled.section`
+  padding: 0;
   .name-wrapper {
     ul {
       display: flex;

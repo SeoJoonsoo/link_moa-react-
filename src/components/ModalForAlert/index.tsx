@@ -3,14 +3,15 @@ import successIcon from '@/assets/images/Modal/ic-success.svg';
 import failIcon from '@/assets/images/Modal/ic-fail.svg';
 import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import { useEffect } from 'react';
-import { closeModal } from '@/redux/alertModal';
+import { closeModalForAlert } from '@/redux/alertModal';
 import Modal from '../Modal';
+import { RepsonseStatus } from '@/types';
 
 // https://github.com/SeoJoonsoo/link_moa-react-/issues/2
 // 위 문서의 ModalForAlert 참고
 
 type Props = {
-  status: 'success' | 'fail' | 'error';
+  status: RepsonseStatus;
   closeTime: number;
   children: React.ReactNode;
 };
@@ -22,14 +23,14 @@ export default function ModalForAlert({ status = 'success', closeTime, children 
   useEffect(() => {
     if (alertModal.isOpen) {
       setTimeout(() => {
-        dispatch(closeModal());
+        dispatch(closeModalForAlert());
       }, closeTime);
     }
   }, [alertModal]);
   return (
     <S.ModalWrapper
       onClick={() => {
-        dispatch(closeModal());
+        dispatch(closeModalForAlert());
       }}
       closeTime={closeTime}
     >

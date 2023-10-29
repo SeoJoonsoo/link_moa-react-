@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useAppDispatch } from '@/redux/hooks';
-import login from '@/api/login';
+import login from '@/api/member/login';
 
 export default function NaverLogin() {
   const dispatch = useAppDispatch();

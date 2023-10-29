@@ -1,3 +1,4 @@
+import { VITE_API_ROOT } from '@/constants';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
@@ -9,7 +10,7 @@ type Data = {
 
 const logout = createAsyncThunk('/member/logout', async () => {
   const data: Data = await axios
-    .get(`${import.meta.env.VITE_API_ROOT}/member/logout`)
+    .get(`${VITE_API_ROOT}/member/logout`)
     .then((response: { data: Data }) => {
       if (response.data.status === 'success') {
         // console.log('로그아웃 성공', response.data);

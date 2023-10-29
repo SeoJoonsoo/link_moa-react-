@@ -6,10 +6,12 @@ import { useState } from 'react';
 import useIsLogin from '@/hooks/useIsLogin';
 import ModalForAlert from '@/components/ModalForAlert';
 import { useAppSelector } from '@/redux/hooks';
+import Modal from '@/components/Modal';
 
 function AppLayout() {
   const { isLogin } = useIsLogin();
   const alertModal = useAppSelector((state) => state.alertModal);
+  const modal = useAppSelector((state) => state.modal);
 
   const [isScrolled, setIsScrolled] = useState(false);
   window.addEventListener('scroll', () => {
@@ -28,6 +30,7 @@ function AppLayout() {
         <Outlet />
       </S.Main>
       <Footer />
+      {modal.isOpen && <Modal>{modal.alert}</Modal>}
       {alertModal.isOpen && (
         <ModalForAlert status={alertModal.status} closeTime={alertModal.closeTime}>
           {alertModal.alert}

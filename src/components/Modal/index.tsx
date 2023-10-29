@@ -9,8 +9,8 @@ type Props = {
 
 export default function Modal({ children }: Props) {
   return (
-    <S.BlackSpace>
-      <S.WhiteSpace>{children}</S.WhiteSpace>
+    <S.BlackSpace aria-hidden="true">
+      <S.WhiteSpace aria-modal="true">{children}</S.WhiteSpace>
     </S.BlackSpace>
   );
 }

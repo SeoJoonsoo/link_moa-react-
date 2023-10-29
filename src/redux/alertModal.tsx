@@ -1,10 +1,11 @@
-import login from '@/api/login';
+import login from '@/api/member/login';
+import { RepsonseStatus } from '@/types';
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
 type AlertModal = {
   isOpen: boolean;
   closeTime: number;
-  status: 'success' | 'fail' | 'error';
+  status: RepsonseStatus;
   alert: React.ReactNode;
 };
 
@@ -17,17 +18,17 @@ const initialState: AlertModal = {
   alert: <></>,
 };
 
-const modalSlice = createSlice({
+const alertModalSlice = createSlice({
   name: 'alertModal',
   initialState,
   reducers: {
-    openModal(state, action: PayloadAction<AlertModal>) {
+    openModalForAlert(state, action: PayloadAction<AlertModal>) {
       state.isOpen = true;
       state.closeTime = action.payload.closeTime || initialCloseTime;
       state.status = action.payload.status;
       state.alert = action.payload.alert;
     },
-    closeModal(state) {
+    closeModalForAlert(state) {
       state.isOpen = false;
       state.closeTime = initialCloseTime;
       state.status = 'success';
@@ -65,5 +66,5 @@ const modalSlice = createSlice({
   },
 });
 
-export const { openModal, closeModal } = modalSlice.actions;
-export default modalSlice.reducer;
+export const { openModalForAlert, closeModalForAlert } = alertModalSlice.actions;
+export default alertModalSlice.reducer;

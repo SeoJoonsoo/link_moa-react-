@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import Logo from '@/assets/images/Header/logo.svg';
 import Logout from '@/assets/images/Header/ic-logout.svg';
 import * as S from './style';
-import logout from '@/api/logout';
+import logout from '@/api/member/logout';
 import { useAppDispatch } from '@/redux/hooks';
 
 type Props = {

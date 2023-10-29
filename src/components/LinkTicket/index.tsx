@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import { LinkInfo } from '@/types';
 import * as S from './style';
 
@@ -6,21 +5,14 @@ type Props = {
   value: LinkInfo;
 };
 
-type StatusStep = 'keep' | 'keep-going' | 'read';
-
 export default function LinkTicket({ value }: Props) {
-  const { title, url, writer, writeDate, tags, updatedAt, status } = value;
-  const [statusStep, setStatusStep] = useState<StatusStep>('keep');
+  const { title, url, writer, writeDate, tags, status } = value;
   const openEditModal = () => {
     // TODO : 해당 링크에 대한 수정 모달 띄우도록 구현
   };
-  useEffect(() => {
-    if (updatedAt) {
-      status ? setStatusStep('read') : setStatusStep('keep-going');
-    }
-  }, []);
+
   return (
-    <S.Article className={statusStep}>
+    <S.Article className={status}>
       <div className="wrapper">
         <S.LinkInfo to={url} target="_blank">
           <h3 className="title">{title}</h3>
@@ -40,9 +32,9 @@ export default function LinkTicket({ value }: Props) {
           })}
         </S.Tags>
       </div>
-      {statusStep === 'keep' && <KeepStatus />}
-      {statusStep === 'keep-going' && <KeepGoingStatus />}
-      {statusStep === 'read' && <ReadStatus />}
+      {status === 'keep' && <KeepStatus />}
+      {status === 'keep-going' && <KeepGoingStatus />}
+      {status === 'read' && <ReadStatus />}
     </S.Article>
   );
 }

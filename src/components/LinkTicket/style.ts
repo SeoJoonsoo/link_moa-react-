@@ -28,7 +28,7 @@ export const Article = styled.article`
     `}
 `;
 
-export const LinkInfo = styled(Link)`
+export const LinkInfoStyle = css`
   .title {
     line-height: 125%;
     text-align: left;
@@ -57,6 +57,10 @@ export const LinkInfo = styled(Link)`
       }
     }
   }
+`;
+
+export const LinkInfo = styled(Link)`
+  ${LinkInfoStyle}
 `;
 
 export const Tags = styled.ul`
