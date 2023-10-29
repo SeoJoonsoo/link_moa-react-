@@ -1,8 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from './store';
-import login, { getMemberInfo } from '@/api/login';
-import logout from '@/api/logout';
+import login, { getMemberInfo } from '@/api/member/login';
+import logout from '@/api/member/logout';
 
 type IsLogin = {
   status: string;

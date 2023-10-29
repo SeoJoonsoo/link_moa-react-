@@ -4,7 +4,7 @@ import NAVER_LOGO from '@/assets/images/Welcome/easy-login/ic-naver.svg';
 import { VITE_API_ROOT, VITE_NAVER_CLIENT_ID, VITE_NAVER_STATE } from '@/constants';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
-// import googleAuthInit from '@/api/googleLogin';
+// import googleAuthInit from '@/api/member/googleLogin';
 
 declare global {
   interface Window {

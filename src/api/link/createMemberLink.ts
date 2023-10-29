@@ -4,7 +4,7 @@ import axios from 'axios';
 export default async function createMemberLink(url: string, name: string, tags: string[]) {
   const data = await axios
     .post(
-      `${VITE_API_ROOT}/Link/createMemberLink`,
+      `${VITE_API_ROOT}/Link`,
       {
         url,
         name,

@@ -1,7 +1,7 @@
 import * as S from './style';
 import TextInput from '@/components/Form/TextInput';
 import { openModalForAlert } from '@/redux/alertModal';
-import getLinkTitle from '@/api/getLinkTitle';
+import getLinkTitle from '@/api/link/getLinkTitle';
 import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import ModalForLink from '../ModalForLink';
 import { useCallback, useRef, useState } from 'react';

@@ -1,4 +1,4 @@
-import login from '@/api/login';
+import login from '@/api/member/login';
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
 type AlertModal = {

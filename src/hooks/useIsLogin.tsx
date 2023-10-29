@@ -1,7 +1,7 @@
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import { useEffect } from 'react';
-import { getMemberInfo } from '@/api/login';
+import { getMemberInfo } from '@/api/member/login';
 
 // 로그인 여부에 따라 리다이렉션 시킴
 // 로그인하지 않은 유저는 /welcome 페이지만 볼 수 있습니다.

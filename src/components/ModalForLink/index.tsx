@@ -7,7 +7,7 @@ import StatusFieldset from './StatusFieldset';
 import Button from '../Button';
 import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import { closeModal, openModal } from '@/redux/modal';
-import createMemberLink from '@/api/createMemberLink';
+import createMemberLink from '@/api/link/createMemberLink';
 import { openModalForAlert } from '@/redux/alertModal';
 import { useState, useEffect } from 'react';
 
