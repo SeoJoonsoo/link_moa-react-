@@ -17,7 +17,7 @@ export default function LinkTicketList({ links, alert }: Props) {
       <S.List>
         {links.length === 0 ? (
           <div className="alert">
-            {alert !== undefined ? (
+            {alert ? (
               <span>{alert}</span>
             ) : (
               <span>
@@ -28,7 +28,7 @@ export default function LinkTicketList({ links, alert }: Props) {
           </div>
         ) : (
           links.map((link) => {
-            return <LinkTicket key={link.id} value={link} />;
+            return <LinkTicket key={link.member_link_id} value={link} />;
           })
         )}
         {}

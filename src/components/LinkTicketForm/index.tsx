@@ -1,17 +1,17 @@
-import { LinkInfo } from '@/types';
+import { EditLinkInfo } from '@/types';
 import * as S from './style';
 import React, { RefObject, useEffect } from 'react';
 
 type Props = {
-  value: LinkInfo;
-  setValue: (value: LinkInfo) => void;
+  value: EditLinkInfo;
+  setValue: (value: EditLinkInfo) => void;
   isFocusToTitleTextarea: boolean;
   setIsFocusToTitleTextarea: (isFocusToTitleTextarea: boolean) => void;
 };
 
 export default function LinkTicketForm({ value, setValue, isFocusToTitleTextarea, setIsFocusToTitleTextarea }: Props) {
   const titleTextarea: RefObject<HTMLTextAreaElement> = React.createRef();
-  const { title, /*writer, writeDate,*/ tags, status } = value;
+  const { member_link_name, /*writer, writeDate,*/ tags, status } = value;
   useEffect(() => {
     if (titleTextarea.current !== null) {
       if (isFocusToTitleTextarea) {
@@ -19,7 +19,7 @@ export default function LinkTicketForm({ value, setValue, isFocusToTitleTextarea
         setIsFocusToTitleTextarea(false);
       }
     }
-  }, [titleTextarea, title, isFocusToTitleTextarea]);
+  }, [titleTextarea, member_link_name, isFocusToTitleTextarea]);
   return (
     <S.Article className={status}>
       <div className="wrapper">
@@ -28,12 +28,12 @@ export default function LinkTicketForm({ value, setValue, isFocusToTitleTextarea
             <span>제목</span>
             <textarea
               ref={titleTextarea}
-              className={`title ${title.length > 0 ? '' : 'warning'}`}
-              value={title}
+              className={`title ${member_link_name.length > 0 ? '' : 'warning'}`}
+              value={member_link_name}
               rows={1}
               onChange={(e) => {
                 const target = e.target;
-                setValue({ ...value, title: target.value });
+                setValue({ ...value, member_link_name: target.value });
                 target.style.height = 'auto';
                 target.style.height = target.scrollHeight + 'px';
               }}
@@ -43,7 +43,7 @@ export default function LinkTicketForm({ value, setValue, isFocusToTitleTextarea
                 }
               }}
               placeholder="제목을 입력해주세요"
-              autoFocus={title.length > 0 ? false : true}
+              autoFocus={member_link_name.length > 0 ? false : true}
             />
           </div>
           {/* TODO: 보류. 백에서 링크를 크롤링한 뒤 작성자, 작성일 정보를 가져올 수 있을 때 추가해야함 */}

@@ -1,7 +1,7 @@
 import * as S from './style';
 import Modal from '../Modal';
 import LinkTicketForm from '../LinkTicketForm';
-import { LinkInfo } from '@/types';
+import { EditLinkInfo } from '@/types';
 import TagsFieldset from './TagsFieldset';
 import StatusFieldset from './StatusFieldset';
 import Button from '../Button';
@@ -10,13 +10,14 @@ import { closeModal, openModal } from '@/redux/modal';
 import createMemberLink from '@/api/link/createMemberLink';
 import { openModalForAlert } from '@/redux/alertModal';
 import { useState, useEffect } from 'react';
+import { updateMemberLinks } from '@/redux/memberLinks';
 
 // https://github.com/SeoJoonsoo/link_moa-react-/issues/2
 // 위 문서의 ModalForLink 참고
 
 type Props = {
-  linkInfo: LinkInfo;
-  setLinkInfo: (linkInfo: LinkInfo) => void;
+  linkInfo: EditLinkInfo;
+  setLinkInfo: (linkInfo: EditLinkInfo) => void;
   setIsOpen: (isOpen: boolean) => void;
   clearLinkInfo: () => void;
 };
@@ -27,7 +28,7 @@ export default function ModalForLink({ linkInfo, setLinkInfo, setIsOpen, clearLi
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    linkInfo.title.length > 0 ? setIsFocusToTitleTextarea(false) : setIsFocusToTitleTextarea(true);
+    linkInfo.member_link_name.length > 0 ? setIsFocusToTitleTextarea(false) : setIsFocusToTitleTextarea(true);
   }, []);
 
   const onCancel = () => {
@@ -65,6 +66,12 @@ export default function ModalForLink({ linkInfo, setLinkInfo, setIsOpen, clearLi
     );
   };
   const onSubmit = () => {
+    // valid
+    if (linkInfo.member_link_name === '') {
+      setIsFocusToTitleTextarea(true);
+      return;
+    }
+
     const openModalWhenCreatingFail = (status: 'success' | 'fail' | 'error') => {
       dispatch(
         openModalForAlert({
@@ -75,13 +82,8 @@ export default function ModalForLink({ linkInfo, setLinkInfo, setIsOpen, clearLi
         }),
       );
     };
-    // valid
-    if (linkInfo.title === '') {
-      setIsFocusToTitleTextarea(true);
-      return;
-    }
     // TODO : 제출 후 응답돌아올때까지 로딩 화면 출력하기
-    createMemberLink(linkInfo.url, linkInfo.title, linkInfo.tags)
+    createMemberLink(linkInfo.link_url, linkInfo.member_link_name, linkInfo.tags)
       .then((response) => {
         console.log('제출결과: ', response);
         if (response.status === 'success') {
@@ -93,10 +95,11 @@ export default function ModalForLink({ linkInfo, setLinkInfo, setIsOpen, clearLi
               alert: '저장되었습니다',
             }),
           );
+          dispatch(updateMemberLinks(response.data.memberLinks));
           setIsOpen(false);
           clearLinkInfo();
         } else {
-          openModalWhenCreatingFail(response.status);
+          openModalWhenCreatingFail('fail');
         }
       })
       .catch((e) => {

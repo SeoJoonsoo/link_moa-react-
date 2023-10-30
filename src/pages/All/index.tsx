@@ -1,15 +1,43 @@
 import LinkTicketList from '@/components/LinkTicketList';
-import { dummyForAll } from '@/dummy';
-import { LinkInfo } from '@/types';
 import { useEffect, useState } from 'react';
+import { useAppDispatch, useAppSelector } from '@/redux/hooks';
+import getMemberLinks from '@/api/link/getMemberLinks';
+import { openModalForAlert } from '@/redux/alertModal';
+import { updateMemberLinks } from '@/redux/memberLinks';
 
 export default function All() {
-  const [keepLinks, setKeepLinks] = useState<LinkInfo[]>([]);
+  const [alert, setAlert] = useState('');
+  const dispatch = useAppDispatch();
+  const alertModal = useAppSelector((state) => state.alertModal);
+  const memberLinks = useAppSelector((state) => state.memberLinks);
 
+  const openModalWhenGettingMemberLinksFail = () => {
+    dispatch(
+      openModalForAlert({
+        ...alertModal,
+        isOpen: true,
+        status: 'error',
+        alert: '링크 정보를 가져오지 못했습니다',
+      }),
+    );
+  };
   useEffect(() => {
-    setKeepLinks(dummyForAll); // TODO : 실제 데이터 받아와야함
-    // setKeepLinks([]); // keep 데이터 없을때
-  });
+    getMemberLinks()
+      .then((response) => {
+        console.log('getMemberLinks 응답: ', response);
+        if (response.status === 'success') {
+          dispatch(updateMemberLinks(response.data.memberLinks));
+          setAlert('');
+        } else {
+          openModalWhenGettingMemberLinksFail();
+          setAlert('링크 정보를 가져오지 못했습니다');
+        }
+      })
+      .catch(() => {
+        openModalWhenGettingMemberLinksFail();
+        setAlert('링크 정보를 가져오지 못했습니다');
+      });
+  }, []);
 
-  return <LinkTicketList links={keepLinks} />;
+  return <LinkTicketList links={memberLinks.linkInfo} alert={alert} />;
 }

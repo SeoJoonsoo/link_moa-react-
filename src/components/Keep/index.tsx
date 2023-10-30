@@ -5,24 +5,21 @@ import getLinkTitle from '@/api/link/getLinkTitle';
 import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import ModalForLink from '../ModalForLink';
 import { useCallback, useRef, useState } from 'react';
-import { LinkInfo } from '@/types';
+import { EditLinkInfo } from '@/types';
 import { closeModal, openModal } from '@/redux/modal';
 import Button from '../Button';
 import checkURLValidation from '@/util/checkURLValidation';
 
 export default function Keep() {
-  const initialLinkInfo = useRef<LinkInfo>({
-    id: null,
-    title: '',
-    url: '',
-    writer: '', // TODO : 작성 날짜정보 가져오기
-    writeDate: '0000.00.00', // TODO : 작성 날짜정보 가져오기
+  const initialLinkInfo = useRef<EditLinkInfo>({
+    member_link_name: '',
+    link_url: '',
+    writer: '', // TODO : 백 구현 중
+    writed_date: '0000-00-00', // TODO : 백 구현 중
     tags: [],
-    createdAt: '',
-    updatedAt: null,
     status: 'keep', // TODO : 상태 저장 구현 기다림
   });
-  const [linkInfo, setLinkInfo] = useState<LinkInfo>(initialLinkInfo.current);
+  const [linkInfo, setLinkInfo] = useState<EditLinkInfo>(initialLinkInfo.current);
   const [isOpenModalForLink, setIsOpenModalForLink] = useState(false);
   const alertModal = useAppSelector((state) => state.alertModal);
   const dispatch = useAppDispatch();
@@ -57,7 +54,7 @@ export default function Keep() {
                     text="확인"
                     onClick={() => {
                       dispatch(closeModal());
-                      setLinkInfo({ ...linkInfo, url: value });
+                      setLinkInfo({ ...linkInfo, link_url: value });
                       setIsOpenModalForLink(true);
                     }}
                   />
@@ -76,7 +73,7 @@ export default function Keep() {
         getLinkTitle(value)
           .then((response) => {
             if (response.status === 'success' && response.data.link.title) {
-              setLinkInfo({ ...linkInfo, title: response.data.link.title, url: value });
+              setLinkInfo({ ...linkInfo, member_link_name: response.data.link.title, link_url: value });
               setIsOpenModalForLink(true);
             } else {
               openModalWhenGettingTitleFail();

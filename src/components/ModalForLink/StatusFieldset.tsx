@@ -1,7 +1,7 @@
 import { basicTheme } from '@/layouts/theme';
 import { useState, useEffect, useRef } from 'react';
 import * as S from './style';
-import { LinkInfo, LinkStatus } from '@/types';
+import { EditLinkInfo, LinkStatus } from '@/types';
 
 type CheckStep = {
   status: LinkStatus;
@@ -12,8 +12,8 @@ type CheckStep = {
 };
 
 type Props = {
-  linkInfo: LinkInfo;
-  setLinkInfo: (linkInfo: LinkInfo) => void;
+  linkInfo: EditLinkInfo;
+  setLinkInfo: (linkInfo: EditLinkInfo) => void;
 };
 
 export default function StatusFieldset({ linkInfo, setLinkInfo }: Props) {
@@ -56,8 +56,8 @@ export default function StatusFieldset({ linkInfo, setLinkInfo }: Props) {
 }
 
 type CheckInputProps = {
-  linkInfo: LinkInfo;
-  setLinkInfo: (linkInfo: LinkInfo) => void;
+  linkInfo: EditLinkInfo;
+  setLinkInfo: (linkInfo: EditLinkInfo) => void;
   checkStep: CheckStep;
 };
 
