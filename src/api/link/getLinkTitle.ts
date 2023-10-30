@@ -12,7 +12,7 @@ type Data = Response & {
 
 export default async function getLinkTitle(url: string) {
   let data: Data = await axios
-    .get(`${VITE_API_ROOT}/Link/getLinkTitle?url=${url}`)
+    .get(`${VITE_API_ROOT}/Link/siteTitle?url=${url}`)
     .then((response: { data: Data }) => {
       if (response.data.status === 'success') {
         return response.data;
