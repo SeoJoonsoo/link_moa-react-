@@ -3,6 +3,7 @@ import memberReducer from './member';
 import isLoginReducer from './isLogin';
 import modalReducer from './modal';
 import alertModalReducer from './alertModal';
+import memberLinksReducer from './memberLinks';
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
@@ -21,6 +22,7 @@ const store = configureStore({
     member: memberReducer,
     modal: modalReducer,
     alertModal: alertModalReducer,
+    memberLinks: memberLinksReducer,
   },
   // devTools: import.meta.env.DEV, // process.env.NODE_ENV !== 'production',
 });

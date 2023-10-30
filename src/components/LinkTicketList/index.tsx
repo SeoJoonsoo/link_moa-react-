@@ -17,7 +17,7 @@ export default function LinkTicketList({ links, alert }: Props) {
       <S.List>
         {links.length === 0 ? (
           <div className="alert">
-            {alert !== undefined ? (
+            {alert ? (
               <span>{alert}</span>
             ) : (
               <span>

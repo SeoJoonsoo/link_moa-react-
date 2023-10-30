@@ -10,6 +10,7 @@ import { closeModal, openModal } from '@/redux/modal';
 import createMemberLink from '@/api/link/createMemberLink';
 import { openModalForAlert } from '@/redux/alertModal';
 import { useState, useEffect } from 'react';
+import { updateMemberLinks } from '@/redux/memberLinks';
 
 // https://github.com/SeoJoonsoo/link_moa-react-/issues/2
 // 위 문서의 ModalForLink 참고
@@ -65,6 +66,12 @@ export default function ModalForLink({ linkInfo, setLinkInfo, setIsOpen, clearLi
     );
   };
   const onSubmit = () => {
+    // valid
+    if (linkInfo.member_link_name === '') {
+      setIsFocusToTitleTextarea(true);
+      return;
+    }
+
     const openModalWhenCreatingFail = (status: 'success' | 'fail' | 'error') => {
       dispatch(
         openModalForAlert({
@@ -75,11 +82,6 @@ export default function ModalForLink({ linkInfo, setLinkInfo, setIsOpen, clearLi
         }),
       );
     };
-    // valid
-    if (linkInfo.member_link_name === '') {
-      setIsFocusToTitleTextarea(true);
-      return;
-    }
     // TODO : 제출 후 응답돌아올때까지 로딩 화면 출력하기
     createMemberLink(linkInfo.link_url, linkInfo.member_link_name, linkInfo.tags)
       .then((response) => {
@@ -93,6 +95,7 @@ export default function ModalForLink({ linkInfo, setLinkInfo, setIsOpen, clearLi
               alert: '저장되었습니다',
             }),
           );
+          dispatch(updateMemberLinks(response.data.memberLinks));
           setIsOpen(false);
           clearLinkInfo();
         } else {

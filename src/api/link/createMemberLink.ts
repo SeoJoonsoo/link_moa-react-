@@ -1,8 +1,15 @@
 import { VITE_API_ROOT } from '@/constants';
+import { LinkInfo, Response } from '@/types';
 import axios from 'axios';
 
+type Data = Response & {
+  data: {
+    memberLinks: LinkInfo[];
+  };
+};
+
 export default async function createMemberLink(url: string, name: string, tags: string[]) {
-  const data = await axios
+  const data: Data = await axios
     .post(
       `${VITE_API_ROOT}/Link`,
       {
@@ -17,7 +24,7 @@ export default async function createMemberLink(url: string, name: string, tags: 
         withCredentials: true,
       },
     )
-    .then((response) => {
+    .then((response: { data: Data }) => {
       console.log('저장 요청 응답: ', response);
       return response.data;
     })
