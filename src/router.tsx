@@ -6,6 +6,7 @@ import Read from './pages/Read';
 import All from './pages/All';
 import Welcome from './pages/Welcome';
 import NaverLogin from './pages/NaverLogin';
+import LocalLogin from './pages/LocalLogin';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -18,6 +19,7 @@ const router = createBrowserRouter(
       </Route>
       <Route path="/index.php/welcome" element={<Welcome />} />
       <Route path="/welcome" element={<Welcome />} />
+      <Route path="/localLogin" element={<LocalLogin />} />
       <Route path="/naverLogin" element={<NaverLogin />} />
     </Route>,
   ),

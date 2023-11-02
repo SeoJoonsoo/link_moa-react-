@@ -22,7 +22,7 @@ export default function useIsLogin(): { isLogin: boolean } {
       if (memberInfo.email === null) {
         dispatch(getMemberInfo());
       }
-      if (currentPath.includes('welcome') || currentPath.includes('naverLogin')) {
+      if (currentPath.includes('welcome') || currentPath.includes('naverLogin') || currentPath.includes('localLogin')) {
         navigate('/');
       }
     } else {

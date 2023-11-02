@@ -3,6 +3,7 @@ import type { PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from './store';
 import login, { getMemberInfo } from '@/api/member/login';
 import logout from '@/api/member/logout';
+import { localLogin } from '@/pages/LocalLogin';
 
 type IsLogin = {
   status: string;
@@ -23,6 +24,15 @@ const isLoginSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
+    // dev 로그인시
+    builder.addCase(localLogin.fulfilled, (state, action) => {
+      state.status = 'success';
+      state.isLogin = action.payload.isLogin;
+    });
+    builder.addCase(localLogin.rejected, (state) => {
+      state.status = 'error';
+    });
+    // prod 로그인 시
     builder.addCase(login.fulfilled, (state, action) => {
       state.status = 'success';
       state.isLogin = action.payload.isLogin;
