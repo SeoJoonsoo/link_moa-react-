@@ -10,7 +10,7 @@ export default function useIsLogin(): { isLogin: boolean } {
   const dispatch = useAppDispatch();
   const location = useLocation();
   const navigate = useNavigate();
-  const isLogin = useAppSelector((state) => state.isLogin).isLogin;
+  const isLogin = useAppSelector((state) => state.isLogin.isLogin);
   const memberInfo = useAppSelector((state) => state.member);
 
   useEffect(() => {
