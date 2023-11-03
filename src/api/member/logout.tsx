@@ -1,11 +1,10 @@
 import { VITE_API_ROOT } from '@/constants';
+import { Response } from '@/types';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-type Data = {
+type Data = Response & {
   isLogin: boolean;
-  status: string;
-  message: string;
 };
 
 const logout = createAsyncThunk('/member/logout', async () => {
