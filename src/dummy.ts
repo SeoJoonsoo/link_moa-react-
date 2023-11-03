@@ -1,10 +1,10 @@
-import { LinkInfo } from '@/types';
+import { MemberLinkInfo } from '@/types';
 
 // 더미 파일입니다
 // TODO : 구현 완료 후 삭제해주세요
 
 // 읽던 글
-export const dummyForKeepGoing: LinkInfo[] = [
+export const dummyForKeepGoing: MemberLinkInfo[] = [
   {
     member_link_id: '1',
     member_id: '',
@@ -78,7 +78,7 @@ export const dummyForKeepGoing: LinkInfo[] = [
 ];
 
 // 새 글
-export const dummyForKeep: LinkInfo[] = [
+export const dummyForKeep: MemberLinkInfo[] = [
   {
     member_link_id: '1',
     member_id: '',
@@ -236,7 +236,7 @@ export const dummyForKeep: LinkInfo[] = [
 ];
 
 // 읽은 글
-export const dummyForRead: LinkInfo[] = [
+export const dummyForRead: MemberLinkInfo[] = [
   {
     member_link_id: '11',
     member_id: '',
@@ -310,4 +310,4 @@ export const dummyForRead: LinkInfo[] = [
 ];
 
 // 모든 글
-export const dummyForAll: LinkInfo[] = [];
+export const dummyForAll: MemberLinkInfo[] = [];

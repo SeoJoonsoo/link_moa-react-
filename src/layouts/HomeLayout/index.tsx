@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { LinkInfo } from '@/types';
+import { MemberLinkInfo } from '@/types';
 import Keep from '../../components/Keep';
 import { dummyForKeepGoing } from '../../dummy';
 import SectionWithTitle from '../SectionWithTitle';
@@ -9,7 +9,7 @@ import * as S from './style';
 import { NavLink, Outlet } from 'react-router-dom';
 
 export default function HomeLayout() {
-  const [keepGoingLinks, setKeepGoingLinks] = useState<LinkInfo[]>([]);
+  const [keepGoingLinks, setKeepGoingLinks] = useState<MemberLinkInfo[]>([]);
 
   useEffect(() => {
     setKeepGoingLinks(dummyForKeepGoing); // TODO : 실제 데이터 받아와야함

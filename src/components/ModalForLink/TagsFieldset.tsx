@@ -2,11 +2,11 @@ import * as S from './style';
 import TextForm from '../Form/TextInput';
 import Dropdown from '../Form/Dropdown';
 import { useState, useEffect } from 'react';
-import { EditLinkInfo } from '@/types';
+import { EditMemberLinkInfo } from '@/types';
 
 type Props = {
-  linkInfo: EditLinkInfo;
-  setLinkInfo: (linkInfo: EditLinkInfo) => void;
+  linkInfo: EditMemberLinkInfo;
+  setLinkInfo: (linkInfo: EditMemberLinkInfo) => void;
 };
 
 const dummyList = ['리스트1', '리스트2', '리스트3', '리스트4', '리스트5', '리스트6', '리스트7'];

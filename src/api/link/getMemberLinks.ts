@@ -1,10 +1,10 @@
 import { VITE_API_ROOT } from '@/constants';
-import { LinkInfo, Response } from '@/types';
+import { MemberLinkInfo, Response } from '@/types';
 import axios from 'axios';
 
 type Data = Response & {
   data: {
-    memberLinks: LinkInfo[];
+    memberLinks: MemberLinkInfo[];
   };
 };
 

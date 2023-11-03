@@ -1,10 +1,10 @@
-import { EditLinkInfo } from '@/types';
+import { EditMemberLinkInfo } from '@/types';
 import * as S from './style';
 import React, { RefObject, useEffect } from 'react';
 
 type Props = {
-  value: EditLinkInfo;
-  setValue: (value: EditLinkInfo) => void;
+  value: EditMemberLinkInfo;
+  setValue: (value: EditMemberLinkInfo) => void;
   isFocusToTitleTextarea: boolean;
   setIsFocusToTitleTextarea: (isFocusToTitleTextarea: boolean) => void;
 };

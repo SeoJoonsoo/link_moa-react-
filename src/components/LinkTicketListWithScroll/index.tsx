@@ -1,9 +1,9 @@
 import LinkTicket from '@/components/LinkTicket';
-import { LinkInfo } from '@/types';
+import { MemberLinkInfo } from '@/types';
 import * as S from './style';
 
 type Props = {
-  links: LinkInfo[];
+  links: MemberLinkInfo[];
 };
 export default function LinkTicketListWithScroll({ links }: Props) {
   return (

@@ -1,9 +1,9 @@
 import * as S from './style';
 import LinkTicket from '@/components/LinkTicket';
-import { LinkInfo } from '@/types';
+import { MemberLinkInfo } from '@/types';
 
 type Props = {
-  links: LinkInfo[];
+  links: MemberLinkInfo[];
   alert?: string;
 };
 

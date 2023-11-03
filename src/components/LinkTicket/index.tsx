@@ -1,8 +1,8 @@
-import { LinkInfo } from '@/types';
+import { MemberLinkInfo } from '@/types';
 import * as S from './style';
 
 type Props = {
-  value: LinkInfo;
+  value: MemberLinkInfo;
 };
 
 export default function LinkTicket({ value }: Props) {

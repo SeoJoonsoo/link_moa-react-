@@ -1,7 +1,7 @@
 import * as S from './style';
 import Modal from '../Modal';
 import LinkTicketForm from '../LinkTicketForm';
-import { EditLinkInfo } from '@/types';
+import { EditMemberLinkInfo } from '@/types';
 import TagsFieldset from './TagsFieldset';
 import StatusFieldset from './StatusFieldset';
 import Button from '../Button';
@@ -16,8 +16,8 @@ import { updateMemberLinks } from '@/redux/memberLinks';
 // 위 문서의 ModalForLink 참고
 
 type Props = {
-  linkInfo: EditLinkInfo;
-  setLinkInfo: (linkInfo: EditLinkInfo) => void;
+  linkInfo: EditMemberLinkInfo;
+  setLinkInfo: (linkInfo: EditMemberLinkInfo) => void;
   setIsOpen: (isOpen: boolean) => void;
   clearLinkInfo: () => void;
 };

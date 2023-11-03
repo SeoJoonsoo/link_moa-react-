@@ -5,13 +5,13 @@ import getLinkTitle from '@/api/link/getLinkTitle';
 import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import ModalForLink from '../ModalForLink';
 import { useCallback, useRef, useState } from 'react';
-import { EditLinkInfo } from '@/types';
+import { EditMemberLinkInfo, LinkInfo } from '@/types';
 import { closeModal, openModal } from '@/redux/modal';
 import Button from '../Button';
 import checkURLValidation from '@/util/checkURLValidation';
 
 export default function Keep() {
-  const initialLinkInfo = useRef<EditLinkInfo>({
+  const initialLinkInfo = useRef<EditMemberLinkInfo>({
     member_link_name: '',
     link_url: '',
     writer: '', // TODO : 백 구현 중
@@ -19,7 +19,7 @@ export default function Keep() {
     tags: [],
     status: 'keep', // TODO : 상태 저장 구현 기다림
   });
-  const [linkInfo, setLinkInfo] = useState<EditLinkInfo>(initialLinkInfo.current);
+  const [linkInfo, setLinkInfo] = useState<EditMemberLinkInfo>(initialLinkInfo.current);
   const [isOpenModalForLink, setIsOpenModalForLink] = useState(false);
   const alertModal = useAppSelector((state) => state.alertModal);
   const dispatch = useAppDispatch();

@@ -1,8 +1,8 @@
-import { LinkInfo } from '@/types';
+import { MemberLinkInfo } from '@/types';
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
 type MemberLinksState = {
-  linkInfo: LinkInfo[];
+  linkInfo: MemberLinkInfo[];
 };
 
 const initialState: MemberLinksState = {
@@ -13,7 +13,7 @@ const memberLinksSlice = createSlice({
   name: 'memberLinks',
   initialState,
   reducers: {
-    updateMemberLinks(state, action: PayloadAction<LinkInfo[]>) {
+    updateMemberLinks(state, action: PayloadAction<MemberLinkInfo[]>) {
       state.linkInfo = action.payload;
     },
   },
