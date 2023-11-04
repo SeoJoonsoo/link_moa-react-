@@ -5,10 +5,10 @@ import { EditMemberLinkInfo, LinkStatus } from '@/types';
 
 type CheckStep = {
   status: LinkStatus;
-  className: string;
+  className: (currentStatus: LinkStatus) => string;
   step: number;
   label: string;
-  isChecked: boolean;
+  isChecked: (currentStatus: LinkStatus) => boolean;
 };
 
 type Props = {
@@ -20,26 +20,44 @@ export default function StatusFieldset({ linkInfo, setLinkInfo }: Props) {
   const checkSteps = useRef<CheckStep[]>([
     {
       status: 'Saved',
-      className: 'keep',
+      className: (_currentStatus) => {
+        return 'keep';
+      },
       step: 1,
       label: '저장',
-      isChecked: true,
+      isChecked: (_currentStatus) => {
+        return true;
+      },
     },
     {
       status: 'In Progress',
-      className: `keep-going ${linkInfo.status !== 'Saved' ? 'line' : ''}`,
+      className: (currentStatus) => {
+        return `keep-going ${currentStatus !== 'Saved' ? 'line' : ''}`;
+      },
       step: 2,
       label: '읽는 중',
-      isChecked: linkInfo.status !== 'Saved',
+      isChecked: (currentStatus) => {
+        return currentStatus !== 'Saved';
+      },
     },
     {
       status: 'Completed',
-      className: `read ${linkInfo.status === 'Completed' ? 'line' : ''}`,
+      className: (currentStatus) => {
+        return `read ${currentStatus === 'Completed' ? 'line' : ''}`;
+      },
       step: 3,
       label: '완독',
-      isChecked: linkInfo.status === 'Completed',
+      isChecked: (currentStatus) => {
+        return currentStatus === 'Completed';
+      },
     },
   ]);
+  const [currentStatus, setCurrentStatus] = useState<LinkStatus>(linkInfo.status);
+
+  useEffect(() => {
+    setLinkInfo({ ...linkInfo, status: currentStatus });
+  }, [currentStatus]);
+
   return (
     <S.StatusFieldset className="status">
       <legend>상태</legend>
@@ -47,7 +65,7 @@ export default function StatusFieldset({ linkInfo, setLinkInfo }: Props) {
       <div className="wrapper">
         <ul>
           {checkSteps.current.map((checkStep) => (
-            <CheckInput linkInfo={linkInfo} setLinkInfo={setLinkInfo} checkStep={checkStep} />
+            <CheckInput checkStep={checkStep} currentStatus={currentStatus} setCurrentStatus={setCurrentStatus} />
           ))}
         </ul>
       </div>
@@ -56,24 +74,25 @@ export default function StatusFieldset({ linkInfo, setLinkInfo }: Props) {
 }
 
 type CheckInputProps = {
-  linkInfo: EditMemberLinkInfo;
-  setLinkInfo: (linkInfo: EditMemberLinkInfo) => void;
   checkStep: CheckStep;
+  currentStatus: LinkStatus;
+  setCurrentStatus: (currentStatus: LinkStatus) => void;
 };
 
-function CheckInput({ linkInfo, setLinkInfo, checkStep }: CheckInputProps) {
+function CheckInput({ checkStep, currentStatus, setCurrentStatus }: CheckInputProps) {
   const { status, className, step, label, isChecked } = checkStep;
+
   return (
     <li>
-      <input type="radio" name="status" id={status} checked={linkInfo.status === status} readOnly />
+      <input type="radio" name="status" id={status} checked={currentStatus === status} readOnly />
       <label
         htmlFor={status}
-        className={className}
+        className={className(currentStatus)}
         onClick={() => {
-          setLinkInfo({ ...linkInfo, status: status });
+          setCurrentStatus(status);
         }}
       >
-        <IconCheck status={status} isChecked={isChecked} />
+        <IconCheck status={status} isChecked={isChecked(currentStatus)} />
         <span>step{step}</span>
         <span>{label}</span>
       </label>
@@ -88,6 +107,7 @@ type IconCheckProps = {
 function IconCheck({ status, isChecked }: IconCheckProps) {
   const { basicBg, basicGray, point2Bg, point2Line, point2, point } = basicTheme;
   const [iconColor, setIconColor] = useState([basicGray, basicBg]);
+
   useEffect(() => {
     setIconColor([basicGray, basicBg]);
     if (isChecked) {
