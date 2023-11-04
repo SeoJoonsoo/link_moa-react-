@@ -127,7 +127,7 @@ export default function ModalForLink({ linkInfo, setLinkInfo, setIsOpen, clearLi
             <TagsFieldset linkInfo={linkInfo} setLinkInfo={setLinkInfo} />
             <StatusFieldset linkInfo={linkInfo} setLinkInfo={setLinkInfo} />
             <div className="button-wrapper">
-              <Button className="cancel" text="취소" onClick={onCancel} />
+              <Button type="button" className="cancel" text="취소" onClick={onCancel} />
               <Button text="저장" type="submit" />
             </div>
           </form>

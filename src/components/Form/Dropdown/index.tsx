@@ -33,6 +33,7 @@ export default function Dropdown({ placeholder, list, selectedItem, setSelectedI
       }}
     >
       <button
+        type="button"
         className="dropdown__button"
         onClick={() => {
           setIsOpen(!isOpen);
@@ -45,6 +46,7 @@ export default function Dropdown({ placeholder, list, selectedItem, setSelectedI
         {list.map((item) => (
           <li key={item}>
             <button
+              type="button"
               key={item}
               onClick={() => {
                 setSelectedItem(item);

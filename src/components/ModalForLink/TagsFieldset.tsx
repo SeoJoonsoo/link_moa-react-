@@ -39,6 +39,7 @@ export default function TagsFieldset({ linkInfo, setLinkInfo }: Props) {
           {linkInfo.tags.length > 0 || <span className="no-tags">태그가 없습니다. 태그를 추가해주세요</span>}
           {linkInfo.tags.map((tag) => (
             <button
+              type="button"
               key={tag}
               className="tags__button"
               onClick={() => {
