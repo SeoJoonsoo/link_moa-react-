@@ -1,20 +1,49 @@
 import { useEffect, useState } from 'react';
 import { MemberLinkInfo } from '@/types';
 import Keep from '../../components/Keep';
-import { dummyForKeepGoing } from '../../dummy';
 import SectionWithTitle from '../SectionWithTitle';
 import { basicTheme } from '../theme';
 import LinkTicketListWithScroll from '../../components/LinkTicketListWithScroll';
 import * as S from './style';
 import { NavLink, Outlet } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from '@/redux/hooks';
+import { updateMemberLinks } from '@/redux/memberLinks';
+import getMemberLinks from '@/api/link/getMemberLinks';
+import { openModalForAlert } from '@/redux/alertModal';
 
 export default function HomeLayout() {
   const [keepGoingLinks, setKeepGoingLinks] = useState<MemberLinkInfo[]>([]);
+  const dispatch = useAppDispatch();
+  const alertModal = useAppSelector((state) => state.alertModal);
+  const isLogin = useAppSelector((state) => state.isLogin.isLogin);
+  const memberLinks = useAppSelector((state) => state.memberLinks.linkInfo);
 
   useEffect(() => {
-    setKeepGoingLinks(dummyForKeepGoing); // TODO : 실제 데이터 받아와야함
-    // setKeepGoingLinks([]); // keepGoing 데이터 없을때
+    if (isLogin) {
+      getMemberLinks()
+        .then((response) => {
+          console.log('홈레이아웃 getMemberLinks 응답', response.data.memberLinks);
+          dispatch(updateMemberLinks(response.data.memberLinks));
+        })
+        .catch((e) => {
+          console.log('홈레이아웃 getMemberLinks 에러', e);
+          dispatch(
+            openModalForAlert({
+              ...alertModal,
+              isOpen: true,
+              status: 'error',
+              alert: '링크 정보를 가져오지 못했습니다',
+            }),
+          );
+        });
+    }
   }, []);
+
+  useEffect(() => {
+    // KEEP GOING에 출력할 링크 추출
+    const newKeepGoingLinks = memberLinks.filter((linkInfo) => linkInfo.member_link_status === 'In Progress');
+    setKeepGoingLinks(newKeepGoingLinks);
+  }, [memberLinks]);
 
   return (
     <>
