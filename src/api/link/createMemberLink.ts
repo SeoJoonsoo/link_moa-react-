@@ -1,5 +1,5 @@
 import { VITE_API_ROOT } from '@/constants';
-import { MemberLinkInfo, Response } from '@/types';
+import { LinkStatus, MemberLinkInfo, Response } from '@/types';
 import axios from 'axios';
 
 type Data = Response & {
@@ -8,7 +8,7 @@ type Data = Response & {
   };
 };
 
-export default async function createMemberLink(url: string, name: string, tags: string[]) {
+export default async function createMemberLink(url: string, name: string, tags: string[], status: LinkStatus) {
   const data: Data = await axios
     .post(
       `${VITE_API_ROOT}/Link`,
@@ -16,6 +16,7 @@ export default async function createMemberLink(url: string, name: string, tags: 
         url,
         name,
         tags,
+        status,
       },
       {
         headers: {

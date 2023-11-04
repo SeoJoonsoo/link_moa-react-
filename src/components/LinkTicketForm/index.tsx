@@ -63,9 +63,9 @@ export default function LinkTicketForm({ value, setValue, isFocusToTitleTextarea
           })}
         </S.Tags>
       </div>
-      {status === 'keep' && <KeepStatus />}
-      {status === 'keep-going' && <KeepGoingStatus />}
-      {status === 'read' && <ReadStatus />}
+      {status === 'Saved' && <KeepStatus />}
+      {status === 'In Progress' && <KeepGoingStatus />}
+      {status === 'Completed' && <ReadStatus />}
     </S.Article>
   );
 }

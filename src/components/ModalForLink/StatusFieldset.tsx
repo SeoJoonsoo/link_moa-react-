@@ -19,25 +19,25 @@ type Props = {
 export default function StatusFieldset({ linkInfo, setLinkInfo }: Props) {
   const checkSteps = useRef<CheckStep[]>([
     {
-      status: 'keep',
+      status: 'Saved',
       className: 'keep',
       step: 1,
       label: '저장',
       isChecked: true,
     },
     {
-      status: 'keep-going',
-      className: `keep-going ${linkInfo.status !== 'keep' ? 'line' : ''}`,
+      status: 'In Progress',
+      className: `keep-going ${linkInfo.status !== 'Saved' ? 'line' : ''}`,
       step: 2,
       label: '읽는 중',
-      isChecked: linkInfo.status !== 'keep',
+      isChecked: linkInfo.status !== 'Saved',
     },
     {
-      status: 'read',
-      className: `read ${linkInfo.status === 'read' ? 'line' : ''}`,
+      status: 'Completed',
+      className: `read ${linkInfo.status === 'Completed' ? 'line' : ''}`,
       step: 3,
       label: '완독',
-      isChecked: linkInfo.status === 'read',
+      isChecked: linkInfo.status === 'Completed',
     },
   ]);
   return (
@@ -92,13 +92,13 @@ function IconCheck({ status, isChecked }: IconCheckProps) {
     setIconColor([basicGray, basicBg]);
     if (isChecked) {
       switch (status) {
-        case 'keep':
+        case 'Saved':
           setIconColor([point2Line, point2Bg]);
           break;
-        case 'keep-going':
+        case 'In Progress':
           setIconColor([point2, point2Bg]);
           break;
-        case 'read':
+        case 'Completed':
           setIconColor([point, point2Bg]);
           break;
         default:

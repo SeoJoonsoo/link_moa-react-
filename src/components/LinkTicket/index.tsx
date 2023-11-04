@@ -41,9 +41,9 @@ export default function LinkTicket({ value }: Props) {
         /* TODO: status 백 구현 중 (현재는 임의로 status값이 없을때 default : keep) */
         status === undefined && <KeepStatus />
       }
-      {status === 'keep' && <KeepStatus />}
-      {status === 'keep-going' && <KeepGoingStatus />}
-      {status === 'read' && <ReadStatus />}
+      {status === 'Saved' && <KeepStatus />}
+      {status === 'In Progress' && <KeepGoingStatus />}
+      {status === 'Completed' && <ReadStatus />}
     </S.Article>
   );
 }

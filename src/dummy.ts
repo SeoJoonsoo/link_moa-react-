@@ -17,7 +17,7 @@ export const dummyForKeepGoing: MemberLinkInfo[] = [
     created_at: '0000-00-00 00:00:00',
     updated_at: '0000-00-00 00:00:00',
     deleted_at: null,
-    status: 'keep-going',
+    status: 'In Progress',
   },
   {
     member_link_id: '2',
@@ -31,7 +31,7 @@ export const dummyForKeepGoing: MemberLinkInfo[] = [
     created_at: '0000-00-00 00:00:00',
     updated_at: '0000-00-00 00:00:00',
     deleted_at: null,
-    status: 'keep-going',
+    status: 'In Progress',
   },
   {
     member_link_id: '3',
@@ -45,7 +45,7 @@ export const dummyForKeepGoing: MemberLinkInfo[] = [
     created_at: '0000-00-00 00:00:00',
     updated_at: '0000-00-00 00:00:00',
     deleted_at: null,
-    status: 'keep-going',
+    status: 'In Progress',
   },
   {
     member_link_id: '14',
@@ -59,7 +59,7 @@ export const dummyForKeepGoing: MemberLinkInfo[] = [
     created_at: '0000-00-00 00:00:00',
     updated_at: '0000-00-00 00:00:00',
     deleted_at: null,
-    status: 'keep-going',
+    status: 'In Progress',
   },
   {
     member_link_id: '15',
@@ -73,7 +73,7 @@ export const dummyForKeepGoing: MemberLinkInfo[] = [
     created_at: '0000-00-00 00:00:00',
     updated_at: '0000-00-00 00:00:00',
     deleted_at: null,
-    status: 'keep-going',
+    status: 'In Progress',
   },
 ];
 
@@ -91,7 +91,7 @@ export const dummyForKeep: MemberLinkInfo[] = [
     created_at: '0000-00-00 00:00:00',
     updated_at: null,
     deleted_at: null,
-    status: 'keep',
+    status: 'Saved',
   },
   {
     member_link_id: '2',
@@ -105,7 +105,7 @@ export const dummyForKeep: MemberLinkInfo[] = [
     created_at: '0000-00-00 00:00:00',
     updated_at: null,
     deleted_at: null,
-    status: 'keep',
+    status: 'Saved',
   },
   {
     member_link_id: '3',
@@ -119,7 +119,7 @@ export const dummyForKeep: MemberLinkInfo[] = [
     created_at: '0000-00-00 00:00:00',
     updated_at: null,
     deleted_at: null,
-    status: 'keep',
+    status: 'Saved',
   },
   {
     member_link_id: '4',
@@ -133,7 +133,7 @@ export const dummyForKeep: MemberLinkInfo[] = [
     created_at: '0000-00-00 00:00:00',
     updated_at: null,
     deleted_at: null,
-    status: 'keep',
+    status: 'Saved',
   },
   {
     member_link_id: '5',
@@ -147,7 +147,7 @@ export const dummyForKeep: MemberLinkInfo[] = [
     created_at: '0000-00-00 00:00:00',
     updated_at: null,
     deleted_at: null,
-    status: 'keep',
+    status: 'Saved',
   },
   {
     member_link_id: '6',
@@ -161,7 +161,7 @@ export const dummyForKeep: MemberLinkInfo[] = [
     created_at: '0000-00-00 00:00:00',
     updated_at: null,
     deleted_at: null,
-    status: 'keep',
+    status: 'Saved',
   },
   {
     member_link_id: '7',
@@ -175,7 +175,7 @@ export const dummyForKeep: MemberLinkInfo[] = [
     created_at: '0000-00-00 00:00:00',
     updated_at: null,
     deleted_at: null,
-    status: 'keep',
+    status: 'Saved',
   },
   {
     member_link_id: '8',
@@ -189,7 +189,7 @@ export const dummyForKeep: MemberLinkInfo[] = [
     created_at: '0000-00-00 00:00:00',
     updated_at: null,
     deleted_at: null,
-    status: 'keep',
+    status: 'Saved',
   },
   {
     member_link_id: '9',
@@ -203,7 +203,7 @@ export const dummyForKeep: MemberLinkInfo[] = [
     created_at: '0000-00-00 00:00:00',
     updated_at: null,
     deleted_at: null,
-    status: 'keep',
+    status: 'Saved',
   },
   {
     member_link_id: '10',
@@ -217,7 +217,7 @@ export const dummyForKeep: MemberLinkInfo[] = [
     created_at: '0000-00-00 00:00:00',
     updated_at: null,
     deleted_at: null,
-    status: 'keep',
+    status: 'Saved',
   },
   {
     member_link_id: '11',
@@ -231,7 +231,7 @@ export const dummyForKeep: MemberLinkInfo[] = [
     created_at: '0000-00-00 00:00:00',
     updated_at: null,
     deleted_at: null,
-    status: 'keep',
+    status: 'Saved',
   },
 ];
 
@@ -249,7 +249,7 @@ export const dummyForRead: MemberLinkInfo[] = [
     created_at: '0000-00-00 00:00:00',
     updated_at: '0000-00-00 00:00:00',
     deleted_at: null,
-    status: 'read',
+    status: 'Completed',
   },
   {
     member_link_id: '12',
@@ -263,7 +263,7 @@ export const dummyForRead: MemberLinkInfo[] = [
     created_at: '0000-00-00 00:00:00',
     updated_at: '0000-00-00 00:00:00',
     deleted_at: null,
-    status: 'read',
+    status: 'Completed',
   },
   {
     member_link_id: '13',
@@ -277,7 +277,7 @@ export const dummyForRead: MemberLinkInfo[] = [
     created_at: '0000-00-00 00:00:00',
     updated_at: '0000-00-00 00:00:00',
     deleted_at: null,
-    status: 'read',
+    status: 'Completed',
   },
   {
     member_link_id: '14',
@@ -291,7 +291,7 @@ export const dummyForRead: MemberLinkInfo[] = [
     created_at: '0000-00-00 00:00:00',
     updated_at: '0000-00-00 00:00:00',
     deleted_at: null,
-    status: 'read',
+    status: 'Completed',
   },
   {
     member_link_id: '15',
@@ -305,7 +305,7 @@ export const dummyForRead: MemberLinkInfo[] = [
     created_at: '0000-00-00 00:00:00',
     updated_at: '0000-00-00 00:00:00',
     deleted_at: null,
-    status: 'read',
+    status: 'Completed',
   },
 ];
 

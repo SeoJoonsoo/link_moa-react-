@@ -6,7 +6,10 @@ export type Response = {
   message: string;
 };
 
-export type LinkStatus = 'keep' | 'keep-going' | 'read';
+// saved => keep
+// In Progress => keep-going
+// Completed => read
+export type LinkStatus = 'Saved' | 'In Progress' | 'Completed';
 
 export type LinkInfo = {
   link_id: string;
