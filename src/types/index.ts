@@ -22,7 +22,7 @@ export type EditMemberLinkInfo = Pick<LinkInfo, 'link_url' | 'member_link_name'>
   writer: null | string; // TODO : 백 구현 중
   writed_date: null | string; // TODO : 백 구현 중
   tags: string[]; // TODO : 백 구현 중
-  status: LinkStatus; // TODO : 백 구현 중
+  member_link_status: LinkStatus;
 };
 
 // LinkInfo -> MemberLinkInfo

@@ -52,10 +52,10 @@ export default function StatusFieldset({ linkInfo, setLinkInfo }: Props) {
       },
     },
   ]);
-  const [currentStatus, setCurrentStatus] = useState<LinkStatus>(linkInfo.status);
+  const [currentStatus, setCurrentStatus] = useState<LinkStatus>(linkInfo.member_link_status);
 
   useEffect(() => {
-    setLinkInfo({ ...linkInfo, status: currentStatus });
+    setLinkInfo({ ...linkInfo, member_link_status: currentStatus });
   }, [currentStatus]);
 
   return (

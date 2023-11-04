@@ -6,13 +6,13 @@ type Props = {
 };
 
 export default function LinkTicket({ value }: Props) {
-  const { member_link_name, link_url, writer, /* writed_date, */ created_at, tags, status } = value;
+  const { member_link_name, link_url, writer, /* writed_date, */ created_at, tags, member_link_status } = value;
   const openEditModal = () => {
     // TODO : 해당 링크에 대한 수정 모달 띄우도록 구현
   };
 
   return (
-    <S.Article className={status}>
+    <S.Article className={member_link_status}>
       <div className="wrapper">
         <S.LinkInfo to={link_url} target="_blank">
           <h3 className="title">{member_link_name}</h3>
@@ -37,13 +37,9 @@ export default function LinkTicket({ value }: Props) {
             })}
         </S.Tags>
       </div>
-      {
-        /* TODO: status 백 구현 중 (현재는 임의로 status값이 없을때 default : keep) */
-        status === undefined && <KeepStatus />
-      }
-      {status === 'Saved' && <KeepStatus />}
-      {status === 'In Progress' && <KeepGoingStatus />}
-      {status === 'Completed' && <ReadStatus />}
+      {member_link_status === 'Saved' && <KeepStatus />}
+      {member_link_status === 'In Progress' && <KeepGoingStatus />}
+      {member_link_status === 'Completed' && <ReadStatus />}
     </S.Article>
   );
 }

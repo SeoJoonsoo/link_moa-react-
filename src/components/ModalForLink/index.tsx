@@ -83,7 +83,7 @@ export default function ModalForLink({ linkInfo, setLinkInfo, setIsOpen, clearLi
       );
     };
     // TODO : 제출 후 응답돌아올때까지 로딩 화면 출력하기
-    createMemberLink(linkInfo.link_url, linkInfo.member_link_name, linkInfo.tags)
+    createMemberLink(linkInfo.link_url, linkInfo.member_link_name, linkInfo.tags, linkInfo.member_link_status)
       .then((response) => {
         console.log('제출결과: ', response);
         if (response.status === 'success') {

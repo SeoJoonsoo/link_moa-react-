@@ -11,7 +11,7 @@ type Props = {
 
 export default function LinkTicketForm({ value, setValue, isFocusToTitleTextarea, setIsFocusToTitleTextarea }: Props) {
   const titleTextarea: RefObject<HTMLTextAreaElement> = React.createRef();
-  const { member_link_name, /*writer, writeDate,*/ tags, status } = value;
+  const { member_link_name, /*writer, writeDate,*/ tags, member_link_status } = value;
   useEffect(() => {
     if (titleTextarea.current !== null) {
       if (isFocusToTitleTextarea) {
@@ -21,7 +21,7 @@ export default function LinkTicketForm({ value, setValue, isFocusToTitleTextarea
     }
   }, [titleTextarea, member_link_name, isFocusToTitleTextarea]);
   return (
-    <S.Article className={status}>
+    <S.Article className={member_link_status}>
       <div className="wrapper">
         <S.LinkInfo>
           <div className="title-wrapper">
@@ -63,9 +63,9 @@ export default function LinkTicketForm({ value, setValue, isFocusToTitleTextarea
           })}
         </S.Tags>
       </div>
-      {status === 'Saved' && <KeepStatus />}
-      {status === 'In Progress' && <KeepGoingStatus />}
-      {status === 'Completed' && <ReadStatus />}
+      {member_link_status === 'Saved' && <KeepStatus />}
+      {member_link_status === 'In Progress' && <KeepGoingStatus />}
+      {member_link_status === 'Completed' && <ReadStatus />}
     </S.Article>
   );
 }

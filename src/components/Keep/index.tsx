@@ -17,7 +17,7 @@ export default function Keep() {
     writer: '', // TODO : 백 구현 중
     writed_date: '0000-00-00', // TODO : 백 구현 중
     tags: [],
-    status: 'Saved', // TODO : 상태 저장 구현 기다림
+    member_link_status: 'Saved', // TODO : 상태 저장 구현 기다림
   });
   const [linkInfo, setLinkInfo] = useState<EditMemberLinkInfo>(initialLinkInfo.current);
   const [isOpenModalForLink, setIsOpenModalForLink] = useState(false);
