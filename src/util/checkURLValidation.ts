@@ -4,7 +4,7 @@
 
 export default function checkURLValidation(url: string) {
   try {
-    /^(http(s)?:\/\/.)[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)$/g.test(url)
+    /(http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!-\/]))?/g.test(url)
       ? new URL(url)
       : new URL('잘못된 url');
     return true;
