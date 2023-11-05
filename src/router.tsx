@@ -7,6 +7,7 @@ import All from './pages/All';
 import Welcome from './pages/Welcome';
 import NaverLogin from './pages/NaverLogin';
 import LocalLogin from './pages/LocalLogin';
+import NotFound from './pages/NotFound';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -21,6 +22,7 @@ const router = createBrowserRouter(
       <Route path="/welcome" element={<Welcome />} />
       <Route path="/localLogin" element={<LocalLogin />} />
       <Route path="/naverLogin" element={<NaverLogin />} />
+      <Route path="*" element={<NotFound />} />
     </Route>,
   ),
 );
