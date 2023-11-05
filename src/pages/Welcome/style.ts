@@ -20,7 +20,6 @@ export const SlideSection = styled.section`
     height: 300px;
     max-width: 400px;
     width: 100%;
-    background-color: #fff; // TODO : 임시로 사이즈 확인을 위함
   }
 `;
 export const LoginSection = styled.section`

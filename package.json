@@ -24,7 +24,8 @@
     "react-router": "^6.16.0",
     "react-router-dom": "^6.16.0",
     "redux-persist": "^6.0.0",
-    "styled-components": "^6.0.8"
+    "styled-components": "^6.0.8",
+    "swiper": "^11.0.3"
   },
   "devDependencies": {
     "@jest/globals": "^29.7.0",
