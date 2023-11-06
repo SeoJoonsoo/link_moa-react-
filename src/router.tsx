@@ -22,6 +22,7 @@ const router = createBrowserRouter(
       <Route path="/welcome" element={<Welcome />} />
       <Route path="/localLogin" element={<LocalLogin />} />
       <Route path="/naverLogin" element={<NaverLogin />} />
+      <Route path="/404" element={<NotFound />} />
       <Route path="*" element={<NotFound />} />
     </Route>,
   ),
