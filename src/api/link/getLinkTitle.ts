@@ -1,6 +1,5 @@
-import { VITE_API_ROOT } from '@/constants';
 import { Response } from '@/types';
-import axios from 'axios';
+import { instance } from '../api';
 
 type Data = Response & {
   data: {
@@ -11,8 +10,8 @@ type Data = Response & {
 };
 
 export default async function getLinkTitle(url: string) {
-  let data: Data = await axios
-    .get(`${VITE_API_ROOT}/Link/siteTitle?url=${url}`)
+  let data: Data = await instance
+    .get(`/Link/siteTitle?url=${url}`)
     .then((response: { data: Data }) => {
       if (response.data.status === 'success') {
         return response.data;

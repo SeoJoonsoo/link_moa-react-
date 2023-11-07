@@ -1,6 +1,6 @@
 import { VITE_API_ROOT } from '@/constants';
 import { MemberLinkInfo, Response } from '@/types';
-import axios from 'axios';
+import { instance } from '../api';
 
 type Data = Response & {
   data: {
@@ -9,7 +9,7 @@ type Data = Response & {
 };
 
 export default async function getMemberLinks() {
-  let data: Data = await axios
+  let data: Data = await instance
     .get(`${VITE_API_ROOT}/Link`)
     .then((response: { data: Data }) => {
       console.log('getMemberLinks', response);

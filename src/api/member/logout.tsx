@@ -1,14 +1,14 @@
 import { VITE_API_ROOT } from '@/constants';
 import { Response } from '@/types';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
+import { instance } from '../api';
 
 type Data = Response & {
   isLogin: boolean;
 };
 
 const logout = createAsyncThunk('/member/logout', async () => {
-  const data: Data = await axios
+  const data: Data = await instance
     .get(`${VITE_API_ROOT}/member/logout`)
     .then((response: { data: Data }) => {
       if (response.data.status === 'success') {

@@ -1,7 +1,7 @@
-import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { VITE_API_ROOT } from '@/constants';
 import { Response } from '@/types';
+import { instance } from '../api';
 
 type Data = Response & {
   isLogin: boolean;
@@ -14,10 +14,8 @@ type Data = Response & {
 };
 
 async function loginMemberInfo() {
-  const data: Data = await axios
-    .get(VITE_API_ROOT + '/member/info', {
-      withCredentials: true,
-    })
+  const data: Data = await instance
+    .get(VITE_API_ROOT + '/member/info')
     .then(function (response: { data: Data }) {
       if (response.data.status === 'success') {
         // console.log('member 조회 성공: ', response);

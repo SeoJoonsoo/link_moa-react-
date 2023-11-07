@@ -1,6 +1,6 @@
 import { VITE_API_ROOT } from '@/constants';
 import { LinkStatus, MemberLinkInfo, Response, Tag } from '@/types';
-import axios from 'axios';
+import { instance } from '../api';
 
 type Data = Response & {
   data: {
@@ -15,23 +15,14 @@ export default async function updateMemberLink(
   tags: Tag[],
   status: LinkStatus,
 ) {
-  const data: Data = await axios
-    .put(
-      `${VITE_API_ROOT}/Link`,
-      {
-        id: member_link_id,
-        url,
-        name,
-        tags: tags.map((tag) => tag.name),
-        status,
-      },
-      {
-        headers: {
-          'Contest-Type': 'application/json',
-        },
-        withCredentials: true,
-      },
-    )
+  const data: Data = await instance
+    .put(`${VITE_API_ROOT}/Link`, {
+      id: member_link_id,
+      url,
+      name,
+      tags: tags.map((tag) => tag.name),
+      status,
+    })
     .then((response: { data: Data }) => {
       return response.data;
     })
