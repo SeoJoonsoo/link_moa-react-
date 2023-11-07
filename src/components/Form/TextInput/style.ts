@@ -1,8 +1,9 @@
 import { css, styled } from 'styled-components';
 
-export const Form = styled.div`
+export const TextInput = styled.div`
   display: flex;
   width: 100%;
+  background-color: ${({ theme }) => theme.white};
   .input-wrapper {
     flex-grow: 1;
     flex-shrink: 1;
@@ -15,6 +16,7 @@ export const Form = styled.div`
       border: none;
       outline: none;
       font-size: 15px;
+      background-color: unset;
     }
     .placeholder {
       position: absolute;
@@ -38,6 +40,9 @@ export const Form = styled.div`
       font-size: 0;
       background-color: unset;
     }
+  }
+  &.bgGray {
+    background-color: ${({ theme }) => theme.basicBg};
   }
   button {
     flex-grow: 0;

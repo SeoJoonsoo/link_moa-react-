@@ -1,31 +1,37 @@
 import * as S from './style';
-import TextForm from '../Form/TextInput';
+import TextInput from '../Form/TextInput';
 import Dropdown from '../Form/Dropdown';
 import { useState, useEffect } from 'react';
 import { EditMemberLinkInfo } from '@/types';
+import { getMemberTagAll } from '@/api/tag/getMemberTagAll';
 
 type Props = {
   linkInfo: EditMemberLinkInfo;
   setLinkInfo: (linkInfo: EditMemberLinkInfo) => void;
 };
 
-const dummyList = ['리스트1', '리스트2', '리스트3', '리스트4', '리스트5', '리스트6', '리스트7'];
-
 export default function TagsFieldset({ linkInfo, setLinkInfo }: Props) {
   const [selectedTag, setSelectedTag] = useState('');
   const [tagList, setTagList] = useState<string[]>([]);
+  const [isDropdownDisabled, setIsDropdownDisabled] = useState<boolean>(false);
 
   useEffect(() => {
-    // TODO : '기존 태그에서 찾기' 드롭다운 출력을위해
-    // 유저의 태그 목록을 가져와야함!
-    // 지금은 임의로 dummyList사용함
-    setTagList(dummyList);
+    // '기존 태그에서 찾기' 드롭다운 출력을 위해 태그 리스트를 저장함
+    getMemberTagAll()
+      .then((response) => {
+        setTagList(response.data.memberTags);
+        setIsDropdownDisabled(false);
+      })
+      .catch(() => {
+        setIsDropdownDisabled(true);
+      });
   }, []);
 
   useEffect(() => {
-    console.log('selectedTag 들어옴: ', selectedTag);
-    if (selectedTag.length > 0 && !linkInfo.tags.includes(selectedTag)) {
-      setLinkInfo({ ...linkInfo, tags: [...linkInfo.tags, selectedTag] });
+    const tagNames = linkInfo.tags.map((tag) => tag.name);
+    if (selectedTag.length > 0 && !tagNames.includes(selectedTag)) {
+      const tagLastOrder = linkInfo.tags.length === 0 ? -1 : linkInfo.tags[linkInfo.tags.length - 1].order;
+      setLinkInfo({ ...linkInfo, tags: [...linkInfo.tags, { name: selectedTag, order: tagLastOrder + 1 }] });
     }
     setSelectedTag('');
   }, [selectedTag]);
@@ -40,20 +46,20 @@ export default function TagsFieldset({ linkInfo, setLinkInfo }: Props) {
           {linkInfo.tags.map((tag) => (
             <button
               type="button"
-              key={tag}
+              key={tag.name}
               className="tags__button"
               onClick={() => {
                 setLinkInfo({
                   ...linkInfo,
-                  tags: linkInfo.tags.filter((eachTag) => eachTag !== tag),
+                  tags: linkInfo.tags.filter((eachTag) => eachTag.name !== tag.name),
                 });
               }}
             >
-              {tag}
+              {tag.name}
             </button>
           ))}
         </div>
-        <TextForm
+        <TextInput
           placeholderText="태그 직접 입력하기"
           buttonText={'추가'}
           onClick={(value) => {
@@ -65,7 +71,13 @@ export default function TagsFieldset({ linkInfo, setLinkInfo }: Props) {
           style={{ height: '36px' }}
         />
         {tagList.length > 0 && (
-          <Dropdown placeholder="기존 태그에서 찾기" list={tagList} setSelectedItem={setSelectedTag} />
+          <Dropdown
+            disabled={isDropdownDisabled}
+            placeholderWhenDisabled="태그 목록을 가져오지 못했습니다"
+            placeholder="기존 태그에서 찾기"
+            list={tagList}
+            setSelectedItem={setSelectedTag}
+          />
         )}
       </div>
     </S.TagsFieldset>

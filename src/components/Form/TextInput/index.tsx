@@ -15,30 +15,44 @@ import ICON_ALL_DELETE from '@/assets/images/ic-all-delete.svg';
 //    input : 흰색
 //    button : 글자색=검정, 배경색=회색, 폰트=fontR
 
+// bgGray : input 컬러를 basicBg로 적용합니다.
 // point-button : submit 버튼의 폰트를 pointFont로 적용합니다.
 
 type Props = {
-  className?: 'point-button';
+  className?: 'point-button' | 'bgGray' | 'point-button bgGray';
   placeholderText: string;
   buttonText: string;
   onClick: (value: string) => void;
+  onClickDeleteAll?: () => void;
   style?: { [attribute: string]: string };
   onChange?: (value: string) => string; // 값에 변화를 주고싶으면 onChange를 전달합니다
+  deleteAfterSubmit?: boolean; // default: true. 제출후 input을 비우고 싶지 않다면 false 주세요
 };
 
-export default function TextForm({ className, placeholderText, buttonText, onClick, onChange, style }: Props) {
+export default function TextInput({
+  className,
+  placeholderText,
+  buttonText,
+  onClick,
+  onClickDeleteAll,
+  onChange,
+  style,
+  deleteAfterSubmit = true,
+}: Props) {
   const [value, setValue] = useState('');
 
   const onClickForSubmit = () => {
     onClick(value);
-    onDeleteAll();
+    if (deleteAfterSubmit) {
+      onDeleteAll();
+    }
   };
 
   const onDeleteAll = () => {
     setValue('');
   };
   return (
-    <S.Form className={className + (value !== '' ? 'isValue' : '')} style={style}>
+    <S.TextInput className={className + (value !== '' ? ' isValue' : '')} style={style}>
       <div className="input-wrapper">
         <input
           type="text"
@@ -63,6 +77,9 @@ export default function TextForm({ className, placeholderText, buttonText, onCli
           type="button"
           onClick={() => {
             onDeleteAll();
+            if (onClickDeleteAll) {
+              onClickDeleteAll();
+            }
           }}
         >
           <img src={ICON_ALL_DELETE} alt="delete-icon" height={22} width={22} />
@@ -78,6 +95,6 @@ export default function TextForm({ className, placeholderText, buttonText, onCli
       >
         {buttonText}
       </button>
-    </S.Form>
+    </S.TextInput>
   );
 }

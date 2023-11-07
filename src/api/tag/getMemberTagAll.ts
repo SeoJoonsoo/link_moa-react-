@@ -1,18 +1,19 @@
 import { VITE_API_ROOT } from '@/constants';
-import { MemberLinkInfo, Response } from '@/types';
+import { Response } from '@/types';
 import axios from 'axios';
 
+// memberTags 내부 태그 순서 : 최신순 정렬
+// 저장된 태그가 없다면 memberTags: []
 type Data = Response & {
   data: {
-    memberLinks: MemberLinkInfo[];
+    memberTags: string[];
   };
 };
 
-export default async function getMemberLinks() {
+export async function getMemberTagAll() {
   let data: Data = await axios
-    .get(`${VITE_API_ROOT}/Link`)
+    .get(`${VITE_API_ROOT}/Link/memberTagAll`)
     .then((response: { data: Data }) => {
-      console.log('getMemberLinks', response);
       if (response.data.status === 'success') {
         return response.data;
       } else {
@@ -20,7 +21,7 @@ export default async function getMemberLinks() {
           status: response.data.status,
           message: response.data.message,
           data: {
-            memberLinks: [],
+            memberTags: [],
           },
         };
       }
@@ -29,9 +30,9 @@ export default async function getMemberLinks() {
       console.log('get error: ', e);
       return {
         status: 'error',
-        message: `getMemberLinks 요청 에러 : ${e}`,
+        message: `getMemberTagAll 요청 에러 : ${e}`,
         data: {
-          memberLinks: [],
+          memberTags: [],
         },
       };
     });

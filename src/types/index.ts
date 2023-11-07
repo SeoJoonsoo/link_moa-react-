@@ -11,6 +11,8 @@ export type Response = {
 // Completed => read
 export type LinkStatus = 'Saved' | 'In Progress' | 'Completed';
 
+export type Tag = { name: string; order: number };
+
 export type LinkInfo = {
   link_id: string;
   link_url: string;
@@ -21,7 +23,7 @@ export type EditMemberLinkInfo = Pick<LinkInfo, 'link_url' | 'member_link_name'>
   member_link_id?: string;
   writer: null | string; // TODO : 백 구현 중
   writed_date: null | string; // TODO : 백 구현 중
-  tags: string[]; // TODO : 백 구현 중
+  tags: Tag[];
   member_link_status: LinkStatus;
 };
 

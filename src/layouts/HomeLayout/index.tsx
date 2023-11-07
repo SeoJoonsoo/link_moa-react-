@@ -50,7 +50,12 @@ export default function HomeLayout() {
       <Keep />
 
       {keepGoingLinks.length !== 0 && (
-        <SectionWithTitle id="keep-going-section" title="KEEP GOING &#62;&#62;" color={basicTheme.point2}>
+        <SectionWithTitle
+          id="keep-going-section"
+          title="KEEP GOING &#62;&#62;"
+          color={basicTheme.point2}
+          style={{ paddingLeft: 0, paddingRight: 0 }}
+        >
           <LinkTicketListWithScroll links={keepGoingLinks} />
         </SectionWithTitle>
       )}

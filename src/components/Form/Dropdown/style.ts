@@ -23,6 +23,7 @@ export const DropwdownWrapper = styled.div`
     z-index: 9;
     width: 100%;
     overflow-y: auto;
+    background-color: #fff;
     box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.14);
     height: 0;
     transition: height 0.2s ease-in-out;

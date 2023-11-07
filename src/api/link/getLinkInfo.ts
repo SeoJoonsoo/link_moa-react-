@@ -1,26 +1,28 @@
 import { VITE_API_ROOT } from '@/constants';
-import { MemberLinkInfo, Response } from '@/types';
+import { LinkInfo, Response } from '@/types';
 import axios from 'axios';
+
+// url과 일치하는 linkInfo가 없다면 -> linkInfo: null
 
 type Data = Response & {
   data: {
-    memberLinks: MemberLinkInfo[];
+    linkInfo: null | LinkInfo;
   };
 };
 
-export default async function getMemberLinks() {
+export async function getLinkInfo(url: string) {
   let data: Data = await axios
-    .get(`${VITE_API_ROOT}/Link`)
+    .get(`${VITE_API_ROOT}/Link?url=${encodeURI(url)}`)
     .then((response: { data: Data }) => {
-      console.log('getMemberLinks', response);
       if (response.data.status === 'success') {
+        console.log(response);
         return response.data;
       } else {
         return {
           status: response.data.status,
           message: response.data.message,
           data: {
-            memberLinks: [],
+            linkInfo: null,
           },
         };
       }
@@ -29,9 +31,9 @@ export default async function getMemberLinks() {
       console.log('get error: ', e);
       return {
         status: 'error',
-        message: `getMemberLinks 요청 에러 : ${e}`,
+        message: `getLinkInfo 요청 에러 : ${e}`,
         data: {
-          memberLinks: [],
+          linkInfo: null,
         },
       };
     });

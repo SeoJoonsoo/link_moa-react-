@@ -2,19 +2,31 @@ import { Link } from 'react-router-dom';
 import { css, styled } from 'styled-components';
 
 export const Article = styled.article`
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   align-content: stretch;
   background-color: ${({ theme }) => theme.white};
+  cursor: default;
+  &:hover {
+    box-shadow: 0 0 7px rgb(0 0 0 / 20%);
+  }
   & + & {
     border-top: dashed 2px ${({ theme }) => theme.basicGray};
+    &:hover {
+      border-top: solid 2px ${({ theme }) => theme.basicGray};
+    }
+  }
+  &:hover + & {
+    border-top: solid 2px ${({ theme }) => theme.basicGray};
   }
   .wrapper {
     width: calc(100% - 36px);
     padding: 16px 12px;
     flex-grow: 1;
     flex-shrink: 1;
+    overflow: hidden;
   }
   ${(props) =>
     props.className === 'keep-going' &&
@@ -61,6 +73,18 @@ export const LinkInfoStyle = css`
 
 export const LinkInfo = styled(Link)`
   ${LinkInfoStyle}
+  &:hover {
+    .title {
+      color: #74adfa;
+      box-shadow: 0 9px 9px 17px #f8fbfd;
+      background-color: #f8fbfd;
+    }
+    .writeed-info {
+      & > li {
+        color: #a3c7ef;
+      }
+    }
+  }
 `;
 
 export const Tags = styled.ul`
@@ -68,6 +92,7 @@ export const Tags = styled.ul`
   flex-wrap: wrap;
   gap: 4px 8px;
   padding-top: 8px;
+  min-height: 13px;
   li {
     font-size: 13px;
     color: ${({ theme }) => theme.point};

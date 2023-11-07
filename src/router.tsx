@@ -8,6 +8,8 @@ import Welcome from './pages/Welcome';
 import NaverLogin from './pages/NaverLogin';
 import LocalLogin from './pages/LocalLogin';
 import NotFound from './pages/NotFound';
+import AllLayout from './layouts/AllLayout';
+import Tag from './pages/Tag';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -16,7 +18,10 @@ const router = createBrowserRouter(
       <Route element={<HomeLayout />}>
         <Route path="/" element={<Keep />} />
         <Route path="/read" element={<Read />} />
-        <Route path="/all" element={<All />} />
+        <Route element={<AllLayout />}>
+          <Route path="/all" element={<All />} />
+          <Route path="/tag" element={<Tag />} />
+        </Route>
       </Route>
       <Route path="/index.php/welcome" element={<Welcome />} />
       <Route path="/welcome" element={<Welcome />} />

@@ -1,7 +1,11 @@
 import { styled } from 'styled-components';
 import * as S from '@/components/LinkTicket/style';
 
-export const Article = S.Article;
+export const Article = styled(S.Article)`
+  &:hover {
+    box-shadow: unset;
+  }
+`;
 export const LinkInfo = styled.div`
   ${S.LinkInfoStyle}
   .title-wrapper {

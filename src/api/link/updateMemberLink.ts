@@ -8,11 +8,18 @@ type Data = Response & {
   };
 };
 
-export default async function createMemberLink(url: string, name: string, tags: Tag[], status: LinkStatus) {
+export default async function updateMemberLink(
+  member_link_id: string,
+  url: string,
+  name: string,
+  tags: Tag[],
+  status: LinkStatus,
+) {
   const data: Data = await axios
-    .post(
+    .put(
       `${VITE_API_ROOT}/Link`,
       {
+        id: member_link_id,
         url,
         name,
         tags: tags.map((tag) => tag.name),
@@ -26,12 +33,12 @@ export default async function createMemberLink(url: string, name: string, tags: 
       },
     )
     .then((response: { data: Data }) => {
-      console.log('저장 요청 응답: ', response);
       return response.data;
     })
     .catch((e) => {
-      console.log('저장 요청 실패: ', e);
+      console.log('수정 요청 실패: ', e);
       return e.data;
     });
+
   return data;
 }

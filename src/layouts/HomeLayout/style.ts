@@ -4,6 +4,7 @@ const tablistLinkHeight = '36px';
 const tabMaxZIndex = 10;
 
 export const PageSection = styled.section`
+  margin-top: 18px;
   padding: 0;
   .name-wrapper {
     ul {
@@ -94,7 +95,7 @@ export const PageSection = styled.section`
     background-color: ${({ theme }) => theme.white};
     position: relative;
     z-index: ${tabMaxZIndex};
-    padding: 10px 0;
+    padding: 10px 0 0;
     box-shadow: 2px 4px 4px 0px rgba(0, 0, 0, 0.08);
   }
 `;

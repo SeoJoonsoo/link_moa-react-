@@ -1,6 +1,8 @@
 import { styled } from 'styled-components';
 
 export const List = styled.div`
+  padding: 6px 12px;
+  margin: 12px 0 6px;
   width: 100%;
   max-height: 365px;
   overflow-y: auto;
