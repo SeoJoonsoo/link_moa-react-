@@ -12,14 +12,17 @@ type Props = {
 export default function LinkTicketForm({ value, setValue, isFocusToTitleTextarea, setIsFocusToTitleTextarea }: Props) {
   const titleTextarea: RefObject<HTMLTextAreaElement> = React.createRef();
   const { member_link_name, /*writer, writeDate,*/ tags, member_link_status } = value;
+
   useEffect(() => {
     if (titleTextarea.current !== null) {
+      titleTextarea.current.style.height = titleTextarea.current.scrollHeight + 'px';
       if (isFocusToTitleTextarea) {
         titleTextarea.current.focus();
         setIsFocusToTitleTextarea(false);
       }
     }
   }, [titleTextarea, member_link_name, isFocusToTitleTextarea]);
+
   return (
     <S.Article className={member_link_status}>
       <div className="wrapper">
