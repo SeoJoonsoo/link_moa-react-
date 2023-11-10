@@ -20,6 +20,7 @@ export default function Keep() {
     tags: [],
     member_link_status: 'Saved',
   });
+  const gettedLinkInfo = useRef<EditMemberLinkInfo>(initialLinkInfo.current);
   const [linkInfo, setLinkInfo] = useState<EditMemberLinkInfo>(initialLinkInfo.current);
   const [isOpenModalForLink, setIsOpenModalForLink] = useState(false);
   const alertModal = useAppSelector((state) => state.alertModal);
@@ -85,6 +86,14 @@ export default function Keep() {
                         tags,
                         /* writer, writed_date */
                       } = savedLinkInfo;
+                      gettedLinkInfo.current = {
+                        ...gettedLinkInfo.current,
+                        member_link_id,
+                        member_link_name,
+                        link_url,
+                        member_link_status,
+                        tags,
+                      };
                       setLinkInfo({
                         ...linkInfo,
                         member_link_id,
@@ -176,6 +185,7 @@ export default function Keep() {
       </S.KeepSection>
       {isOpenModalForLink && (
         <ModalForLink
+          initialLinkInfo={gettedLinkInfo.current}
           linkInfo={linkInfo}
           setLinkInfo={setLinkInfo}
           setIsOpen={setIsOpenModalForLink}

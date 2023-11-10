@@ -1,7 +1,7 @@
 import * as S from './style';
 import Modal from '../Modal';
 import LinkTicketForm from '../LinkTicketForm';
-import { EditMemberLinkInfo } from '@/types';
+import { EditMemberLinkInfo, Tag } from '@/types';
 import TagsFieldset from './TagsFieldset';
 import StatusFieldset from './StatusFieldset';
 import Button from '../Button';
@@ -16,20 +16,39 @@ import memberLink from '@/api/link/memberLink';
 // 위 문서의 ModalForLink 참고
 
 type Props = {
+  initialLinkInfo: EditMemberLinkInfo;
   linkInfo: EditMemberLinkInfo;
   setLinkInfo: (linkInfo: EditMemberLinkInfo) => void;
   setIsOpen: (isOpen: boolean) => void;
   clearLinkInfo: () => void;
 };
 
-export default function ModalForLink({ linkInfo, setLinkInfo, setIsOpen, clearLinkInfo }: Props) {
+export default function ModalForLink({ initialLinkInfo, linkInfo, setLinkInfo, setIsOpen, clearLinkInfo }: Props) {
   const [isFocusToTitleTextarea, setIsFocusToTitleTextarea] = useState(false);
   const memberLinks = useAppSelector((state) => state.memberLinks.linkInfo);
   const dispatch = useAppDispatch();
 
-  useEffect(() => {
-    linkInfo.member_link_name.length > 0 ? setIsFocusToTitleTextarea(false) : setIsFocusToTitleTextarea(true);
-  }, []);
+  const isChanged = () => {
+    const initialValue: [string, string, Tag[]] = [
+      initialLinkInfo.member_link_name,
+      initialLinkInfo.member_link_status,
+      initialLinkInfo.tags,
+    ];
+    const currentValue: [string, string, Tag[]] = [
+      linkInfo.member_link_name,
+      linkInfo.member_link_status,
+      linkInfo.tags,
+    ];
+    if (
+      initialValue[0] !== currentValue[0] ||
+      initialValue[1] !== currentValue[1] ||
+      JSON.stringify(initialValue[2]) !== JSON.stringify(currentValue[2])
+    ) {
+      return true;
+    } else {
+      return false;
+    }
+  };
 
   const onDelete = (member_link_id: string) => {
     dispatch(
@@ -87,38 +106,44 @@ export default function ModalForLink({ linkInfo, setLinkInfo, setIsOpen, clearLi
     );
   };
   const onCancel = () => {
-    // 정말 작성을 취소할건지 물어보는 모달 호출
-    dispatch(
-      openModal({
-        isOpen: true,
-        alert: (
-          <>
-            <div className="content-wrapper">
-              정말 취소하시겠습니까?
-              <br />
-              취소 시 작성하던 내용은 저장되지 않습니다
-            </div>
-            <div className="button-wrapper">
-              <Button
-                className="cancel"
-                text="아니오"
-                onClick={() => {
-                  dispatch(closeModal());
-                }}
-              />
-              <Button
-                text="네"
-                onClick={() => {
-                  dispatch(closeModal());
-                  setIsOpen(false);
-                  clearLinkInfo();
-                }}
-              />
-            </div>
-          </>
-        ),
-      }),
-    );
+    if (isChanged()) {
+      // 정말 작성을 취소할건지 물어보는 모달 호출
+      dispatch(
+        openModal({
+          isOpen: true,
+          alert: (
+            <>
+              <div className="content-wrapper">
+                정말 취소하시겠습니까?
+                <br />
+                취소 시 작성하던 내용은 저장되지 않습니다
+              </div>
+              <div className="button-wrapper">
+                <Button
+                  className="cancel"
+                  text="아니오"
+                  onClick={() => {
+                    dispatch(closeModal());
+                  }}
+                />
+                <Button
+                  text="네"
+                  onClick={() => {
+                    dispatch(closeModal());
+                    setIsOpen(false);
+                    clearLinkInfo();
+                  }}
+                />
+              </div>
+            </>
+          ),
+        }),
+      );
+    } else {
+      console.log('변한거 없이 취소 클릭됨', initialLinkInfo, linkInfo);
+      setIsOpen(false);
+      clearLinkInfo();
+    }
   };
   const onSubmit = async () => {
     // valid
@@ -129,35 +154,55 @@ export default function ModalForLink({ linkInfo, setLinkInfo, setIsOpen, clearLi
 
     // TODO : 제출 후 응답돌아올때까지 로딩 화면 출력하기
 
-    const response = await memberLink.createOrUpdate(linkInfo);
-    if (response.status === 'success') {
-      dispatch(
-        openModalForAlert({
-          status: 'success',
-          alert: '저장되었습니다',
-        }),
-      );
-      dispatch(updateMemberLinks(response.data.memberLinks));
-      setIsOpen(false);
-      clearLinkInfo();
-    } else if (response.status === 'fail') {
-      dispatch(
-        openModalForAlert({
-          status: 'fail',
-          alert: '저장 중 오류가 발생했습니다',
-        }),
-      );
+    if (isChanged()) {
+      const response = await memberLink.createOrUpdate(linkInfo);
+      if (response.status === 'success') {
+        dispatch(
+          openModalForAlert({
+            status: 'success',
+            alert: '저장되었습니다',
+          }),
+        );
+        dispatch(updateMemberLinks(response.data.memberLinks));
+        setIsOpen(false);
+        clearLinkInfo();
+      } else if (response.status === 'fail') {
+        dispatch(
+          openModalForAlert({
+            status: 'fail',
+            alert: '저장 중 오류가 발생했습니다',
+          }),
+        );
+      } else {
+        dispatch(
+          openModalForAlert({
+            status: 'error',
+            alert: '저장 중 내부 오류가 발생했습니다',
+          }),
+        );
+      }
     } else {
       dispatch(
         openModalForAlert({
-          status: 'error',
-          alert: '저장 중 내부 오류가 발생했습니다',
+          status: 'success',
+          alert: '수정된 내용이 없습니다',
         }),
       );
+      setIsOpen(false);
+      clearLinkInfo();
     }
   };
+
+  useEffect(() => {
+    linkInfo.member_link_name.length > 0 ? setIsFocusToTitleTextarea(false) : setIsFocusToTitleTextarea(true);
+  }, []);
+
   return (
-    <S.ModalWrapper>
+    <S.ModalWrapper
+      onClick={(e) => {
+        e.stopPropagation();
+      }}
+    >
       <Modal>
         <S.Contents>
           <form

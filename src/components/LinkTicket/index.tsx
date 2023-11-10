@@ -5,6 +5,7 @@ import ModalForLink from '../ModalForLink';
 import memberLink from '@/api/link/memberLink';
 import { useAppDispatch } from '@/redux/hooks';
 import { updateMemberLinks } from '@/redux/memberLinks';
+import { useEffect } from 'react';
 
 type Props = {
   value: MemberLinkInfo;
@@ -27,6 +28,9 @@ export default function LinkTicket({ value }: Props) {
   const clearLinkInfo = () => {
     setLinkInfo(value);
   };
+  useEffect(() => {
+    setLinkInfo(value);
+  }, [value]);
 
   return (
     <S.Article
@@ -83,6 +87,7 @@ export default function LinkTicket({ value }: Props) {
 
       {isOpenLinkEditModal && (
         <ModalForLink
+          initialLinkInfo={value}
           linkInfo={linkInfo}
           setLinkInfo={setLinkInfo}
           setIsOpen={setIsOpenLinkEditModal}
