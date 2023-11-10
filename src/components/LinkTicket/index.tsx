@@ -2,8 +2,8 @@ import { EditMemberLinkInfo, MemberLinkInfo } from '@/types';
 import * as S from './style';
 import { useState } from 'react';
 import ModalForLink from '../ModalForLink';
-import updateMemberLink from '@/api/link/updateMemberLink';
-import { useDispatch } from 'react-redux';
+import memberLink from '@/api/link/memberLink';
+import { useAppDispatch } from '@/redux/hooks';
 import { updateMemberLinks } from '@/redux/memberLinks';
 
 type Props = {
@@ -22,7 +22,7 @@ export default function LinkTicket({ value }: Props) {
   } = value;
   const [linkInfo, setLinkInfo] = useState<EditMemberLinkInfo>(value);
   const [isOpenLinkEditModal, setIsOpenLinkEditModal] = useState(false);
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const clearLinkInfo = () => {
     setLinkInfo(value);
@@ -43,15 +43,18 @@ export default function LinkTicket({ value }: Props) {
             e.stopPropagation();
             e.preventDefault();
             if (member_link_status === 'Saved') {
-              updateMemberLink(member_link_id, link_url, member_link_name, tags, 'In Progress')
+              memberLink
+                .update(
+                  member_link_id,
+                  link_url,
+                  member_link_name,
+                  tags.map((tag) => tag.name),
+                  'In Progress',
+                )
                 .then((response) => {
-                  console.log('update: ', response);
-                  if (response.status === 'success') {
-                    dispatch(updateMemberLinks(response.data.memberLinks));
+                  if (response.data.status === 'success') {
+                    dispatch(updateMemberLinks(response.data.data.memberLinks));
                   }
-                })
-                .catch((e) => {
-                  console.log('링크 수정 실패 :', e);
                 });
             }
             window.open(link_url);

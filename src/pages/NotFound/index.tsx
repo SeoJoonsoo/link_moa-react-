@@ -8,7 +8,6 @@ export default function NotFound() {
   dispatch(
     openModalForAlert({
       closeTime: 4000,
-      isOpen: true,
       status: 'fail',
       alert: (
         <>

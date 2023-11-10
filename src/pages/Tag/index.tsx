@@ -1,14 +1,15 @@
-import { useAppSelector } from '@/redux/hooks';
+import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import * as S from './style';
-import { getMemberTagAll } from '@/api/tag/getMemberTagAll';
+import getMemberTagAll from '@/api/tag/getMemberTagAll';
 import { MemberLinkInfo, Tag } from '@/types';
 import TagList from '@/components/TagList';
 import LinkTicketList from '@/components/LinkTicketList';
 import TagButton from '@/components/Tag';
 import quitIcon from '@/assets/images/ic-quit.svg';
 import rightArrowIcon from '@/assets/images/Tag/ic-arrow__right__point-color.svg';
+import { openModalForAlert } from '@/redux/alertModal';
 
 export default function Tag() {
   const memberLinks = useAppSelector((state) => state.memberLinks.linkInfo);
@@ -16,6 +17,7 @@ export default function Tag() {
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
   const tag = searchParams.get('tag');
+  const dispatch = useAppDispatch();
 
   const [allTags, setAllTags] = useState<string[]>([]);
   const [allTagsWithReadStatus, setAllTagsWithReadStatus] = useState<Map<string, boolean>>(new Map());
@@ -33,14 +35,14 @@ export default function Tag() {
     const newAllTagsWithReadSatus = new Map();
     const newLinkInfoNoTags: MemberLinkInfo[] = [];
 
-    getMemberTagAll()
-      .then((response) => {
-        console.log('alltag', response);
-        setAllTags(response.data.memberTags.reverse());
-        response.data.memberTags.forEach((tagName) => {
+    (async function () {
+      const MemberTagAll = await getMemberTagAll();
+      if (MemberTagAll.status === 'success') {
+        const tags = MemberTagAll.data.memberTags;
+        setAllTags(tags.reverse());
+        tags.forEach((tagName) => {
           newAllTagsWithReadSatus.set(tagName, true);
         });
-        console.log('newAllTags1', newAllTagsWithReadSatus);
 
         memberLinks.forEach((linkInfo) => {
           // 안읽은 태그 분류
@@ -56,13 +58,24 @@ export default function Tag() {
             newLinkInfoNoTags.push(linkInfo);
           }
         });
-        console.log('newAllTags2', newAllTagsWithReadSatus);
         setAllTagsWithReadStatus(newAllTagsWithReadSatus);
         setLinkInfoNoTags(newLinkInfoNoTags);
-      })
-      .catch((e) => {
-        console.log(e);
-      });
+      } else if (MemberTagAll.status === 'fail') {
+        dispatch(
+          openModalForAlert({
+            status: 'fail',
+            alert: <>오류로 태그를 가져오지 못했습니다</>,
+          }),
+        );
+      } else {
+        dispatch(
+          openModalForAlert({
+            status: 'fail',
+            alert: <>내부 오류로 태그를 가져오지 못했습니다</>,
+          }),
+        );
+      }
+    });
   }, [memberLinks]);
 
   useEffect(() => {

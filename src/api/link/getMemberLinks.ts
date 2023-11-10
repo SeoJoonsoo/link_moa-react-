@@ -1,18 +1,12 @@
-import { VITE_API_ROOT } from '@/constants';
-import { MemberLinkInfo, Response } from '@/types';
+import { ResponseOfMemberLinks } from '@/types';
 import { instance } from '../api';
+import { createAsyncThunk } from '@reduxjs/toolkit';
 
-type Data = Response & {
-  data: {
-    memberLinks: MemberLinkInfo[];
-  };
-};
-
-export default async function getMemberLinks() {
-  let data: Data = await instance
-    .get(`${VITE_API_ROOT}/Link`)
-    .then((response: { data: Data }) => {
-      console.log('getMemberLinks', response);
+const getMemberLinks = createAsyncThunk('link/getMemberLinks', async () => {
+  const data: ResponseOfMemberLinks = await instance
+    .get(`/Link`)
+    .then((response: { data: ResponseOfMemberLinks }) => {
+      console.log('전체 링크 정보 요청 응답', response);
       if (response.data.status === 'success') {
         return response.data;
       } else {
@@ -29,11 +23,13 @@ export default async function getMemberLinks() {
       console.log('get error: ', e);
       return {
         status: 'error',
-        message: `getMemberLinks 요청 에러 : ${e}`,
+        message: `전체 링크 정보 요청 에러 : ${e}`,
         data: {
           memberLinks: [],
         },
       };
     });
   return data;
-}
+});
+
+export default getMemberLinks;

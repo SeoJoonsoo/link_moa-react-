@@ -7,12 +7,10 @@ import StatusFieldset from './StatusFieldset';
 import Button from '../Button';
 import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import { closeModal, openModal } from '@/redux/modal';
-import createMemberLink from '@/api/link/createMemberLink';
-import { openModalForAlert } from '@/redux/alertModal';
 import { useState, useEffect } from 'react';
 import { updateMemberLinks } from '@/redux/memberLinks';
-import updateMemberLink from '@/api/link/updateMemberLink';
-import deleteMemberLink from '@/api/link/deleteMemberLink';
+import { openModalForAlert } from '@/redux/alertModal';
+import memberLink from '@/api/link/memberLink';
 
 // https://github.com/SeoJoonsoo/link_moa-react-/issues/2
 // 위 문서의 ModalForLink 참고
@@ -26,7 +24,6 @@ type Props = {
 
 export default function ModalForLink({ linkInfo, setLinkInfo, setIsOpen, clearLinkInfo }: Props) {
   const [isFocusToTitleTextarea, setIsFocusToTitleTextarea] = useState(false);
-  const alertModal = useAppSelector((state) => state.alertModal);
   const memberLinks = useAppSelector((state) => state.memberLinks.linkInfo);
   const dispatch = useAppDispatch();
 
@@ -51,51 +48,36 @@ export default function ModalForLink({ linkInfo, setLinkInfo, setIsOpen, clearLi
               />
               <Button
                 text="네"
-                onClick={() => {
-                  deleteMemberLink(member_link_id)
-                    .then((response) => {
-                      console.log('삭제 요청 성공시 받음:', response);
-                      if (response.status === 'success') {
-                        dispatch(
-                          openModalForAlert({
-                            ...alertModal,
-                            isOpen: true,
-                            status: 'success',
-                            alert: '삭제되었습니다',
-                          }),
-                        );
-                        dispatch(
-                          updateMemberLinks(
-                            memberLinks.filter((linkInfo) => linkInfo.member_link_id !== member_link_id),
-                          ),
-                        );
-                        setIsOpen(false);
-                        clearLinkInfo();
-                      } else {
-                        dispatch(
-                          openModalForAlert({
-                            ...alertModal,
-                            isOpen: true,
-                            status: 'fail',
-                            alert: '삭제 중 오류가 발생했습니다',
-                          }),
-                        );
-                      }
-                    })
-                    .catch((e) => {
-                      console.log('삭제 실패: ', e);
-                      dispatch(
-                        openModalForAlert({
-                          ...alertModal,
-                          isOpen: true,
-                          status: 'fail',
-                          alert: '삭제 중 오류가 발생했습니다',
-                        }),
-                      );
-                    });
-                  dispatch(closeModal());
-                  setIsOpen(false);
-                  clearLinkInfo();
+                onClick={async () => {
+                  const deleteResponse = await memberLink.delete(member_link_id);
+                  if (deleteResponse.status === 'success') {
+                    dispatch(
+                      openModalForAlert({
+                        status: 'success',
+                        alert: '삭제되었습니다',
+                      }),
+                    );
+                    dispatch(
+                      updateMemberLinks(memberLinks.filter((linkInfo) => linkInfo.member_link_id !== member_link_id)),
+                    );
+                    dispatch(closeModal());
+                    setIsOpen(false);
+                    clearLinkInfo();
+                  } else if (deleteResponse.status === 'fail') {
+                    dispatch(
+                      openModalForAlert({
+                        status: 'fail',
+                        alert: '삭제 중 오류가 발생했습니다',
+                      }),
+                    );
+                  } else {
+                    dispatch(
+                      openModalForAlert({
+                        status: 'error',
+                        alert: '삭제 중 내부 오류가 발생했습니다',
+                      }),
+                    );
+                  }
                 }}
               />
             </div>
@@ -138,81 +120,40 @@ export default function ModalForLink({ linkInfo, setLinkInfo, setIsOpen, clearLi
       }),
     );
   };
-  const onSubmit = () => {
+  const onSubmit = async () => {
     // valid
     if (linkInfo.member_link_name === '') {
       setIsFocusToTitleTextarea(true);
       return;
     }
 
-    const openModalWhenCreatingFail = (status: 'success' | 'fail' | 'error') => {
+    // TODO : 제출 후 응답돌아올때까지 로딩 화면 출력하기
+
+    const response = await memberLink.createOrUpdate(linkInfo);
+    if (response.status === 'success') {
       dispatch(
         openModalForAlert({
-          ...alertModal,
-          isOpen: true,
-          status: status,
+          status: 'success',
+          alert: '저장되었습니다',
+        }),
+      );
+      dispatch(updateMemberLinks(response.data.memberLinks));
+      setIsOpen(false);
+      clearLinkInfo();
+    } else if (response.status === 'fail') {
+      dispatch(
+        openModalForAlert({
+          status: 'fail',
           alert: '저장 중 오류가 발생했습니다',
         }),
       );
-    };
-    // TODO : 제출 후 응답돌아올때까지 로딩 화면 출력하기
-
-    if (linkInfo.member_link_id) {
-      // if : member_link_id 존재 시 -> 수정 요청
-      updateMemberLink(
-        linkInfo.member_link_id,
-        linkInfo.link_url,
-        linkInfo.member_link_name,
-        linkInfo.tags,
-        linkInfo.member_link_status,
-      )
-        .then((response) => {
-          console.log('update: ', response);
-          if (response.status === 'success') {
-            dispatch(
-              openModalForAlert({
-                ...alertModal,
-                isOpen: true,
-                status: 'success',
-                alert: '저장되었습니다',
-              }),
-            );
-            dispatch(updateMemberLinks(response.data.memberLinks));
-            setIsOpen(false);
-            clearLinkInfo();
-          } else {
-            openModalWhenCreatingFail('fail');
-          }
-        })
-        .catch((e) => {
-          console.log('링크 수정 실패 :', e);
-          openModalWhenCreatingFail('error');
-        });
     } else {
-      // if : member_link_id 존재X 시 -> 추가 요청
-      createMemberLink(linkInfo.link_url, linkInfo.member_link_name, linkInfo.tags, linkInfo.member_link_status)
-        .then((response) => {
-          console.log('제출결과: ', response);
-          if (response.status === 'success') {
-            dispatch(
-              openModalForAlert({
-                ...alertModal,
-                isOpen: true,
-                status: 'success',
-                alert: '저장되었습니다',
-              }),
-            );
-            dispatch(updateMemberLinks(response.data.memberLinks));
-            setIsOpen(false);
-            clearLinkInfo();
-          } else {
-            openModalWhenCreatingFail('fail');
-          }
-        })
-        .catch((e) => {
-          console.log('링크 저장 실패 :', e);
-          openModalWhenCreatingFail('error');
-        });
+      dispatch(
+        openModalForAlert({
+          status: 'error',
+          alert: '저장 중 내부 오류가 발생했습니다',
+        }),
+      );
     }
   };
   return (

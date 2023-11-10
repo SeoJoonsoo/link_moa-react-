@@ -6,6 +6,13 @@ export type Response = {
   message: string;
 };
 
+// memberLinkInfo[]를 받는 응답
+export type ResponseOfMemberLinks = Response & {
+  data: {
+    memberLinks: MemberLinkInfo[];
+  };
+};
+
 // saved => keep
 // In Progress => keep-going
 // Completed => read
@@ -13,14 +20,10 @@ export type LinkStatus = 'Saved' | 'In Progress' | 'Completed';
 
 export type Tag = { name: string; order: number };
 
-export type LinkInfo = {
-  link_id: string;
+export type EditMemberLinkInfo = {
+  member_link_id?: string;
   link_url: string;
   member_link_name: string;
-};
-
-export type EditMemberLinkInfo = Pick<LinkInfo, 'link_url' | 'member_link_name'> & {
-  member_link_id?: string;
   writer: null | string; // TODO : 백 구현 중
   writed_date: null | string; // TODO : 백 구현 중
   tags: Tag[];

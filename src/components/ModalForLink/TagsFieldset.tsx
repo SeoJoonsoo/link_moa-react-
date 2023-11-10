@@ -3,7 +3,7 @@ import TextInput from '../Form/TextInput';
 import Dropdown from '../Form/Dropdown';
 import { useState, useEffect } from 'react';
 import { EditMemberLinkInfo } from '@/types';
-import { getMemberTagAll } from '@/api/tag/getMemberTagAll';
+import getMemberTagAll from '@/api/tag/getMemberTagAll';
 
 type Props = {
   linkInfo: EditMemberLinkInfo;
@@ -17,14 +17,15 @@ export default function TagsFieldset({ linkInfo, setLinkInfo }: Props) {
 
   useEffect(() => {
     // '기존 태그에서 찾기' 드롭다운 출력을 위해 태그 리스트를 저장함
-    getMemberTagAll()
-      .then((response) => {
-        setTagList(response.data.memberTags);
+    (async function () {
+      const MemberTagAll = await getMemberTagAll();
+      if (MemberTagAll.status === 'success') {
+        setTagList(MemberTagAll.data.memberTags);
         setIsDropdownDisabled(false);
-      })
-      .catch(() => {
+      } else {
         setIsDropdownDisabled(true);
-      });
+      }
+    });
   }, []);
 
   useEffect(() => {

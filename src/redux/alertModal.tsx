@@ -1,4 +1,6 @@
+import getMemberLinks from '@/api/link/getMemberLinks';
 import login from '@/api/member/login';
+import logout from '@/api/member/logout';
 import { localLogin } from '@/pages/LocalLogin';
 import { RepsonseStatus } from '@/types';
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
@@ -23,7 +25,7 @@ const alertModalSlice = createSlice({
   name: 'alertModal',
   initialState,
   reducers: {
-    openModalForAlert(state, action: PayloadAction<AlertModal>) {
+    openModalForAlert(state, action: PayloadAction<Pick<AlertModal, 'status' | 'alert'> & { closeTime?: number }>) {
       state.isOpen = true;
       state.closeTime = action.payload.closeTime || initialCloseTime;
       state.status = action.payload.status;
@@ -92,6 +94,31 @@ const alertModalSlice = createSlice({
           <br /> 다시 시도해주세요
         </>
       );
+    });
+    builder.addCase(logout.fulfilled, (state, action) => {
+      state.isOpen = true;
+      state.status = action.payload.status;
+      state.alert =
+        action.payload.status === 'success' ? (
+          <>로그아웃되었습니다</>
+        ) : (
+          <>
+            오류가 발생했습니다
+            <br /> 다시 시도해주세요
+          </>
+        );
+    });
+    builder.addCase(getMemberLinks.fulfilled, (state, action) => {
+      if (action.payload.status !== 'success') {
+        state.isOpen = true;
+        state.status = 'fail';
+        state.alert = <>링크 정보를 가져오지 못했습니다</>;
+      }
+    });
+    builder.addCase(getMemberLinks.rejected, (state) => {
+      state.isOpen = true;
+      state.status = 'error';
+      state.alert = <>링크 정보를 가져오지 못했습니다</>;
     });
   },
 });

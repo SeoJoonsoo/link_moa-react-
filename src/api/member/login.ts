@@ -1,9 +1,8 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { VITE_API_ROOT } from '@/constants';
 import { Response } from '@/types';
 import { instance } from '../api';
 
-type Data = Response & {
+type ResponseOfLogin = Response & {
   isLogin: boolean;
   data: {
     memberInfo: {
@@ -14,14 +13,12 @@ type Data = Response & {
 };
 
 async function loginMemberInfo() {
-  const data: Data = await instance
-    .get(VITE_API_ROOT + '/member/info')
-    .then(function (response: { data: Data }) {
+  const data: ResponseOfLogin = await instance
+    .get('/member/info')
+    .then(function (response: { data: ResponseOfLogin }) {
       if (response.data.status === 'success') {
-        // console.log('member 조회 성공: ', response);
         return response.data;
       } else {
-        // console.log('member 조회 실패: ', response);
         return {
           isLogin: response.data.isLogin,
           message: response.data.message,
@@ -36,7 +33,6 @@ async function loginMemberInfo() {
       }
     })
     .catch(function (error) {
-      // console.log('loginMemberInfo 오류: ', error);
       return {
         isLogin: false,
         message: error,
