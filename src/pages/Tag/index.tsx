@@ -48,7 +48,6 @@ export default function Tag() {
           // 안읽은 태그 분류
           if (linkInfo.member_link_status !== 'Completed') {
             linkInfo.tags.forEach((tag) => {
-              console.log(tag);
               newAllTagsWithReadSatus.set(tag.name, false);
             });
           }
@@ -75,7 +74,7 @@ export default function Tag() {
           }),
         );
       }
-    });
+    })();
   }, [memberLinks]);
 
   useEffect(() => {

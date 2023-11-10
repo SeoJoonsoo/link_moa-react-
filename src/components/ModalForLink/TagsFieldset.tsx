@@ -25,7 +25,7 @@ export default function TagsFieldset({ linkInfo, setLinkInfo }: Props) {
       } else {
         setIsDropdownDisabled(true);
       }
-    });
+    })();
   }, []);
 
   useEffect(() => {

@@ -140,7 +140,6 @@ export default function ModalForLink({ initialLinkInfo, linkInfo, setLinkInfo, s
         }),
       );
     } else {
-      console.log('변한거 없이 취소 클릭됨', initialLinkInfo, linkInfo);
       setIsOpen(false);
       clearLinkInfo();
     }
