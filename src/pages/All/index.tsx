@@ -18,7 +18,9 @@ export default function All() {
   };
   const onClickSearch = (value: string) => {
     // value가 포함된 제목 찾기
-    const newMemberLinks = memberLinks.filter((linkInfo) => linkInfo.member_link_name.includes(value));
+    const newMemberLinks = memberLinks.filter((linkInfo) =>
+      linkInfo.member_link_name.replace(/\s+/g, '').toLowerCase().includes(value.replace(/\s+/g, '').toLowerCase()),
+    );
     setList(newMemberLinks);
   };
 
