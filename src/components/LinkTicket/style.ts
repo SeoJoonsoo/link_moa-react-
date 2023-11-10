@@ -21,7 +21,7 @@ export const Article = styled.article`
   &:hover + & {
     border-top: solid 2px ${({ theme }) => theme.basicGray};
   }
-  .wrapper {
+  & > .wrapper {
     width: calc(100% - 36px);
     padding: 16px 12px;
     flex-grow: 1;
