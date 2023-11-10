@@ -23,7 +23,9 @@ export default function HomeLayout() {
 
   useEffect(() => {
     // KEEP GOING에 출력할 링크 추출
-    const newKeepGoingLinks = memberLinks.filter((linkInfo) => linkInfo.member_link_status === 'In Progress');
+    const newKeepGoingLinks = memberLinks
+      .filter((linkInfo) => linkInfo.member_link_status === 'In Progress')
+      .sort((a, b) => Date.parse(b.updated_at!) - Date.parse(a.updated_at!));
     setKeepGoingLinks(newKeepGoingLinks);
   }, [memberLinks]);
 
